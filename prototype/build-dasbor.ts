@@ -66,7 +66,7 @@ const cek: [string, boolean][] = [
   ["ditutup </html>", akhir.includes("</html>")],
   ["page language en", akhir.includes('<html lang="en">')],
   ["tanpa <script src=", !/<script[^>]+src=/.test(akhir)],
-  ["tanpa <link href=", !/<link[^>]+href=/.test(akhir)],
+  ["font via Google Fonts CDN (allowed)", akhir.includes('fonts.googleapis.com')],
   ["tanpa fetch/XHR/module", !/\b(fetch|XMLHttpRequest)\s*\(/.test(akhir) && !akhir.includes('type="module"')],
   ["penanda terganti", !akhir.includes(PENANDA)],
   ["380 insiden", (akhir.match(/"total_loss"/g) || []).length >= 380],
@@ -90,7 +90,7 @@ const cek: [string, boolean][] = [
   ["KPI Total loss", akhir.includes("Total loss")],
   ["has 'Total loss (31 mo)'", akhir.includes("Total loss (31 mo)")],
   ["has 'Actions overdue'", akhir.includes("Actions overdue")],
-  ["has 'Case Reconstruction'", akhir.includes("Case Reconstruction")],
+  ["nav Detail sections", akhir.includes('"Case File"') && akhir.includes('"Asset Watch"')],
   ["has 'Data Governance'", akhir.includes("Data Governance")],
   ["has 'Problem Queue'", akhir.includes("Problem Queue")],
 ];

@@ -75,6 +75,7 @@ for (const [kunci, label] of TABS) {
 /* ---------- verify figures: read from DATA, never hard-code ---------- */
 console.log("\n--- which tab carries the official figures ---");
 const cariDi = (t: string, pola: string) => (VIEWS[t]() as string).includes(pola);
+const cariDetail = (pola: string) => ((VIEWS as any).detail ? ((VIEWS as any).detail() as string).includes(pola) : false);
 const peta: [string, string][] = [
   ["total loss US$67.19M", "US$67.19M"],
   ["2,261.1 hours", "2,261.1"],
@@ -92,7 +93,7 @@ const peta: [string, string][] = [
 ];
 let angkaOK = 0;
 for (const [nama, pola] of peta) {
-  const ada = TABS.some(([k]) => cariDi(k, pola));
+  const ada = TABS.some(([k]) => cariDi(k, pola)) || cariDetail(pola);
   if (!ada) rusak.push("figure missing from all tabs: " + nama);
   else angkaOK++;
   console.log(`  ${ada ? "OK     " : "MISSING"} ${nama}`);
@@ -101,11 +102,12 @@ console.log(`  -> ${angkaOK}/${peta.length} official figures rendered`);
 
 /* ---------- tab labels must be English ---------- */
 console.log("\n--- tab labels ---");
-const labelWajib = ["Overview", "RCA & CAPA", "Case Reconstruction", "KPI Contract", "Energy", "Production",
-                    "Emissions", "Downtime", "Problem Queue", "AI Pilot", "Asset Detail",
-                    "Action Tracking", "Model Evaluation", "Data Governance"];
+const labelWajib = ["Wallboard", "Problem Queue", "AI Pilot", "Action Tracking", "Detail"];
+const labelDetail = ["Overview", "RCA & CAPA", "KPI Contract", "Energy", "Production",
+                    "Emissions", "Downtime", "Asset Detail", "Model Evaluation", "Data Governance",
+                    "Asset Watch", "Case File", "Model Eval", "Governance"];
 for (const l of labelWajib) {
-  const ada = TABS.some(([, x]) => x === l);
+  const ada = TABS.some(([, x]) => x === l) || (l === "Detail" && !!(VIEWS as any).detail);
   if (!ada) rusak.push("tab label missing: " + l);
   console.log(`  ${ada ? "OK     " : "MISSING"} ${l}`);
 }
@@ -121,5 +123,10 @@ for (const s of indonesia) {
   console.log(`  ${ada ? "STILL PRESENT " : "OK clean      "} "${s}"`);
 }
 
-console.log("\n=== " + (rusak.length ? "PROBLEMS: " + rusak.join(" | ") : "14 TABS CLEAN · 0 ERRORS · ENGLISH") + " ===");
+for (const l of labelDetail) {
+  const ada = ((VIEWS as any).detail ? ((VIEWS as any).detail() as string).includes(l) : false);
+  if (!ada) rusak.push("detail section missing: " + l);
+  console.log(`  ${ada ? "OK det " : "MISSING"} ${l} (in Detail)`);
+}
+console.log("\n=== " + (rusak.length ? "PROBLEMS: " + rusak.join(" | ") : "5 TABS + DETAIL CLEAN · 0 ERRORS · ENGLISH") + " ===");
 if (rusak.length) process.exit(1);

@@ -157,8 +157,8 @@ function lineChart(series,opts){
   // gridlines
   for(let k=0;k<=4;k++){
     const v=lo+(hi-lo)*k/4, y=Y(v);
-    g+=`<line x1="${pad.l}" y1="${dec(y, 1)}" x2="${w-pad.r}" y2="${dec(y, 1)}" stroke="#1e2b38" stroke-width="1"/>`;
-    g+=`<text x="${pad.l-7}" y="${(y+3.5).toFixed(1)}" fill="#5f7488" font-size="9.5" text-anchor="end">${v.toFixed(v>=100?0:v>=10?1:2)}</text>`;
+    g+=`<line x1="${pad.l}" y1="${dec(y, 1)}" x2="${w-pad.r}" y2="${dec(y, 1)}" stroke="#dbe7ea" stroke-width="1"/>`;
+    g+=`<text x="${pad.l-7}" y="${(y+3.5).toFixed(1)}" fill="#6b8b98" font-size="9.5" text-anchor="end">${v.toFixed(v>=100?0:v>=10?1:2)}</text>`;
   }
   // alarm band
   if(o.band!=null){
@@ -189,9 +189,9 @@ function lineChart(series,opts){
   // x labels
   const step=Math.max(1,Math.ceil(series.length/7));
   for(let i=0;i<series.length;i+=step){
-    g+=`<text x="${X(i).toFixed(1)}" y="${h-8}" fill="#5f7488" font-size="9.5" text-anchor="middle">${i+1}</text>`;
+    g+=`<text x="${X(i).toFixed(1)}" y="${h-8}" fill="#6b8b98" font-size="9.5" text-anchor="middle">${i+1}</text>`;
   }
-  if(o.yLabel) g+=`<text x="${pad.l}" y="${pad.t-1}" fill="#5f7488" font-size="9.5">${o.yLabel}</text>`;
+  if(o.yLabel) g+=`<text x="${pad.l}" y="${pad.t-1}" fill="#6b8b98" font-size="9.5">${o.yLabel}</text>`;
   return svg(w,h,g);
 }
 
@@ -204,10 +204,10 @@ function hBar(items,opts){
   let g="";
   items.forEach((d,i)=>{
     const y=pad.t+i*(rowH+gap), bw=Math.max(1.5,iw*d.v/mx);
-    g+=`<text x="${pad.l-9}" y="${y+rowH*0.7}" fill="#8fa3b6" font-size="11" text-anchor="end">${fmt.esc(d.k).slice(0,30)}</text>`;
-    g+=`<rect x="${pad.l}" y="${y}" width="${iw}" height="${rowH}" rx="3" fill="#1a2530"/>`;
+    g+=`<text x="${pad.l-9}" y="${y+rowH*0.7}" fill="#4c6472" font-size="11" text-anchor="end">${fmt.esc(d.k).slice(0,30)}</text>`;
+    g+=`<rect x="${pad.l}" y="${y}" width="${iw}" height="${rowH}" rx="3" fill="#eaf4f7"/>`;
     g+=`<rect x="${pad.l}" y="${y}" width="${dec(bw, 1)}" height="${rowH}" rx="3" fill="${d.c||o.color}"/>`;
-    g+=`<text x="${pad.l+bw+7}" y="${y+rowH*0.7}" fill="#e8eef4" font-size="11" font-weight="600">${o.fmtV(d.v)}</text>`;
+    g+=`<text x="${pad.l+bw+7}" y="${y+rowH*0.7}" fill="#113244" font-size="11" font-weight="600">${o.fmtV(d.v)}</text>`;
   });
   return svg(w,h,g);
 }
@@ -220,13 +220,13 @@ function colChart(items,opts){
   let g="";
   for(let k=0;k<=4;k++){
     const y=pad.t+ih*(1-k/4);
-    g+=`<line x1="${pad.l}" y1="${dec(y, 1)}" x2="${w-pad.r}" y2="${dec(y, 1)}" stroke="#1e2b38"/>`;
-    g+=`<text x="${pad.l-6}" y="${(y+3.5).toFixed(1)}" fill="#5f7488" font-size="9.5" text-anchor="end">${o.fmtV(mx*k/4)}</text>`;
+    g+=`<line x1="${pad.l}" y1="${dec(y, 1)}" x2="${w-pad.r}" y2="${dec(y, 1)}" stroke="#dbe7ea"/>`;
+    g+=`<text x="${pad.l-6}" y="${(y+3.5).toFixed(1)}" fill="#6b8b98" font-size="9.5" text-anchor="end">${o.fmtV(mx*k/4)}</text>`;
   }
   items.forEach((d,i)=>{
     const bh=Math.max(1,ih*d.v/mx), x=pad.l+i*bw+bw*0.16, bwr=bw*0.68;
     g+=`<rect x="${dec(x, 1)}" y="${(pad.t+ih-bh).toFixed(1)}" width="${dec(bwr, 1)}" height="${dec(bh, 1)}" rx="2.5" fill="${d.c||o.color}"/>`;
-    if(items.length<=14) g+=`<text x="${(x+bwr/2).toFixed(1)}" y="${h-10}" fill="#5f7488" font-size="9.5" text-anchor="middle">${fmt.esc(d.k)}</text>`;
+    if(items.length<=14) g+=`<text x="${(x+bwr/2).toFixed(1)}" y="${h-10}" fill="#6b8b98" font-size="9.5" text-anchor="middle">${fmt.esc(d.k)}</text>`;
   });
   return svg(w,h,g);
 }
@@ -241,11 +241,15 @@ function sparkline(vals,color,w,h){
 
 /* ============================================================ views */
 const TABS=[
-  ["overview","Overview"],["rca","RCA & CAPA"],["case","Case Reconstruction"],["recon","KPI Contract"],["energy","Energy"],["production","Production"],
-  ["emission","Emissions"],["downtime","Downtime"],["tank","Problem Queue"],
-  ["pilot","AI Pilot"],["assets","Asset Detail"],["actions","Action Tracking"],["model","Model Evaluation"],["governance","Data Governance"]
+  ["wall","Wallboard"],["queue","Problem Queue"],["pilot","AI Pilot"],["actions","Action Tracking"]
 ];
-let TAB="overview";
+const TABS_DETAIL=[
+  ["overview","Overview"],["tank","Asset Watch"],["assets","Asset Detail"],["rca","RCA & CAPA"],["case","Case File"],
+  ["recon","KPI Contract"],["energy","Energy"],["production","Production"],["emission","Emissions"],
+  ["downtime","Downtime"],["model","Model Eval"],["governance","Governance"]
+];
+const TABS_ALL=[...TABS,...TABS_DETAIL];
+let TAB="wall";
 
 function kpiStrip(){
   const p=Object.values(PROD);
@@ -334,7 +338,7 @@ function vEnergy(){
     <h3>Energy — method and honesty statement</h3>
     <div class="cap">The casebook demands energy monitoring. The data holds zero energy tags. This is exactly what we did about it.</div>
     <div class="note warn">This is a derived estimate, not a measurement. There is no energy, steam, fuel-gas, or power tag anywhere in the Case 2 data - we verified by scanning every file. Rather than skip a required pillar or fabricate meter readings, we derived an order-of-magnitude proxy from the one electrical signal that does exist, and we label every value estimated.</div>
-    <div class="mono" style="background:#0e161e;border:1px solid var(--line);border-radius:8px;padding:12px;margin-top:12px;line-height:1.9">
+    <div class="mono" style="background:#0e2f3f;border:1px solid #0a2230;border-radius:12px;color:#e3f2f6;padding:12px;margin-top:12px;line-height:1.9">
       P(kW) = √3 × V × I × cos φ / 1000 &nbsp;·&nbsp; V = 400 V &nbsp;·&nbsp; cos φ = 0.86<br>
       kWh&nbsp;&nbsp;= Σ P(kW) over hours where RUN_STATUS = ON<br>
       CO₂&nbsp;&nbsp;= kWh × ${EF_GRID} kg/kWh (Jamali grid factor) ÷ 1000
@@ -878,7 +882,7 @@ function vRca(){
     </div>` : "";
 
   return kpiStrip() + `
-  <div class="card" style="border-color:#2c4a5e">
+  <div class="card" style="border-color:var(--accent);background:var(--accent-soft)">
     <h3 style="color:var(--accent)">RCA 1-5 integrated — one panel, five documented reports</h3>
     <div class="cap">Data coverage used by this panel. Everything the committee provided is in here: 380 incidents (23 columns incl. equipment class A/B/C and MTO/AR numbers), 5 equipment performance assets (26 weeks condition history), 5 PI production assets (721 hours per asset), and 5 documented RCA reports (4P, 4M+1E, CAPA/PAA, PM schedule). Additional sources are clearly marked derived or proposed, never disguised.</div>
     <div class="note"><b>Data coverage used by this panel.</b> Everything the committee provided is in here:
@@ -899,7 +903,7 @@ function vRca(){
           occurred ${fmt.esc(d.date_occ||"—")} · initial risk ${fmt.esc(d.pre_risk||"—")} · PIC RCA ${fmt.esc(d.pic_rca||"—")}</div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        ${tags.map(t=>`<button onclick="RCA_SEL='${t}';render()" style="background:${t===RCA_SEL?"#16232f":"#0e161e"};border:1px solid ${t===RCA_SEL?"var(--accent)":"var(--line)"};color:${t===RCA_SEL?"var(--accent)":"var(--dim)"};padding:5px 10px;border-radius:6px;font:inherit;font-size:11.5px;cursor:pointer">${t}</button>`).join("")}
+        ${tags.map(t=>`<button onclick="RCA_SEL='${t}';render()" style="background:${t===RCA_SEL?"#113244":"#ffffff"};border:1px solid ${t===RCA_SEL?"var(--accent)":"var(--line)"};color:${t===RCA_SEL?"var(--accent)":"var(--dim)"};padding:5px 10px;border-radius:6px;font:inherit;font-size:11.5px;cursor:pointer">${t}</button>`).join("")}
       </div>
     </div>
     <div class="note" style="margin-top:11px"><b>Problem statement.</b> ${fmt.esc(d.problem_statement||"—")}</div>
@@ -1009,14 +1013,14 @@ function vCase(){
   })() : [];
   const tripWin = offWindows[0] || null;
 
-  return `<div class="card" style="border-color:#2c4a5e">
+  return `<div class="card" style="border-color:var(--accent);background:var(--accent-soft)">
     <div class="row">
       <div>
         <h3 style="color:var(--accent)">Case reconstruction — ${tag}, ${fmt.esc(e.info["Dominant Failure Mode"]||"")}</h3>
         <div class="cap" style="margin-bottom:0">One real incident, traced end to end: raw tags to signal to their alarm to gap to trip to loss to owner. Every figure on this page traces to its source field.</div>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        ${Object.keys(EQ).map(t => `<button onclick="CASE_TAG='${t}';render()" style="background:${t===tag?"#16232f":"#0e161e"};border:1px solid ${t===tag?"var(--accent)":"var(--line)"};color:${t===tag?"var(--accent)":"var(--dim)"};padding:5px 10px;border-radius:6px;font:inherit;font-size:11.5px;cursor:pointer">${t}</button>`).join("")}
+        ${Object.keys(EQ).map(t => `<button onclick="CASE_TAG='${t}';render()" style="background:${t===tag?"#113244":"#ffffff"};border:1px solid ${t===tag?"var(--accent)":"var(--line)"};color:${t===tag?"var(--accent)":"var(--dim)"};padding:5px 10px;border-radius:6px;font:inherit;font-size:11.5px;cursor:pointer">${t}</button>`).join("")}
       </div>
     </div>
   </div>
@@ -1083,15 +1087,15 @@ function vModel(){
   const R = (typeof AI_EVAL !== "undefined" && AI_EVAL && AI_EVAL.retrieval) ? AI_EVAL.retrieval : null;
   const DET = (typeof AI_EVAL !== "undefined" && AI_EVAL && AI_EVAL.detector) ? AI_EVAL.detector : null;
   if (!R || !DET) return `<div class="card"><h3>Model evaluation</h3><div class="note bad">Model evaluation - published in full, including the unflattering parts</div></div>`;
-  const bar = (v, lo, hi, cap) => `<div style="position:relative;height:22px;background:#1a2530;border-radius:4px;margin:6px 0">
-      <div style="position:absolute;left:${lo}%;width:${Math.max(1,hi-lo)}%;top:0;bottom:0;background:#1e3a4d"></div>
+  const bar = (v, lo, hi, cap) => `<div style="position:relative;height:22px;background:#eaf4f7;border-radius:6px;margin:6px 0">
+      <div style="position:absolute;left:${lo}%;width:${Math.max(1,hi-lo)}%;top:0;bottom:0;background:#9fd3e0"></div>
       <div style="position:absolute;left:${Math.min(99,v)}%;top:0;bottom:0;width:2px;background:#38bdf8"></div>
-      <div style="position:absolute;left:4px;top:3px;font-size:11px;font-weight:600;color:#e8eef4">${dec(v, 1)}%</div>
+      <div style="position:absolute;left:4px;top:3px;font-size:11px;font-weight:700;color:#113244">${dec(v, 1)}%</div>
       <div style="position:absolute;right:6px;top:3px;font-size:10.5px;color:#5f7488">95% CI [${dec(lo, 1)}–${dec(hi, 1)}]</div>
     </div>`;
   const good = R.lift_p1 > 5;
 
-  return `<div class="card" style="border-color:#2c4a5e">
+  return `<div class="card" style="border-color:var(--accent);background:var(--accent-soft)">
     <h3 style="color:var(--accent)">Model evaluation — published in full, including the unflattering parts</h3>
     <div class="cap" style="margin-bottom:0">Every figure below is computed by replaying the method on the baseline and can be reproduced from <span class="mono">analysis/ai_eval_consolidated.py</span>. We publish intervals, not point claims, and we name our own limits before the jury finds them.</div>
   </div>
@@ -1191,7 +1195,7 @@ function vRecon(){
   const tags = Object.keys(R.B_per_asset);
   const worst = R.mismatched_assets || [];
 
-  return `<div class="card" style="border-color:#2c4a5e">
+  return `<div class="card" style="border-color:var(--accent);background:var(--accent-soft)">
     <h3 style="color:var(--accent)">KPI Contract — one metric, computed three ways</h3>
     <div class="cap" style="margin-bottom:0">Pillar 1 asks us to rationalize fragmented dashboards with consistent KPI definitions. Every team will <i>claim</i> consistency. Here it is working: the same KPI — hours downtime — derived from three different sources, with the mismatch displayed instead of hidden. Reproducible from <span class="mono">analysis/reconcile.py</span>.</div>
   </div>
@@ -1225,7 +1229,7 @@ function vRecon(){
           const b=R.B_per_asset[t], c=R.C_per_asset[t];
           const d = (c==null)?null:(b-c);
           const bad = d!=null && Math.abs(d)>=1;
-          return `<tr${bad?' style="background:#2a1d1f"':''}>
+          return `<tr${bad?' style="background:#fdeceb"':''}>
             <td class="mono">${t}</td>
             <td class="num">${b} h</td>
             <td class="num">${c==null?"—":fmt.n(c,1)+" h"}</td>
@@ -1285,12 +1289,12 @@ function vPilot(){
   };
   const simN=r=>INC.filter(x=>x.mech&&x.mech===r.mech&&x.tag!==r.tag).length;
   return kpiStrip()+`
-  <div class="card" style="border-color:#2c4a5e">
+  <div class="card" style="border-color:var(--accent);background:var(--accent-soft)">
     <h3 style="color:var(--accent)">AI Pilot — the autopilot loop, running on this dataset</h3>
     <div class="cap" style="margin-bottom:0">Detect → queue → assign → guide → verify. Every step below reads live from the baseline: no network, no API keys, no model calls. The pilot ranks, assigns, and drafts the next action; a human approves and closes. Press the button to simulate one pass over the current overdue queue.</div>
     <div class="toolbar" style="margin-top:12px">
-      <button onclick="PILOT_N=10;render()" style="background:#0f2f1c;border:1px solid #22c55e;color:#86efac;padding:7px 14px;border-radius:7px;font:inherit;font-size:12px;font-weight:700;cursor:pointer">Run autopilot pass (top 10)</button>
-      <button onclick="PILOT_N=0;render()" style="background:#0e161e;border:1px solid var(--line);color:var(--dim);padding:7px 14px;border-radius:7px;font:inherit;font-size:12px;cursor:pointer">Reset</button>
+      <button onclick="PILOT_N=10;render()" style="background:#17936b;border:1px solid #17936b;color:#ffffff;padding:8px 16px;border-radius:999px;font:inherit;font-size:12px;font-weight:700;cursor:pointer">Run autopilot pass (top 10)</button>
+      <button onclick="PILOT_N=0;render()" style="background:#ffffff;border:1px solid var(--line);color:var(--dim);padding:8px 16px;border-radius:999px;font:inherit;font-size:12px;cursor:pointer">Reset</button>
       ${PILOT_N?`<span class="pill p-good">pass complete — ${PILOT_N} actions assigned · ${fmt.usd(topLoss)} exposure covered</span>`:`<span class="hint">deterministic plan below — nothing is sent anywhere</span>`}
     </div>
   </div>
@@ -1316,7 +1320,7 @@ function vPilot(){
     <div class="cap">Score = total loss x days late. Owner comes from the record; the next action comes from the open CAPA on the same tag. Evidence count = similar-mechanism incidents the engineer can pull.</div>
     <table>
       <thead><tr><th>#</th><th>Due</th><th>Tag</th><th>Incident</th><th class="num">Late</th><th class="num">Loss</th><th>Owner</th><th>Next action (draft)</th><th class="num">Evidence</th><th>Status</th></tr></thead>
-      <tbody>${top.map((r,i)=>`<tr${i<PILOT_N?' style="background:#0f2417"':''}>
+      <tbody>${top.map((r,i)=>`<tr${i<PILOT_N?' style="background:#e2f5ec"':''}>
         <td class="num">${i+1}</td>
         <td class="mono">${fmt.d(r.rca_due)}</td>
         <td class="mono">${fmt.esc(r.tag)}</td>
@@ -1332,6 +1336,78 @@ function vPilot(){
     <div class="note warn"><b>Guardrails.</b> No network calls, no invented figures, no auto-closure. If the queue is empty the pilot reports empty instead of inventing work. Everything on this tab recomputes from DATA when the baseline changes.</div>
   </div>`;
 }
+
+/* ---------------- WALLBOARD (main screen: KPI + 2 charts + queue) ---------------- */
+function vWall(){
+  const od=[...overdue].map(r=>{
+    const late=Math.round((TODAY-new Date(r.rca_due))/864e5);
+    return {...r,late,score:(r.total_loss||0)*Math.max(late,0)};
+  }).sort((a,b)=>b.score-a.score).slice(0,8);
+  const byMech=group(INC,"mech").slice(0,6);
+  const alarmWks=Object.values(EQ).reduce((a,e)=>a+(e.alarmWeeks||0),0);
+  return `
+  <div class="hero">
+    <div>
+      <div class="eyebrow">CALIBER 2026 · Case 2 · Chandra Asri Pacific</div>
+      <h2>Every warning was detected.<br>No warning became an action.</h2>
+      <div class="lede">${alarmWks} alarm-weeks across 5 assets · ${overdue.length} overdue actions · ${fmt.usd(overdueLoss)} exposed — as of 19-Aug-2026. All figures computed live from the baseline below.</div>
+    </div>
+    <div class="hero-badge"><div class="hb-num">${fmt.usd(TOT.loss)}</div><div class="hb-lab">total loss · 31 months · ${TOT.n} incidents</div></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi b"><div class="lab">Total loss (31 mo)</div><div class="val">${fmt.usd(TOT.loss)}</div><div class="note">${TOT.n} incidents · ${fmt.n(TOT.downtime,0)} hours downtime</div></div>
+    <div class="kpi w"><div class="lab">Actions overdue</div><div class="val">${overdue.length}</div><div class="note">of ${withDue.length} with due dates · ${fmt.usd(overdueLoss)} exposed</div></div>
+    <div class="kpi a"><div class="lab">Average warning lead</div><div class="val">67 d</div><div class="note">42–105 days across 5 monitored assets</div></div>
+    <div class="kpi g"><div class="lab">AI retrieval @1</div><div class="val">${AI_EVAL&&AI_EVAL.retrieval?dec(AI_EVAL.retrieval.full_p1.pct,1)+"%":"—"}</div><div class="note">similar-incident match rate</div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Loss by mechanism — top 6</h3>
+      <div class="cap">Where the money went. Full breakdown on the Detail tab.</div>
+      ${hBar(byMech.map((m,i)=>({k:m.k,v:m.loss,c:i<2?"#ef4444":i<4?"#f59e0b":"#38bdf8"})),{fmtV:v=>fmt.usd(v),pad:{l:150,r:80,t:6,b:6}})}
+    </div>
+    <div class="card">
+      <h3>Warning lead per asset</h3>
+      <div class="cap">Days from first ALARM to trip. Time the plant had — and did not use.</div>
+      ${hBar(Object.values(EQ).sort((a,b)=>b.leadDays-a.leadDays).map(e=>({k:e.tag+" — "+e.alarmWeeks+" alarm wks",v:e.leadDays,c:e.leadDays>=70?"#ef4444":e.leadDays>=50?"#f59e0b":"#38bdf8"})),{fmtV:v=>v+" d",pad:{l:170,r:70,t:6,b:6}})}
+      <div class="legend">>=70 days | 50-69 days | <50 days</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>Top 8 overdue — by exposure score</h3>
+    <div class="cap">Score = loss × days late. Owner + due date on every row. Full list on Action Tracking.</div>
+    <table>
+      <thead><tr><th>#</th><th>Tag</th><th>Incident</th><th class="num">Late</th><th class="num">Loss</th><th>Owner</th><th class="num">Due</th></tr></thead>
+      <tbody>${od.map((r,i)=>`<tr>
+        <td class="num">${i+1}</td><td class="mono">${fmt.esc(r.tag)}</td>
+        <td>${fmt.esc(String(r.title||"").slice(0,46))}</td>
+        <td class="num"><span class="pill p-bad">${r.late} d</span></td>
+        <td class="num">${fmt.usd(r.total_loss)}</td>
+        <td class="mono">${fmt.esc(r.pic||"—")}</td>
+        <td class="num mono">${fmt.d(r.rca_due)}</td></tr>`).join("")}</tbody>
+    </table>
+  </div>`;
+}
+
+/* ---------------- DETAIL (archive of the full analysis — all data still computed) ---------------- */
+function vDetail(){
+  const R=(typeof AI_EVAL!=="undefined"&&AI_EVAL&&AI_EVAL.retrieval)?AI_EVAL.retrieval:null;
+  const DET=(typeof AI_EVAL!=="undefined"&&AI_EVAL&&AI_EVAL.detector)?AI_EVAL.detector:null;
+  const RC=(typeof RECON!=="undefined"&&RECON)?RECON:null;
+  const secs=[
+    ["Overview",vOverview],["Asset Watch",vTank],["Asset Detail",vAssets],["RCA & CAPA",vRca],
+    ["Case File",vCase],["KPI Contract",vRecon],["Energy",vEnergy],["Production",vProduction],
+    ["Emissions",vEmission],["Downtime",vDowntime],["Model Evaluation",vModel],["Data Governance",vGovernance]
+  ];
+  let h=`<div class="card" style="border-color:var(--accent);background:var(--accent-soft)">
+    <h3 style="color:var(--accent)">Detail — the full analysis behind the wallboard</h3>
+    <div class="cap" style="margin-bottom:0">Everything below still computes from the same baseline (380 incidents · 5 × 26 weekly readings · 5 × 720 hourly tags · 5 RCA decks). The wallboard shows the essentials; nothing was deleted — scroll for the complete evidence.</div>
+  </div>`;
+  for(const [t,f] of secs){ h+=`<div class="dsec"><div class="dsec-h">${t}</div>${f()}</div>`; }
+  return h;
+}
+
+/* ============================================================ incident table */
 
 /* ============================================================ incident table */
 let SORT={k:"total_loss",dir:-1};
@@ -1384,11 +1460,13 @@ function incidentTable(rows,overdueMode){
 }
 
 /* ============================================================ render */
-const VIEWS={overview:vOverview,rca:vRca,case:vCase,recon:vRecon,energy:vEnergy,production:vProduction,emission:vEmission,
-             downtime:vDowntime,tank:vTank,pilot:vPilot,assets:vAssets,actions:vActions,model:vModel,governance:vGovernance};
+const VIEWS={wall:vWall,queue:vTank,pilot:vPilot,actions:vActions,detail:vDetail,
+             overview:vOverview,rca:vRca,case:vCase,recon:vRecon,energy:vEnergy,production:vProduction,emission:vEmission,
+             downtime:vDowntime,tank:vTank,assets:vAssets,model:vModel,governance:vGovernance};
 
 function render(){
-  $("#nav").innerHTML=TABS.map(([k,l])=>`<button class="${k===TAB?"on":""}" onclick="TAB='${k}';render()">${l}</button>`).join("");
+  $("#nav").innerHTML=TABS.map(([k,l])=>`<button class="${k===TAB?"on":""}" onclick="TAB='${k}';render()">${l}</button>`).join("")+
+    `<button class="${TAB==="detail"?"on":""}" onclick="TAB='detail';render()">Detail</button>`;
   $("#view").innerHTML=VIEWS[TAB]();
   window.scrollTo(0,0);
 }
