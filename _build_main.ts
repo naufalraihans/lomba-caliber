@@ -12,6 +12,7 @@ const inc = D.incidents.map((r) => ({
 }));
 
 const eqc = [];
+const ALARMW = {};
 for (const [tag, d] of Object.entries(D.equipment)) {
   const info = {};
   for (const row of (d["Condition History"] || []).slice(0, 0)) { }
@@ -22,6 +23,7 @@ for (const [tag, d] of Object.entries(D.equipment)) {
   const colIdx = {};
   hdr.forEach((h, i) => { colIdx[String(h).split("\n")[0]] = i; });
   const sts = ch.map((r) => String(r[hdr.length - 2] || "").trim());
+  ALARMW[tag] = sts.map((s, i) => (s === "ALARM" ? i : -1)).filter((i) => i >= 0);
   const ai = sts.findIndex((s) => s === "ALARM"), ti = sts.findIndex((s) => s === "TRIP");
   const alarm = sts.filter((s) => s === "ALARM").length;
   const lead = (ai >= 0 && ti >= 0) ? (ti - ai) * 7 : 0;
@@ -32,10 +34,14 @@ for (const [tag, d] of Object.entries(D.equipment)) {
     if (!nm || nm === "null") continue;
     params.push({ n: nm, series: ch.map((r) => +r[i]).filter((v) => isFinite(v)).map((v) => +v.toFixed(2)) });
   }
+  const limits = {};
+  for (const row of (d["Equipment Info"] || [])) {
+    if (row[2] != null && row[3] != null && !/MONITORED|Parameter/.test(String(row[2]))) limits[String(row[2]).replace(/\n/g, " ")] = String(row[3]);
+  }
   eqc.push({
     tag, name: info["Equipment Name"] || tag, type: info["Equipment Type"] || "",
     plant: info["Plant / Unit"] || "", disc: info["Discipline"] || "", crit: info["Criticality"] || "",
-    mode: info["Dominant Failure Mode"] || "", status, alarm, lead, params,
+    mode: info["Dominant Failure Mode"] || "", status, alarm, lead, params, limits,
   });
 }
 
@@ -73,7 +79,7 @@ for (const [tag, d] of Object.entries(D.production)) {
 }
 
 let kwh = 0, hours = 0;
-const eKwh = [];
+const eKwh = [], eHrs = {};
 for (const [tag, d] of Object.entries(D.production)) {
   const keys = Object.keys(d);
   const key = keys.includes("Sheet2") ? "Sheet2" : keys.find((k) => k !== "PI Tag");
@@ -83,7 +89,7 @@ for (const [tag, d] of Object.entries(D.production)) {
   let k = 0, h = 0;
   for (const r of raw.slice(1)) { if (r[0] == null) continue; if (String(r[iR]).toUpperCase() === "ON") { h++; k += Math.sqrt(3) * 400 * (+r[iA] || 0) * 0.86 / 1000; } }
   kwh += k; hours += h;
-  eKwh.push({ tag, kwh: Math.round(k) });
+  eKwh.push({ tag, kwh: Math.round(k) }); eHrs[tag] = h;
 }
 
 const mo = {};
@@ -99,7 +105,7 @@ const rep = {
   "/*__RCA__*/": () => J(rca),
   "/*__PROD__*/": () => J(prod),
   "/*__PIT__*/": () => "[]",
-  "/*__META__*/": () => J({ dt: +inc.reduce((a, r) => a + r.downtime, 0).toFixed(1), p1: +AI.retrieval.full_p1.pct.toFixed(1), p5: +AI.retrieval.full_p5.pct.toFixed(1), kwh: Math.round(kwh), hours, co2: +(kwh * 0.794 / 1000).toFixed(1), eKwh, mo: moArr }),
+  "/*__META__*/": () => J({ dt: +inc.reduce((a, r) => a + r.downtime, 0).toFixed(1), p1: +AI.retrieval.full_p1.pct.toFixed(1), p5: +AI.retrieval.full_p5.pct.toFixed(1), kwh: Math.round(kwh), hours, co2: +(kwh * 0.794 / 1000).toFixed(1), eKwh, eHrs, mo: moArr, limits: (() => { const L = {}; for (const [tag, d] of Object.entries(D.equipment)) { L[tag] = {}; for (const row of (d["Equipment Info"] || [])) { if (row[2] != null && row[3] != null && !/MONITORED|Parameter/.test(String(row[2]))) L[tag][String(row[2]).replace(/\n/g, " ")] = String(row[3]); } } return L; })(), alarmW: ALARMW }),
 };
 for (const [k, fn] of Object.entries(rep)) {
   if (!t.includes(k)) { console.log("ANCHOR MISSING", k); process.exit(1); }
