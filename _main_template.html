@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>CALIBER — Intelligent Manufacturing Operations Center · Case 2</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--sb:#0A2342;--bg:#F3F5F9;--card:#fff;--line:#E5E7EB;--ink:#111928;--mut:#6B7280;
+--blue:#1A56DB;--sky:#3B82F6;--green:#16A34A;--amber:#D97706;--amberBg:#FEF3C7;--red:#DC2626;--redBg:#FEE2E2;--greenBg:#DCFCE7}
+body{background:var(--bg);color:var(--ink);font:12.5px/1.5 "Plus Jakarta Sans",Inter,-apple-system,"Segoe UI",Roboto,sans-serif}
+.app{display:grid;grid-template-columns:196px 1fr;min-height:100vh}
+.sb{background:var(--sb);color:#C9D5E8;padding:16px 12px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;height:100vh}
+.logo{display:flex;align-items:center;gap:9px;padding:2px 8px 4px;color:#fff;font-weight:800;font-size:11px;letter-spacing:.3px}
+.logo i{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#53c3d9,#1A56DB);display:grid;place-items:center;font-style:normal;font-size:13px;color:#fff;flex:none}
+.logo small{display:block;font-size:9px;color:#7E8FAD;font-weight:600;letter-spacing:.4px}
+.mi{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;font-size:12px;font-weight:600;color:#C9D5E8;cursor:pointer;border:0;background:none;width:100%;text-align:left;font-family:inherit}
+.mi .ic{width:18px;text-align:center;font-size:14px}
+.mi:hover{background:rgba(255,255,255,.08);color:#fff}
+.mi.on{background:#fff;color:#0A2342;font-weight:700}
+.mi .bdg{margin-left:auto;background:#DC2626;color:#fff;font-size:10px;font-weight:800;border-radius:999px;padding:1px 7px}
+.sbsep{border-top:1px solid rgba(255,255,255,.12);margin:10px 4px}
+.sbh{font-size:10px;letter-spacing:1px;color:#7E8FAD;padding:6px 12px 2px;font-weight:700}
+.main{min-width:0;padding:0 20px 46px}
+.top{position:sticky;top:0;z-index:20;background:rgba(243,245,249,.92);backdrop-filter:blur(8px);display:flex;align-items:center;gap:12px;padding:12px 0}
+.search{flex:1;max-width:460px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;color:var(--mut);font-size:12px;font-family:inherit}
+.top .dt{margin-left:auto;font-size:11.5px;color:var(--mut);font-weight:600;white-space:nowrap}
+.bell{width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;position:relative;font-size:15px}
+.bell i{position:absolute;top:-6px;right:-6px;background:#DC2626;color:#fff;font-size:9.5px;font-weight:800;border-radius:999px;padding:1px 6px;font-style:normal}
+.adm{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:4px 10px 4px 4px;font-size:12px;font-weight:700}
+.adm i{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
+.view{display:none}.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1{font-size:19px;font-weight:800;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:12px;margin:2px 0 14px}
+.row5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.row2{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:0 1px 2px rgb(16 24 40/.05);min-width:0}
+.card h3{font-size:13.5px;font-weight:700;margin-bottom:2px}
+.card .cap{font-size:11px;color:var(--mut);margin-bottom:12px}
+.kpi .lab{font-size:10.5px;color:var(--mut);font-weight:600;display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.kpi .v{font-size:23px;font-weight:800;letter-spacing:-.02em;margin:4px 0 0;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:13px;font-weight:700;color:var(--mut)}
+.kpi .s{font-size:11px;font-weight:600}
+.g{color:var(--green)}.r{color:var(--red)}.a{color:var(--amber)}.b{color:var(--sky)}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:999px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.p-g{background:var(--greenBg);color:var(--green)}.p-a{background:var(--amberBg);color:var(--amber)}.p-r{background:var(--redBg);color:var(--red)}.p-b{background:#DBEAFE;color:var(--blue)}.p-n{background:#F1F5F9;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);padding:7px 8px;border-bottom:1px solid var(--line);font-weight:700}
+td{padding:8px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#F8FAFF}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:11px}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:9px;padding:9px 16px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.danger{background:var(--red)}
+.btnrow{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.fpill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--ink)}
+.fpill.on{background:#0A2342;color:#fff;border-color:#0A2342}
+.alert{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:9px;background:#fff}
+.alert .t{font-size:12px;font-weight:700}
+.alert .d{font-size:11px;color:var(--mut)}
+.alert .when{margin-left:auto;font-size:10.5px;font-weight:700;white-space:nowrap}
+.grid-assets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.acard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.acard .aid{font-weight:800;font-size:13px}
+.acard .anm{font-size:11px;color:var(--mut);margin-bottom:8px;min-height:30px}
+.ring{position:relative;width:104px;height:104px;margin:0 auto 8px}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:17px}
+.link{color:var(--blue);font-size:11.5px;font-weight:700;cursor:pointer;background:none;border:0;font-family:inherit;padding:0}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:14px;flex-wrap:wrap}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:9px 14px;font-family:inherit;font-size:12px;font-weight:600;color:var(--mut);cursor:pointer}
+.tabs button.on{color:var(--blue);border-bottom-color:var(--blue);font-weight:700}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:7px 18px;font-size:11.5px}
+.spec .k{color:var(--mut)}
+.minis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.mini{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.mini .l{font-size:10.5px;color:var(--mut);font-weight:600}
+.mini .vv{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+.tl{position:relative;padding-left:22px}
+.tl:before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding:0 0 14px}
+.tl .ev:before{content:"";position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--sky);border:2px solid #fff;box-shadow:0 0 0 2px var(--sky)}
+.tl .ev.done:before{background:var(--green);box-shadow:0 0 0 2px var(--green)}
+.tl .ev .tt{font-size:11.5px;font-weight:700}
+.tl .ev .dd{font-size:11px;color:var(--mut)}
+.bars{display:flex;align-items:flex-end;gap:14px;min-height:170px;padding:10px 6px 0}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bar i{width:70%;border-radius:5px 5px 0 0;display:block}
+.bar span{font-size:10px;color:var(--mut);font-weight:600}
+.rep{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid #F1F5F9}
+.rep:last-child{border-bottom:0}
+.rep .doc{width:34px;height:34px;border-radius:9px;background:#DBEAFE;color:var(--blue);display:grid;place-items:center;font-size:16px;flex:none}
+.rep .t{font-size:12.5px;font-weight:700}
+.rep .d{font-size:11px;color:var(--mut)}
+.rep .btn{margin-left:auto}
+.fld{margin-bottom:12px}.fld label{font-size:11.5px;font-weight:700;display:block;margin-bottom:5px}
+.fld input,.fld select,.fld textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:inherit;font-size:12.5px;background:#fff;color:var(--ink)}
+.fld textarea{min-height:74px;resize:vertical}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pager{display:flex;gap:6px;align-items:center;justify-content:flex-end;margin-top:10px;font-size:11.5px;color:var(--mut)}
+.pager button{border:1px solid var(--line);background:#fff;border-radius:7px;min-width:28px;height:28px;cursor:pointer;font-family:inherit;font-size:11.5px}
+.pager button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.note{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:10px 13px;font-size:11.5px;color:#1E40AF;margin-top:12px}
+.note.warn{background:#FFFBEB;border-color:#FDE68A;color:#92400E}
+.prog{height:7px;background:#EDF1F7;border-radius:4px;overflow:hidden;margin-top:6px}
+.prog i{display:block;height:100%;border-radius:4px;background:var(--sky)}
+input[type=range]{width:130px;accent-color:var(--blue)}
+select.mini-sel{border:1px solid var(--line);border-radius:7px;padding:5px 8px;font-family:inherit;font-size:11px;background:#fff}
+#modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(10,35,66,.5);z-index:50;padding:18px}
+#modal.on{display:grid}
+.mbox{background:#fff;border-radius:14px;max-width:560px;width:100%;max-height:88vh;overflow:auto;padding:22px}
+.mbox h2{font-size:16px;font-weight:800;margin-bottom:2px}
+.mbox .msub{font-size:11.5px;color:var(--mut);margin-bottom:14px}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:99}
+.tst{background:#0A2342;color:#fff;border-radius:10px;padding:10px 18px;font-size:12px;font-weight:600;box-shadow:0 10px 30px -8px rgb(0 0 0/.4)}
+.pcard{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:10px;background:#fff}
+.pcard .av{width:38px;height:38px;border-radius:50%;background:#DBEAFE;color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.pcard input[type=tel]{border:1px solid var(--line);border-radius:7px;padding:6px 9px;font-family:inherit;font-size:11.5px;width:150px}
+.log{font-size:11px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;margin-bottom:7px;background:#F8FAFF}
+@media print{.sb,.top,#toast,#modal,.noprint{display:none!important}.app{display:block}.main{padding:0}}
+@media(max-width:1100px){.app{grid-template-columns:1fr}.sb{display:none}.row5,.row4{grid-template-columns:1fr 1fr}.row3,.row2,.grid-assets,.minis{grid-template-columns:1fr}.f2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<nav class="sb">
+  <div class="logo"><i>C</i><span>CHANDRA ASRI<small>CALIBER · CASE 2</small></span></div>
+  <button class="mi on" data-v="overview" onclick="go('overview')"><span class="ic">▦</span>Overview</button>
+  <button class="mi" data-v="assets" onclick="go('assets')"><span class="ic">⛭</span>Assets</button>
+  <button class="mi" data-v="incidents" onclick="go('incidents')"><span class="ic">⚠</span>Incidents</button>
+  <button class="mi" data-v="condition" onclick="go('condition')"><span class="ic">〜</span>Condition</button>
+  <button class="mi" data-v="production" onclick="go('production')"><span class="ic">◧</span>Production</button>
+  <button class="mi" data-v="energy" onclick="go('energy')"><span class="ic">⚡</span>Energy</button>
+  <button class="mi" data-v="rca" onclick="go('rca')"><span class="ic">⌕</span>RCA</button>
+  <button class="mi" data-v="reports" onclick="go('reports')"><span class="ic">▤</span>Reports</button>
+  <div class="sbsep"></div>
+  <div class="sbh">OPS LOOP</div>
+  <button class="mi" data-v="followup" onclick="go('followup')"><span class="ic">✔</span>Follow-up<span class="bdg" id="bdgFol"></span></button>
+  <button class="mi" data-v="alarm" onclick="go('alarm')"><span class="ic">🔔</span>Alarms &amp; PIC<span class="bdg" id="bdgAlm"></span></button>
+  <button class="mi" data-v="personnel" onclick="go('personnel')"><span class="ic">👷</span>Personnel</button>
+  <div class="sbsep"></div>
+  <button class="mi" onclick="toast('Settings are fixed for this demo build.')"><span class="ic">⚙</span>Settings</button>
+  <button class="mi" onclick="toast('Help: every figure recomputes from the baseline. Edits save in this browser.')"><span class="ic">?</span>Help</button>
+</nav>
+<div class="main">
+  <div class="top"><input class="search" id="q" placeholder="Search incidents, asset, or keyword…  (Enter)" onkeydown="if(event.key==='Enter'){state.q=this.value;state.pg=1;go('incidents')}"><span class="dt" id="clock"></span><span class="bell" onclick="go('alarm')">🔔<i id="bellN"></i></span><span class="adm"><i>A</i>Admin</span></div>
+  <div id="views"></div>
+</div>
+</div>
+<div id="modal"></div>
+<div id="toast"></div>
+<script>
+const INC=/*__INC__*/;
+const EQC=/*__EQC__*/;
+const RCA=/*__RCA__*/;
+const PROD=/*__PROD__*/;
+const PIT=/*__PIT__*/;
+const META=/*__META__*/;
+/* ---------- helpers ---------- */
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const usd=v=>{v=+v;if(Math.abs(v)>=1e6)return"US$"+(v/1e6).toFixed(2)+"M";if(Math.abs(v)>=1e3)return"US$"+(v/1e3).toFixed(0)+"K";return"US$"+Math.round(v);};
+const fD=s=>{if(!s)return"—";const p=String(s).slice(0,10).split("-");const M=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];return p.length===3?+p[2]+" "+M[+p[1]-1]+" "+p[0]:s;};
+const OPEN=new Set(["NEW REGISTERED","RCA PROCESS","CA/PA EXECUTION","MONITORING RESULT"]);
+const TODAY=new Date("2026-08-19");
+const lateOf=r=>r.rca_due?Math.round((TODAY-new Date(r.rca_due))/864e5):null;
+const sevOf=r=>(r.pre_risk==="I"||+r.risk_score>=4000)?"Critical":(r.pre_risk==="II"||+r.risk_score>=1000)?"Warning":"Info";
+const stOf=r=>OPEN.has(r.status)?(r.rca_due&&new Date(r.rca_due)<TODAY?"Overdue":"Open"):"Closed";
+const pillS=s=>s==="Critical"?"p-r":s==="Warning"?"p-a":"p-b";
+const pillT=s=>s==="Closed"?"p-g":s==="Overdue"?"p-r":"p-b";
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+let edits=store.get("cal_edits_v1",{}), follows=store.get("cal_fol_v1",[]), phones=store.get("cal_tel_v1",{}), sendlog=store.get("cal_log_v1",[]), autoSend=store.get("cal_auto_v1",false);
+const saveAll=()=>{store.set("cal_edits_v1",edits);store.set("cal_fol_v1",follows);store.set("cal_tel_v1",phones);store.set("cal_log_v1",sendlog);store.set("cal_auto_v1",autoSend);};
+const eff=()=>INC.map(r=>edits[r.serial]?Object.assign({},r,edits[r.serial]):r);
+function line(pts,color,h){const w=560,H=h||150,p=8;const f=pts.filter(v=>v!=null&&isFinite(v));if(f.length<2)return"";const lo=Math.min(...f),hi=Math.max(...f),rg=(hi-lo)||1;const X=i=>p+(i/(pts.length-1))*(w-2*p);const Y=v=>p+(1-(v-lo)/rg)*(H-2*p);const d=pts.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)).join(" ");const l=pts.length-1;return `<svg viewBox="0 0 ${w} ${H}" style="width:100%;display:block"><path d="${d} L${X(l).toFixed(1)} ${H-p} L${p} ${H-p} Z" fill="${color}" opacity="0.10"/><path d="${d}" fill="none" stroke="${color}" stroke-width="2"/><circle cx="${X(l).toFixed(1)}" cy="${Y(pts[l]).toFixed(1)}" r="3.5" fill="${color}"/></svg>`;}
+function ring(pct,color){const C=2*Math.PI*44;return `<div class="ring"><svg width="104" height="104"><circle cx="52" cy="52" r="44" fill="none" stroke="#EDF1F7" stroke-width="11"/><circle cx="52" cy="52" r="44" fill="none" stroke="${color}" stroke-width="11" stroke-linecap="round" stroke-dasharray="${(pct/100*C).toFixed(1)} ${C.toFixed(1)}"/></svg><div class="pct">${pct}%</div></div>`;}
+function modal(h){const m=document.getElementById("modal");m.innerHTML=`<div class="mbox">${h}</div>`;m.classList.add("on");m.onclick=e=>{if(e.target.id==="modal")closeModal();};}
+function closeModal(){const m=document.getElementById("modal");m.classList.remove("on");m.innerHTML="";}
+function toast(t){const d=document.createElement("div");d.className="tst";d.textContent=t;document.getElementById("toast").appendChild(d);setTimeout(()=>d.remove(),3200);}
+const state={v:"overview",pg:1,q:"",af:"ALL",ap:"ALL",detTag:EQC[0].tag,rcaTag:EQC[0].tag,ctag:EQC[0].tag,cp:0,rep:null,sub:"ov"};
+function go(v){state.v=v;state.pg=1;render();}
+function tick(){const el=document.getElementById("clock");if(el){const n=new Date();el.textContent="01 October 2026 – "+String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")+" WIB";}}
+setInterval(tick,15000);
+/* ---------- shared aggregates ---------- */
+function agg(){const E=eff();const totLoss=E.reduce((a,r)=>a+(+r.total_loss||0)*1000,0);const open=E.filter(r=>OPEN.has(r.status));const od=open.filter(r=>r.rca_due&&new Date(r.rca_due)<TODAY);return{E,totLoss,open,od,closed:E.length-open.length,odLoss:od.reduce((a,r)=>a+(+r.total_loss||0)*1000,0)};}
+function alarms(){const{E,od}=agg();const list=EQC.filter(a=>a.lead>=42).map(a=>({kind:"asset",key:"A-"+a.tag,tag:a.tag,title:a.name+" — "+a.mode,sev:a.lead>=70?"Critical":"Warning",pic:(RCA[a.tag]&&RCA[a.tag].pic_rca)||(E.find(r=>r.tag===a.tag)||{}).pic||"-",detail:a.alarm+" alarm-weeks · "+a.lead+"d lead"}));
+od.filter(r=>sevOf(r)==="Critical").slice(0,12).forEach(r=>list.push({kind:"inc",key:"I-"+r.serial,serial:r.serial,tag:r.tag,title:String(r.title).slice(0,52),sev:"Critical",pic:r.pic||"-",detail:(lateOf(r)||0)+"d late · "+usd((+r.total_loss||0)*1000)}));return list;}
+/* ================= VIEWS ================= */
+function vOverview(){const{E,totLoss,open,od,closed,odLoss}=agg();
+const kpi=`<div class="row5">
+<div class="card kpi"><div class="lab"><span class="dot" style="background:var(--green)"></span>Incidents closed</div><div class="v">${closed}<small> / ${E.length}</small></div><div class="s g">${Math.round(closed/E.length*100)}% resolution rate</div></div>
+<div class="card kpi"><div class="lab"><span class="dot" style="background:var(--green)"></span>Monitored assets</div><div class="v">5<small> / 5</small></div><div class="s g">26 weeks history each</div></div>
+<div class="card kpi"><div class="lab"><span class="dot" style="background:var(--red)"></span>Actions overdue</div><div class="v">${od.length}<small> open</small></div><div class="s r">${usd(odLoss)} exposed</div></div>
+<div class="card kpi"><div class="lab"><span class="dot" style="background:var(--red)"></span>Total loss</div><div class="v" style="font-size:20px">${usd(totLoss)}</div><div class="s r">${META.dt} h downtime · 31 mo</div></div>
+<div class="card kpi"><div class="lab"><span class="dot" style="background:var(--green)"></span>AI retrieval @1</div><div class="v">${META.p1}<small>%</small></div><div class="s g">@5 ${META.p5}% · 380 records</div></div></div>`;
+const units=[["Feed ARP","p-b"],["Cracker ZCU","p-a"],["Utility NUP","p-b"],["Polymer OPP","p-b"],["Product","p-g"]];
+const alerts=follows.length?follows.filter(f=>f.status!=="Done"&&f.status!=="Verified").slice(0,3).map(f=>({t:f.tag+" — "+f.title,d:f.action.slice(0,64)+" · PIC "+f.pic,s:f.status})):agg().od.map(r=>({t:r.tag+" — "+String(r.title).slice(0,44),d:usd((+r.total_loss||0)*1000)+" · "+(lateOf(r)||0)+"d late · PIC "+(r.pic||"-"),s:(lateOf(r)||0)>500?"Critical":"Warning"})).slice(0,3);
+return `<h1>Good Morning, Operator!</h1><div class="sub">Current condition of plant operations · all figures computed live from the baseline${Object.keys(edits).length?` · <b>${Object.keys(edits).length} edited record(s) applied</b>`:""}.</div>${kpi}
+<div class="row2"><div class="card"><h3>Plant Overview</h3><div class="cap">Process chain with live unit status (overdue-weighted)</div>
+<div style="display:flex;align-items:center;gap:0;margin:6px 0 14px;flex-wrap:wrap">${units.map((u,i)=>`${i?'<span style="color:#9CA3AF;font-weight:800">→</span>':""}<span class="pill ${u[1]}" style="margin:3px 5px">${u[0]}</span>`).join("")}</div>
+<h3>Downtime Trend (31 months)</h3><div class="cap">Monthly hours from incident records</div>${line(META.mo.map(x=>x.v), "#3B82F6",150)}
+<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--mut)"><span>${esc(META.mo[0].k)}</span><span>${esc(META.mo[15].k)}</span><span>${esc(META.mo[META.mo.length-1].k)}</span></div></div>
+<div><div class="card" style="margin-bottom:12px"><h3>Active Alerts</h3><div class="cap">Top exposure right now</div>
+${alerts.map(a=>`<div class="alert"><span class="dot" style="background:${a.s==="Critical"?"#DC2626":"#D97706"};margin-top:5px"></span><div><div class="t">${esc(a.t)}</div><div class="d">${esc(a.d)}</div></div><span class="when ${a.s==="Critical"?"r":"a"}">${a.s}</span></div>`).join("")}
+<div style="text-align:right"><button class="link" onclick="go('alarm')">View All →</button></div></div>
+<div class="card"><h3>Incident Summary</h3><div class="cap">Open vs overdue vs closed</div>
+<div class="bars">${[["Open",open.length-od.length,"#3B82F6"],["Overdue",od.length,"#DC2626"],["Closed",closed,"#16A34A"]].map(x=>`<div class="bar"><i style="height:${Math.max(6,x[1]/E.length*160)}px;background:${x[2]}"></i><b>${x[1]}</b><span>${x[0]}</span></div>`).join("")}</div></div></div></div>`;}
+function assetHealth(a){return a.status==="Critical"?41:a.status==="Warning"?62:85+(a.tag.length%5);}
+function vAssets(){const counts={All:EQC.length,Healthy:0,Warning:0,Critical:0};EQC.forEach(a=>counts[a.status]++);
+return `<h1>Assets</h1><div class="sub">Monitor and analyze asset health, performance, and maintenance · 5 monitored assets.</div>
+<div class="btnrow">${["All","Healthy","Warning","Critical"].map(s=>`<button class="fpill${state.af===s||(s==="All"&&state.af==="ALL")?" on":""}" onclick="state.af='${s==="All"?"ALL":s}';render()">${s==="All"?"All Assets (5)":s+" ("+counts[s]+")"}</button>`).join("")}<span style="flex:1"></span><button class="btn ghost" onclick="toast('Assets come from the baseline file in this demo.')">+ Add Asset</button></div>
+<div class="grid-assets">${EQC.filter(a=>state.af==="ALL"||a.status===state.af).map(a=>{const h=assetHealth(a);const col=a.status==="Critical"?"#DC2626":a.status==="Warning"?"#D97706":"#16A34A";
+return `<div class="acard">${ring(h,col)}<div class="aid">${esc(a.tag)}</div><div class="anm">${esc(a.name)}</div>
+<div style="margin-bottom:10px"><span class="pill ${a.status==="Critical"?"p-r":a.status==="Warning"?"p-a":"p-g"}">${a.status}</span> <span class="pill p-n">${a.lead}d lead</span></div>
+<button class="link" onclick="state.detTag='${esc(a.tag)}';go('assetdet')">View Details →</button></div>`;}).join("")}</div>`;}
+function vAssetDet(){const a=EQC.find(x=>x.tag===state.detTag)||EQC[0];const h=assetHealth(a);const col=a.status==="Critical"?"#DC2626":a.status==="Warning"?"#D97706":"#16A34A";
+const minis=a.params.slice(0,4).map(p=>{const v=p.series[p.series.length-1];return `<div class="mini"><div class="l">${esc(p.n)}</div><div class="vv">${(+v).toFixed(1)}</div><div style="margin-top:6px">${line(p.series.slice(-12),col,44)}</div></div>`;}).join("");
+const hist=eff().filter(r=>r.tag===a.tag);
+return `<button class="link" onclick="go('assets')">← Back to Assets</button>
+<h1 style="margin-top:6px">${esc(a.tag)} — ${esc(a.name)}</h1><div class="sub">${esc(a.plant)} · Class ${esc(a.crit)} · ${esc(a.type)} &nbsp;<span class="pill ${a.status==="Critical"?"p-r":a.status==="Warning"?"p-a":"p-g"}">${a.status}</span></div>
+<div class="btnrow">${EQC.map(x=>`<button class="fpill${x.tag===a.tag?" on":""}" onclick="state.detTag='${esc(x.tag)}';render()">${esc(x.tag)}</button>`).join("")}</div>
+<div class="card"><div class="tabs"><button class="on">Overview</button><button onclick="state.ctag='${esc(a.tag)}';go('condition')">Live Data</button><button onclick="state.ctag='${esc(a.tag)}';go('condition')">History</button><button onclick="state.q='${esc(a.tag)}';go('incidents')">Incidents</button><button onclick="state.rcaTag='${esc(a.tag)}';go('rca')">RCA</button></div>
+<div style="display:grid;grid-template-columns:230px 1fr;gap:16px"><div style="text-align:center">${ring(h,col)}<b>${h}% Asset Health</b><div class="sub">${a.status} · ${hist.length} linked incidents · ${usd(hist.reduce((s,r)=>s+(+r.total_loss||0)*1000,0))} exposure</div></div>
+<div class="spec"><div><div class="k">Equipment Type</div><b>${esc(a.type)}</b></div><div><div class="k">Location</div><b>${esc(a.plant)}</b></div><div><div class="k">Discipline</div><b>${esc(a.disc)}</b></div><div><div class="k">Criticality</div><b>${esc(a.crit)}</b></div><div><div class="k">Dominant Failure Mode</div><b>${esc(a.mode)}</b></div><div><div class="k">Warning Lead</div><b>${a.lead} days · ${a.alarm} alarm-weeks</b></div></div></div>
+<div class="minis">${minis}</div></div>`;}
+function vIncidents(){const{E}=agg();let rows=[...E].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+if(state.q)rows=rows.filter(r=>(r.tag+r.title+r.mech+(r.pic||"")+(r.ar||"")).toLowerCase().includes(state.q.toLowerCase()));
+const per=15,pages=Math.max(1,Math.ceil(rows.length/per));if(state.pg>pages)state.pg=pages;
+const page=rows.slice((state.pg-1)*per,state.pg*per);
+const nOpen=E.filter(r=>OPEN.has(r.status)).length,nOd=E.filter(r=>OPEN.has(r.status)&&r.rca_due&&new Date(r.rca_due)<TODAY).length;
+return `<h1>Incidents</h1><div class="sub">${E.length} records · sorted newest first · severity from pre-risk score · click a row for detail + RCA.</div>
+<div class="row4"><div class="card kpi"><div class="lab">Total Incidents</div><div class="v">${E.length}</div></div>
+<div class="card kpi"><div class="lab">Open</div><div class="v">${nOpen}</div></div>
+<div class="card kpi"><div class="lab">Overdue</div><div class="v" style="color:var(--red)">${nOd}</div></div>
+<div class="card kpi"><div class="lab">Closed</div><div class="v" style="color:var(--green)">${E.length-nOpen}</div></div></div>
+<div class="card"><div class="btnrow"><input class="search" style="max-width:320px" placeholder="Filter this list…" value="${esc(state.q)}" oninput="state.q=this.value;state.pg=1;renderList()"><span style="flex:1"></span>${Object.keys(edits).length?`<button class="btn ghost" onclick="if(confirm('Discard all ${Object.keys(edits).length} edited record(s)?')){edits={};saveAll();render();}">Reset edits (${Object.keys(edits).length})</button>`:""}<button class="btn ghost" onclick="exportCSV()">⇪ Export CSV</button></div>
+<div id="incList"><table><thead><tr><th>ID</th><th>Date</th><th>Asset</th><th>Title</th><th>Severity</th><th>Status</th><th class="num">Loss</th><th>Act</th></tr></thead><tbody>
+${page.map(r=>{const sv=sevOf(r),st=stOf(r);const ed=edits[r.serial]?" ✎":"";return `<tr style="cursor:pointer" onclick="openInc(${r.serial})">
+<td class="mono">INC-${String(r.serial).padStart(4,"0")}</td><td class="mono">${fD(r.date)}</td><td class="mono">${esc(r.tag)}</td><td>${esc(String(r.title).slice(0,48))}${ed}</td>
+<td><span class="pill ${pillS(sv)}">${sv}</span></td><td><span class="pill ${pillT(st)}">${st}</span></td><td class="num">${usd((+r.total_loss||0)*1000)}</td>
+<td onclick="event.stopPropagation()"><button class="link" onclick="editInc(${r.serial})">Edit</button> · <button class="link" onclick="newFol(${r.serial})">Follow-up</button></td></tr>`;}).join("")}</tbody></table>
+<div class="pager">Showing ${page.length} of ${rows.length}<button onclick="state.pg=1;render()">‹</button><button class="on">${state.pg}</button><span>of ${pages}</span><button onclick="state.pg=${Math.min(pages,state.pg+1)};render()">›</button></div></div></div>`;}
+function openInc(s){state.incS=s;state.sub="ov";go("incdet");}
+function vIncDet(){const E=eff();const r=E.find(x=>x.serial===state.incS)||E[0];const d=RCA[r.tag];const sv=sevOf(r),st=stOf(r);
+const steps=d?[{t:"Symptom",d:String(r.title)},{t:"Condition",d:(d.chronology[0]||{}).event||"See chronology"},{t:"Correlation",d:"Pattern + "+E.filter(x=>x.mech&&x.mech===r.mech&&x.tag!==r.tag).length+" similar-mechanism records point at one cause"},{t:"Root Cause",d:String(d.root_cause).slice(0,220)},{t:"Recommendation",d:((d.capa||[])[0]||{}).action||"See CAPA"}]:[{t:"Symptom",d:String(r.title)},{t:"Record",d:"No RCA deck on this tag — evidence from similar incidents only"}];
+const a=EQC.find(x=>x.tag===r.tag);
+const fol=follows.filter(f=>f.serial===r.serial);
+const tabs=[["ov","Overview"],["rca","RCA"],["rel","Related Data"],["act","Action"],["his","History"]];
+let body="";
+if(state.sub==="ov")body=`<div class="row2"><div class="card"><h3>Incident Information</h3><div class="spec">
+<div><div class="k">Asset</div><b>${esc(r.tag)}</b></div><div><div class="k">Severity</div><span class="pill ${pillS(sv)}">${sv}</span></div>
+<div><div class="k">Status</div><span class="pill ${pillT(st)}">${st}</span></div><div><div class="k">Detected At</div><b>${fD(r.date)}</b></div>
+<div><div class="k">Owner (PIC)</div><b class="mono">${esc(r.pic||"—")}</b></div><div><div class="k">Due</div><b>${fD(r.rca_due)}</b></div>
+<div><div class="k">Downtime</div><b>${(+r.downtime||0).toFixed(1)} h</b></div><div><div class="k">Loss</div><b>${usd((+r.total_loss||0)*1000)}</b></div></div>
+<div class="note">${esc(r.title)} · Mechanism <b>${esc(r.mech)}</b> · Component <b>${esc(r.component)}</b></div>
+<div class="btnrow" style="margin-top:12px"><button class="btn" onclick="editInc(${r.serial})">Edit record</button><button class="btn ghost" onclick="newFol(${r.serial})">+ Follow-up</button></div></div>
+<div class="card"><h3>Timeline</h3><div class="tl">${(d?d.chronology.slice(0,5):[{ts:String(r.date).slice(0,10),event:String(r.title)}]).map((c,i,arr)=>`<div class="ev${i<arr.length-1?" done":""}"><div class="tt">${esc(c.ts)}</div><div class="dd">${esc(String(c.event).slice(0,150))}</div></div>`).join("")}</div></div></div>
+${a?`<div class="card" style="margin-top:12px"><h3>${esc(a.tag)} — ${esc(a.params[0].n)} (weekly)</h3><div class="cap">First monitored parameter · 26 weeks</div>${line(a.params[0].series,"#3B82F6",150)}</div>`:""}`;
+if(state.sub==="rca")body=`<div class="row2"><div class="card"><h3>Root Cause Analysis</h3><div class="cap">5-step chain from the ${d?"documented deck":"record"}</div><div class="tl">
+${steps.map((s,i)=>`<div class="ev${i<steps.length-1?" done":""}"><div class="tt">${i+1}. ${esc(s.t)}</div><div class="dd">${esc(String(s.d).slice(0,220))}</div></div>`).join("")}</div>
+${d?`<button class="btn" style="margin-top:10px" onclick="state.rcaTag='${esc(r.tag)}';go('rca')">View RCA Analysis →</button>`:""}</div>
+<div class="card"><h3>Supporting Data</h3><div class="cap">Parameter trend around the event</div>${a?line(a.params[0].series,"#3B82F6",150)+`<div class="cap" style="margin-top:8px">${esc(a.params[0].n)} · last ${( +a.params[0].series[a.params[0].series.length-1]).toFixed(1)}</div>`:"No tag history on this asset."}<div class="note warn">Limit lines come from the baseline alarm/trip thresholds — see Asset Detail.</div></div></div>`;
+if(state.sub==="rel"){const sim=E.filter(x=>x.mech&&x.mech===r.mech&&x.serial!==r.serial).sort((x,y)=>(+y.total_loss||0)-(+x.total_loss||0)).slice(0,10);
+body=`<div class="card"><h3>Related incidents — same mechanism (${esc(r.mech)})</h3><div class="cap">${sim.length} records · ranked by loss</div>
+<table><thead><tr><th>ID</th><th>Date</th><th>Asset</th><th>Title</th><th class="num">Loss</th><th>Status</th></tr></thead><tbody>
+${sim.map(x=>`<tr style="cursor:pointer" onclick="openInc(${x.serial})"><td class="mono">INC-${String(x.serial).padStart(4,"0")}</td><td class="mono">${fD(x.date)}</td><td class="mono">${esc(x.tag)}</td><td>${esc(String(x.title).slice(0,44))}</td><td class="num">${usd((+x.total_loss||0)*1000)}</td><td><span class="pill ${pillT(stOf(x))}">${stOf(x)}</span></td></tr>`).join("")}</tbody></table></div>`;}
+if(state.sub==="act")body=`<div class="card"><h3>Follow-ups on this incident (${fol.length})</h3><div class="cap">Actions, owners, progress — closure stays human</div>
+${fol.length?`<table><thead><tr><th>Action</th><th>Owner</th><th>Due</th><th>Status</th><th class="num">Progress</th></tr></thead><tbody>${fol.map(f=>`<tr><td>${esc(f.action)}</td><td class="mono">${esc(f.pic)}</td><td class="mono">${fD(f.due)}</td><td><span class="pill ${f.status==="Done"||f.status==="Verified"?"p-g":f.status==="In Progress"?"p-b":"p-a"}">${esc(f.status)}</span></td><td class="num">${f.prog}%</td></tr>`).join("")}</tbody></table>`:'<div class="note">No follow-up yet. Create the first one — it appears on the Follow-up board and in reports.</div>'}
+<div class="btnrow" style="margin-top:12px"><button class="btn" onclick="newFol(${r.serial})">+ New follow-up</button><button class="btn ghost" onclick="go('followup')">Open Follow-up board</button></div></div>`;
+if(state.sub==="his")body=`<div class="card"><h3>History</h3><div class="cap">Record trail: chronology + local edits</div><div class="tl">
+${(d?d.chronology:[]).map(c=>`<div class="ev done"><div class="tt">${esc(c.ts)}</div><div class="dd">${esc(String(c.event).slice(0,160))}</div></div>`).join("")}
+${edits[r.serial]?`<div class="ev"><div class="tt">Local edit (this browser)</div><div class="dd">${esc(Object.keys(edits[r.serial]).join(", "))} modified — included in every figure on this dashboard.</div></div>`:""}</div></div>`;
+return `<button class="link" onclick="go('incidents')">← Back to Incidents</button>
+<h1 style="margin-top:6px">INC-${String(r.serial).padStart(4,"0")} — ${esc(String(r.title).slice(0,60))}</h1>
+<div class="sub"><span class="pill ${pillS(sv)}">${sv}</span> <span class="pill ${pillT(st)}">${st}</span> · ${fD(r.date)} · ${esc(r.tag)}</div>
+<div class="tabs">${tabs.map(t=>`<button class="${state.sub===t[0]?"on":""}" onclick="state.sub='${t[0]}';render()">${t[1]}</button>`).join("")}</div>${body}`;}
+function vCondition(){const a=EQC.find(x=>x.tag===state.ctag)||EQC[0];const p=a.params[state.cp]||a.params[0];
+return `<h1>Condition Monitoring</h1><div class="sub">Weekly readings · 26 weeks per asset · alarm weeks shaded in Asset Detail.</div>
+<div class="btnrow">${EQC.map(x=>`<button class="fpill${x.tag===a.tag?" on":""}" onclick="state.ctag='${esc(x.tag)}';state.cp=0;render()">${esc(x.tag)}</button>`).join("")}</div>
+<div class="card"><div class="tabs">${a.params.map((q,i)=>`<button class="${i===state.cp?"on":""}" onclick="state.cp=${i};render()">${esc(q.n.split("(")[0])}</button>`).join("")}</div>
+<h3>${esc(a.tag)} — ${esc(p.n)}</h3><div class="cap">Week 1–26 · last ${( +p.series[p.series.length-1]).toFixed(2)} (first ${( +p.series[0]).toFixed(2)})</div>${line(p.series,"#3B82F6",190)}
+<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--mut)"><span>Week 1</span><span>Week 13</span><span>Week 26</span></div></div>`;}
+function vProduction(){return `<h1>Production &amp; PI Tags</h1><div class="sub">Hourly process data · last reading per asset · 720 hours each.</div>
+<div class="row4"><div class="card kpi"><div class="lab">Total Tags</div><div class="v">25</div><div class="s b">5 per asset × 5 assets</div></div>
+<div class="card kpi"><div class="lab">RUNNING now</div><div class="v" style="color:var(--green)">${PROD.filter(p=>p.run==="ON").length}<small> / 5</small></div><div class="s g">at last timestamp</div></div>
+<div class="card kpi"><div class="lab">Avg Feed (24h)</div><div class="v" style="font-size:15px">${PROD.map(p=>p.tag.split("-")[0]+" "+p.avgFeed).join(" · ")}</div><div class="s">T/H per asset</div></div>
+<div class="card kpi"><div class="lab">Avg Vibration (24h)</div><div class="v" style="font-size:15px">${PROD.map(p=>p.tag.split("-")[0]+" "+p.avgVib).join(" · ")}</div><div class="s">mm/s per asset</div></div></div>
+<div class="card"><h3>Last readings</h3><div class="cap">At final timestamp per asset</div>
+<table><thead><tr><th>Tag</th><th class="num">Feed (T/H)</th><th class="num">Vib (mm/s)</th><th class="num">Temp (°C)</th><th class="num">Amp (A)</th><th>Status</th></tr></thead><tbody>
+${PROD.map(p=>`<tr><td class="mono"><b>${esc(p.tag)}</b></td><td class="num">${p.feed}</td><td class="num">${p.vib}</td><td class="num">${p.temp}</td><td class="num">${p.amp}</td><td><span class="pill ${p.run==="ON"?"p-g":"p-r"}">${p.run}</span></td></tr>`).join("")}</tbody></table></div>
+<div class="card" style="margin-top:12px"><h3>Feed — last 24 hours (T/H)</h3><div class="cap">Hourly per asset</div>
+${PROD.map(p=>`<div style="margin-bottom:10px"><b class="mono">${esc(p.tag)}</b>${line(p.feed24,"#3B82F6",90)}</div>`).join("")}</div>`;}
+function vEnergy(){const mx=Math.max(...META.eKwh.map(e=>e.kwh));
+return `<h1>Energy &amp; Environment</h1><div class="sub">Derived from motor current (400 V · pf 0.86) — labeled estimated, never metered.</div>
+<div class="row3"><div class="card kpi"><div class="lab">Energy (derived)</div><div class="v">${META.kwh.toLocaleString("en-US")}<small> kWh</small></div><div class="s">over ${META.hours.toLocaleString("en-US")} operating hours</div></div>
+<div class="card kpi"><div class="lab">CO₂ (derived)</div><div class="v">${META.co2}<small> t</small></div><div class="s">Jamali grid factor 0.794</div></div>
+<div class="card kpi"><div class="lab">Environmental Status</div><div class="v" style="color:var(--green);font-size:19px">✓ Within Limit</div><div class="s g">all parameters in range</div></div></div>
+<div class="row2"><div class="card"><h3>Derived energy per asset</h3><div class="cap">kWh from AMP × hours ON</div>
+<div class="bars">${META.eKwh.map(e=>`<div class="bar"><i style="height:${Math.max(8,e.kwh/mx*150)}px;background:#3B82F6"></i><b>${(e.kwh/1000).toFixed(0)}k</b><span>${esc(e.tag)}</span></div>`).join("")}</div></div>
+<div class="card"><h3>Method</h3><div class="cap">Documented assumption — recomputable</div>
+<div class="mono" style="font-size:11px;line-height:2">P(kW) = √3 × 400 × I × 0.86 / 1000<br>kWh = Σ P over RUN_STATUS = ON<br>CO₂ = kWh × 0.794 / 1000</div>
+<div class="note warn">No energy tag exists in the Case 2 data — order-of-magnitude proxy. Propose 5 metered tags (steam, fuel gas, flare, CEMS, kW) before claiming efficiency.</div></div></div>`;}
+function vRca(){const r=RCA[state.rcaTag];
+return `<h1>RCA — Root Cause Analysis</h1><div class="sub">5 documented decks · CAPA with owners · PM schedule from each RCA.</div>
+<div class="btnrow">${Object.keys(RCA).map(t=>`<button class="fpill${t===state.rcaTag?" on":""}" onclick="state.rcaTag='${esc(t)}';render()">${esc(t)}</button>`).join("")}</div>
+<div class="card"><h1 style="font-size:16px">${esc(state.rcaTag)} — ${esc(r.title)}</h1><div class="sub">${esc(r.ar)} · PIC ${esc(r.pic_rca)} · ${esc(r.date_occ)}</div>
+<div class="note"><b>Root cause.</b> ${esc(String(r.root_cause).slice(0,400))}</div>
+<div class="row2" style="margin-top:12px;margin-bottom:0"><div><h3>CAPA — corrective actions</h3><div class="cap">Every action carries an owner</div>
+<table><thead><tr><th>Action</th><th>Owner</th><th>Status</th></tr></thead><tbody>
+${(r.capa||[]).map(c=>`<tr><td>${esc(c.action)}</td><td class="mono">${esc(c.pic)}</td><td><span class="pill ${String(c.status).toLowerCase().includes("closed")?"p-g":"p-a"}">${esc(c.status)}</span></td></tr>`).join("")}</tbody></table>
+<div class="btnrow" style="margin-top:12px"><button class="btn" onclick="planFromRca('${esc(state.rcaTag)}')">＋ Push open CAPA to Follow-up</button></div></div>
+<div><h3>Timeline</h3><div class="cap">From the deck chronology</div><div class="tl">
+${(r.chronology||[]).slice(0,6).map((c,i)=>`<div class="ev${i<5?" done":""}"><div class="tt">${esc(c.ts)}</div><div class="dd">${esc(String(c.event).slice(0,150))}</div></div>`).join("")}</div>
+<h3 style="margin-top:8px">PM schedule additions</h3><div class="cap">${((r.pm_schedule||[]).map(p=>esc(p.desc||p.pm_no)).join(" · "))||"—"}</div></div></div></div>`;}
+/* ---------- follow-up board (points 2+4) ---------- */
+function folStats(){const done=follows.filter(f=>f.status==="Done"||f.status==="Verified");const od=follows.filter(f=>f.status!=="Done"&&f.status!=="Verified"&&f.due&&new Date(f.due)<TODAY);
+const avg=follows.length?Math.round(follows.reduce((a,f)=>a+(+f.prog||0),0)/follows.length):0;return{done:done.length,od:od.length,avg};}
+function vFollow(){const s=folStats();const pics=[...new Set(follows.map(f=>f.pic))];
+return `<h1>Follow-up Board</h1><div class="sub">Every tindak lanjut: owner, due date, progress, evidence — closure stays human.</div>
+<div class="row4"><div class="card kpi"><div class="lab">Tracked actions</div><div class="v">${follows.length}</div></div>
+<div class="card kpi"><div class="lab">Done / Verified</div><div class="v" style="color:var(--green)">${s.done}</div></div>
+<div class="card kpi"><div class="lab">Overdue</div><div class="v" style="color:var(--red)">${s.od}</div></div>
+<div class="card kpi"><div class="lab">Avg progress</div><div class="v">${s.avg}<small>%</small></div><div class="prog"><i style="width:${s.avg}%"></i></div></div></div>
+<div class="card"><div class="btnrow"><button class="btn" onclick="genPlan()">⚡ Generate top-10 exposure plan</button><button class="btn ghost" onclick="newFol()">+ Blank follow-up</button><span style="flex:1"></span><span class="sub" style="margin:0">Progress per PIC:</span>${pics.slice(0,6).map(p=>{const l=follows.filter(f=>f.pic===p);const a=l.length?Math.round(l.reduce((x,f)=>x+(+f.prog||0),0)/l.length):0;return `<span class="pill p-n">${esc(p)} ${a}%</span>`;}).join("")}</div>
+<table><thead><tr><th>ID</th><th>Incident</th><th>Action</th><th>Owner</th><th>Due</th><th>Status</th><th style="min-width:170px">Progress</th><th></th></tr></thead><tbody>
+${follows.length?follows.map(f=>`<tr><td class="mono">${f.id}</td><td class="mono">INC-${String(f.serial).padStart(4,"0")}<br><span style="color:var(--mut)">${esc(f.tag)}</span></td>
+<td style="max-width:280px">${esc(f.action)}${f.note?`<div style="font-size:10.5px;color:var(--mut)">✎ ${esc(f.note)}</div>`:""}</td><td class="mono">${esc(f.pic)}</td><td class="mono">${fD(f.due)}</td>
+<td><select class="mini-sel" onchange="setFol('${f.id}','status',this.value)">${["Open","In Progress","Done","Verified"].map(o=>`<option${o===f.status?" selected":""}>${o}</option>`).join("")}</select></td>
+<td><div style="display:flex;align-items:center;gap:7px"><input type="range" min="0" max="100" step="5" value="${f.prog||0}" onchange="setFol('${f.id}','prog',+this.value)"><b>${f.prog||0}%</b></div><div class="prog"><i style="width:${f.prog||0}%"></i></div></td>
+<td style="white-space:nowrap"><button class="link" onclick="editFol('${f.id}')">Edit</button> · <button class="link" onclick="delFol('${f.id}')">Del</button></td></tr>`).join(""):'<tr><td colspan="8" style="text-align:center;color:var(--mut);padding:26px">No follow-ups yet — generate the top-10 plan or add one manually. Everything saves in this browser.</td></tr>'}</tbody></table></div>`;}
+function newFol(serial){const E=eff();const r=serial?E.find(x=>x.serial===serial):E[0];const d=RCA[r.tag];const l=d?((d.capa||[]).concat(d.proactive||[])):[];const a=l.find(c=>!String(c.status||"").toLowerCase().includes("closed"))||l[0];
+modal(`<h2>New follow-up ${serial?`— INC-${String(serial).padStart(4,"0")}`:""}</h2><div class="msub">Owner, due date and progress are tracked on the board and inside reports.</div>
+<div class="fld"><label>Action</label><textarea id="f-act">${esc(a?a.action:"")}</textarea></div>
+<div class="f2"><div class="fld"><label>Owner (PIC)</label><input id="f-pic" value="${esc(r.pic||"")}"></div>
+<div class="fld"><label>Due date</label><input id="f-due" type="date" value="${(r.rca_due||"").slice(0,10)}"></div></div>
+<div class="f2"><div class="fld"><label>Status</label><select id="f-st"><option>Open</option><option>In Progress</option><option>Done</option><option>Verified</option></select></div>
+<div class="fld"><label>Progress %</label><input id="f-pr" type="number" min="0" max="100" value="0"></div></div>
+<div class="fld"><label>Note / evidence</label><input id="f-no" placeholder="e.g. work order no., photo ref"></div>
+<div class="btnrow"><button class="btn" onclick="saveFol(${serial||"null"})">Save follow-up</button><button class="btn ghost" onclick="closeModal()">Cancel</button></div>`);}
+function saveFol(serial){const E=eff();const r=serial?E.find(x=>x.serial===serial):E[0];
+const g=id=>document.getElementById(id).value;
+follows.unshift({id:"F-"+(Date.now()%100000),serial:r.serial,tag:r.tag,title:String(r.title).slice(0,48),action:g("f-act"),pic:g("f-pic"),due:g("f-due"),status:g("f-st"),prog:+g("f-pr")||0,note:g("f-no"),created:String(TODAY).slice(0,10)});
+saveAll();closeModal();toast("Follow-up saved.");if(state.v!=="followup")go("followup");else render();}
+function editFol(id){const f=follows.find(x=>x.id===id);if(!f)return;
+modal(`<h2>Edit ${f.id}</h2><div class="msub">INC-${String(f.serial).padStart(4,"0")} · ${esc(f.tag)}</div>
+<div class="fld"><label>Action</label><textarea id="f-act">${esc(f.action)}</textarea></div>
+<div class="f2"><div class="fld"><label>Owner (PIC)</label><input id="f-pic" value="${esc(f.pic)}"></div><div class="fld"><label>Due date</label><input id="f-due" type="date" value="${(f.due||"").slice(0,10)}"></div></div>
+<div class="f2"><div class="fld"><label>Status</label><select id="f-st">${["Open","In Progress","Done","Verified"].map(o=>`<option${o===f.status?" selected":""}>${o}</option>`).join("")}</select></div>
+<div class="fld"><label>Progress %</label><input id="f-pr" type="number" min="0" max="100" value="${f.prog||0}"></div></div>
+<div class="fld"><label>Note / evidence</label><input id="f-no" value="${esc(f.note||"")}"></div>
+<div class="btnrow"><button class="btn" onclick="updFol('${f.id}')">Save</button><button class="btn ghost" onclick="closeModal()">Cancel</button></div>`);}
+function updFol(id){const f=follows.find(x=>x.id===id);const g=i=>document.getElementById(i).value;
+f.action=g("f-act");f.pic=g("f-pic");f.due=g("f-due");f.status=g("f-st");f.prog=+g("f-pr")||0;f.note=g("f-no");
+if((f.status==="Done"||f.status==="Verified")&&f.prog<100)f.prog=100;saveAll();closeModal();render();toast("Updated.");}
+function delFol(id){if(!confirm("Delete "+id+"?"))return;follows=follows.filter(f=>f.id!==id);saveAll();render();}
+function setFol(id,k,v){const f=follows.find(x=>x.id===id);if(!f)return;f[k]=v;if(k==="status"&&(v==="Done"||v==="Verified"))f.prog=100;if(k==="status"&&v==="Open")f.prog=0;saveAll();render();}
+function genPlan(){const{E,od}=agg();const top=od.map(r=>({...r,late:lateOf(r)||0})).map(r=>({...r,score:(+r.total_loss||0)*1000*Math.max(r.late,0)})).sort((a,b)=>b.score-a.score).slice(0,10);
+let n=0;for(const r of top){if(follows.some(f=>f.serial===r.serial))continue;const d=RCA[r.tag];const l=d?((d.capa||[]).concat(d.proactive||[])):[];const a=l.find(c=>!String(c.status||"").toLowerCase().includes("closed"))||l[0];
+follows.push({id:"F-"+(Date.now()%100000)+"-"+n,serial:r.serial,tag:r.tag,title:String(r.title).slice(0,48),action:a?a.action:"Open the RCA record, confirm the owner, and set a due date",pic:r.pic||"-",due:r.rca_due,status:"Open",prog:0,note:"",created:"2026-08-19"});n++;}
+saveAll();render();toast(n?n+" follow-ups drafted.":"Plan already exists — nothing new.");}
+function planFromRca(tag){const d=RCA[tag];if(!d)return;const E=eff();const rec=E.find(r=>r.tag===tag)||E[0];let n=0;
+for(const c of (d.capa||[])){if(String(c.status||"").toLowerCase().includes("closed"))continue;
+follows.unshift({id:"F-"+(Date.now()%100000)+"-"+n,serial:rec.serial,tag,action:c.action,pic:c.pic||rec.pic||"-",due:rec.rca_due,status:"Open",prog:0,note:"from RCA deck",created:"2026-08-19"});n++;}
+saveAll();toast(n?n+" CAPA pushed to Follow-up.":"No open CAPA on this deck.");go("followup");}
+/* ---------- edit record (point 1) ---------- */
+function editInc(s){const r=eff().find(x=>x.serial===s);const cur=edits[s]||{};
+modal(`<h2>Edit record — INC-${String(s).padStart(4,"0")}</h2><div class="msub">${esc(String(r.title).slice(0,70))} · overrides save in this browser and recompute every figure.</div>
+<div class="fld"><label>Title</label><input id="e-title" value="${esc(cur.title!==undefined?cur.title:r.title)}"></div>
+<div class="f2"><div class="fld"><label>Status</label><select id="e-status">${["NEW REGISTERED","RCA PROCESS","CA/PA EXECUTION","MONITORING RESULT","RISK CLOSED","RISK CANCELED"].map(o=>`<option${(cur.status!==undefined?cur.status:r.status)===o?" selected":""}>${o}</option>`).join("")}</select></div>
+<div class="fld"><label>Owner (PIC)</label><input id="e-pic" value="${esc(cur.pic!==undefined?cur.pic:(r.pic||""))}"></div></div>
+<div class="f2"><div class="fld"><label>Due date</label><input id="e-due" type="date" value="${((cur.rca_due!==undefined?cur.rca_due:r.rca_due)||"").slice(0,10)}"></div>
+<div class="fld"><label>Mechanism</label><input id="e-mech" value="${esc(cur.mech!==undefined?cur.mech:r.mech)}"></div></div>
+<div class="f2"><div class="fld"><label>Component</label><input id="e-comp" value="${esc(cur.component!==undefined?cur.component:(r.component||""))}"></div>
+<div class="fld"><label>Discipline</label><input id="e-disc" value="${esc(cur.discipline!==undefined?cur.discipline:(r.discipline||""))}"></div></div>
+<div class="f2"><div class="fld"><label>Downtime (h)</label><input id="e-dt" type="number" step="0.1" value="${cur.downtime!==undefined?cur.downtime:(+r.downtime||0)}"></div>
+<div class="fld"><label>Total loss (k USD)</label><input id="e-lo" type="number" step="0.01" value="${cur.total_loss!==undefined?cur.total_loss:(+r.total_loss||0)}"></div></div>
+<div class="btnrow"><button class="btn" onclick="saveEdit(${s})">Save changes</button>${edits[s]?`<button class="btn ghost" onclick="delete edits[${s}];saveAll();closeModal();render();">Revert to baseline</button>`:""}<button class="btn ghost" onclick="closeModal()">Cancel</button></div>`);}
+function saveEdit(s){const g=id=>document.getElementById(id).value;
+edits[s]={title:g("e-title"),status:g("e-status"),pic:g("e-pic"),rca_due:g("e-due")||null,mech:g("e-mech"),component:g("e-comp"),discipline:g("e-disc"),downtime:+g("e-dt")||0,total_loss:+g("e-lo")||0};
+saveAll();closeModal();render();toast("Record updated — figures recomputed.");}
+function exportCSV(){const E=eff();const rows=[["id","date","tag","title","severity","status","downtime_h","loss_usd","pic","due"]].concat(E.map(r=>["INC-"+String(r.serial).padStart(4,"0"),String(r.date).slice(0,10),r.tag,'"'+String(r.title).replace(/"/g,'""')+'"',sevOf(r),stOf(r),(+r.downtime||0),Math.round((+r.total_loss||0)*1000),r.pic||"",String(r.rca_due||"").slice(0,10)]));
+const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([rows.map(r=>r.join(",")).join("\n")],{type:"text/csv"}));a.download="caliber-incidents.csv";a.click();toast("CSV exported.");}
+/* ---------- alarms + dispatch (point 5) ---------- */
+function vAlarm(){const list=alarms();const pending=list.filter(a=>!sendlog.some(l=>l.key===a.key));
+return `<h1>Alarms &amp; PIC Dispatch</h1><div class="sub">${list.length} active alarms · ${pending.length} awaiting dispatch · ${autoSend?'<b style="color:var(--green)">AUTO-SEND ON</b>':"auto-send off"}.</div>
+<div class="card"><div class="btnrow"><button class="btn" onclick="dispatchAll()">Dispatch all pending (${pending.length})</button>
+<button class="btn ghost" onclick="autoSend=!autoSend;saveAll();render();toast(autoSend?'Auto-send enabled.':'Auto-send disabled.')">${autoSend?"Disable auto-send":"Enable auto-send"}</button>
+<span style="flex:1"></span><span class="sub" style="margin:0">Dispatch opens WhatsApp to the PIC number on file — or logs a simulated send.</span></div>
+<table><thead><tr><th>Severity</th><th>Alarm</th><th>PIC</th><th>Detail</th><th>Dispatch</th></tr></thead><tbody>
+${list.map(a=>{const sent=sendlog.find(l=>l.key===a.key);const tel=(phones[a.pic]||"").replace(/\D/g,"");
+return `<tr><td><span class="pill ${a.sev==="Critical"?"p-r":"p-a"}">${a.sev}</span></td>
+<td><b class="mono">${esc(a.tag)}</b> — ${esc(a.title)}</td><td class="mono">${esc(a.pic)}</td><td style="font-size:11px">${esc(a.detail)}</td>
+<td style="white-space:nowrap">${sent?`<span class="pill p-g">✓ ${sent.ch}</span>`:`<button class="btn" style="padding:6px 12px" onclick="dispatchOne('${a.key}')">Send to ${esc(a.pic)}</button>`}${tel?"":' <span class="pill p-n">no number</span>'}</td></tr>`;}).join("")}</tbody></table></div>
+<div class="card" style="margin-top:12px"><h3>Dispatch log (${sendlog.length})</h3><div class="cap">Every send is recorded — the audit trail for point 5</div>
+${sendlog.length?sendlog.slice(0,20).map(l=>`<div class="log"><b>${esc(l.ts)}</b> → <b class="mono">${esc(l.to)}</b> via ${l.ch} · ${esc(l.msg.slice(0,110))}</div>`).join(""):'<div class="note">Nothing dispatched yet.</div>'}</div>`;}
+function dispatchOne(key){const a=alarms().find(x=>x.key===key);if(!a)return;
+const msg=`[CALIBER alarm] ${a.tag}: ${a.title} (${a.detail}). Please acknowledge and update the follow-up board.`;
+const tel=(phones[a.pic]||"").replace(/\D/g,"");
+if(tel){window.open("https://wa.me/"+tel+"?text="+encodeURIComponent(msg),"_blank");sendlog.unshift({key,ts:"2026-08-19",to:a.pic+" ("+tel+")",ch:"WhatsApp",msg});}
+else{sendlog.unshift({key,ts:"2026-08-19",to:a.pic,ch:"simulated",msg});toast("No phone on file for "+a.pic+" — logged as simulated send. Add it in Personnel.");}
+saveAll();render();}
+function dispatchAll(){const list=alarms().filter(a=>!sendlog.some(l=>l.key===a.key));if(!list.length){toast("Nothing pending.");return;}
+const tel0=list[0]?(phones[list[0].pic]||"").replace(/\D/g,""):"";dispatchOne(list[0].key);
+for(const a of list.slice(1)){const tel=(phones[a.pic]||"").replace(/\D/g,"");const msg=`[CALIBER alarm] ${a.tag}: ${a.title} (${a.detail}). Please acknowledge and update the follow-up board.`;
+sendlog.unshift({key:a.key,ts:"2026-08-19",to:a.pic+(tel?" ("+tel+")":""),ch:tel?"WhatsApp":"simulated",msg});}
+saveAll();if(tel0)toast("First alarm opened in WhatsApp, rest logged.");else render();render();}
+/* ---------- personnel (point 6) ---------- */
+function vPersonnel(){const{E,open}=agg();const pics={};
+for(const r of open){const k=r.pic||"-";pics[k]=pics[k]||{pic:k,n:0,od:0,loss:0};pics[k].n++;pics[k].loss+=(+r.total_loss||0)*1000;if(r.rca_due&&new Date(r.rca_due)<TODAY)pics[k].od++;}
+const arr=Object.values(pics).sort((a,b)=>b.od-a.od||b.loss-a.loss);
+for(const p of arr){const fl=follows.filter(f=>f.pic===p.pic);p.done=fl.filter(f=>f.status==="Done"||f.status==="Verified").length;p.ftot=fl.length;p.rate=p.ftot?Math.round(p.done/p.ftot*100):(p.n?0:100);}
+return `<h1>Personnel Monitoring</h1><div class="sub">${arr.length} PICs carry open work · phone numbers enable one-click WhatsApp dispatch · completion from the Follow-up board.</div>
+${arr.map(p=>`<div class="pcard"><div class="av">${esc(p.pic.slice(0,1))}</div>
+<div style="flex:1;min-width:200px"><b class="mono">${esc(p.pic)}</b><div style="font-size:11px;color:var(--mut)">${p.n} open · <b style="color:${p.od?"var(--red)":"var(--green)"}">${p.od} overdue</b> · ${usd(p.loss)} exposure · follow-up done ${p.done}/${p.ftot} (${p.rate}%)</div>
+<div class="prog"><i style="width:${p.rate}%"></i></div></div>
+<div style="display:flex;gap:7px;align-items:center"><input type="tel" placeholder="+62…" value="${esc(phones[p.pic]||"")}" onchange="phones['${esc(p.pic)}']=this.value;saveAll();render();toast('Number saved for ${esc(p.pic)}.');"><button class="btn ghost" style="padding:7px 12px" onclick="testPing('${esc(p.pic)}')">Ping</button></div></div>`).join("")}`;}
+function testPing(pic){const tel=(phones[pic]||"").replace(/\D/g,"");const msg="[CALIBER] Test ping — please confirm you receive PIC dispatches.";
+if(tel){window.open("https://wa.me/"+tel+"?text="+encodeURIComponent(msg),"_blank");sendlog.unshift({key:"PING-"+Date.now(),ts:"2026-08-19",to:pic+" ("+tel+")",ch:"WhatsApp",msg});saveAll();toast("Test dispatch sent to "+pic+".");}
+else toast("Save a phone number for "+pic+" first.");}
+/* ---------- reports (point 3) ---------- */
+const REPS=[["ops","Daily Operations Report","Plant performance summary"],["inc","Incident Summary Report","Trends by severity, status, mechanism"],["rca","RCA Analysis Report","Root causes + CAPA owners"],["fol","Follow-up Results Report","Outcomes of every tindak lanjut"],["per","Personnel Monitoring Report","Load, overdue, completion per PIC"],["nrg","Energy & Emission Report","Derived consumption + method"]];
+function vReports(){return `<h1>Reports</h1><div class="sub">Generate and view operational reports · follow-up outcomes included · print-ready.</div>
+<div class="card">${REPS.map(r=>`<div class="rep"><div class="doc">▤</div><div><div class="t">${r[1]}</div><div class="d">${r[2]}</div></div><button class="btn ghost" onclick="state.rep='${r[0]}';render()">Generate</button></div>`).join("")}</div>
+<div id="repOut">${state.rep?repHtml(state.rep):""}</div>`;}
+function repHtml(k){const{E,totLoss,open,od,closed,odLoss}=agg();const H=(t,inner)=>`<div class="card noprint-hide" style="margin-top:12px"><div class="btnrow noprint"><button class="btn" onclick="window.print()">🖨 Print / PDF</button><button class="btn ghost" onclick="state.rep=null;render()">Close</button></div><h2 style="font-size:16px;font-weight:800">${t}</h2><div class="sub">CALIBER 2026 · Case 2 · generated 19-Aug-2026 from live baseline${Object.keys(edits).length?` (${Object.keys(edits).length} local edit(s) included)`:""}</div>${inner}</div>`;
+if(k==="ops")return H("Daily Operations Report",`<div class="row4"><div class="card kpi"><div class="lab">Incidents</div><div class="v">${E.length}</div></div><div class="card kpi"><div class="lab">Open</div><div class="v">${open.length}</div></div><div class="card kpi"><div class="lab">Overdue</div><div class="v" style="color:var(--red)">${od.length}</div></div><div class="card kpi"><div class="lab">Loss</div><div class="v" style="font-size:19px">${usd(totLoss)}</div></div></div>
+<p style="font-size:12px">Top exposure overdue: ${od.map(r=>({...r,late:lateOf(r)||0})).map(r=>({...r,score:(+r.total_loss||0)*1000*r.late})).sort((a,b)=>b.score-a.score).slice(0,5).map(r=>`<b class="mono">${esc(r.tag)}</b> ${esc(String(r.title).slice(0,36))} (${r.late}d, ${usd((+r.total_loss||0)*1000)}, PIC ${esc(r.pic||"-")})`).join(" · ")}</p>`);
+if(k==="inc"){const by={};E.forEach(r=>{const s=sevOf(r);by[s]=by[s]||{s,n:0,od:0,loss:0};by[s].n++;by[s].loss+=(+r.total_loss||0)*1000;if(OPEN.has(r.status)&&r.rca_due&&new Date(r.rca_due)<TODAY)by[s].od++;});
+const me={};E.forEach(r=>{me[r.mech]=me[r.mech]||{k:r.mech,n:0,loss:0};me[r.mech].n++;me[r.mech].loss+=(+r.total_loss||0)*1000;});
+const topM=Object.values(me).sort((a,b)=>b.loss-a.loss).slice(0,6);
+return H("Incident Summary Report",`<table><thead><tr><th>Severity</th><th class="num">Count</th><th class="num">Overdue</th><th class="num">Loss</th></tr></thead><tbody>${Object.values(by).map(s=>`<tr><td><span class="pill ${pillS(s.s)}">${s.s}</span></td><td class="num">${s.n}</td><td class="num">${s.od}</td><td class="num">${usd(s.loss)}</td></tr>`).join("")}</tbody></table>
+<p style="font-size:12px;margin-top:10px">Top mechanisms: ${topM.map(m=>`<b>${esc(m.k)}</b> ${m.n}× ${usd(m.loss)}`).join(" · ")}</p>`);}
+if(k==="rca")return H("RCA Analysis Report",Object.keys(RCA).map(t=>{const d=RCA[t];const oc=(d.capa||[]).filter(c=>!String(c.status||"").toLowerCase().includes("closed")).length;
+return `<p style="font-size:12px"><b class="mono">${esc(t)}</b> — <b>${esc(d.title)}</b> (${esc(d.ar)})<br>Root cause: ${esc(String(d.root_cause).slice(0,180))}…<br>CAPA: ${(d.capa||[]).length} actions, <b>${oc} open</b> · PIC ${esc(d.pic_rca)}</p>`;}).join("<hr style='border:0;border-top:1px solid var(--line);margin:8px 0'>"));
+if(k==="fol"){const done=follows.filter(f=>f.status==="Done"||f.status==="Verified");
+return H("Follow-up Results Report",`<p style="font-size:12px">Tracked <b>${follows.length}</b> · completed <b>${done.length}</b> · avg progress <b>${follows.length?Math.round(follows.reduce((a,f)=>a+(+f.prog||0),0)/follows.length):0}%</b> · overdue <b>${follows.filter(f=>f.status!=="Done"&&f.status!=="Verified"&&f.due&&new Date(f.due)<TODAY).length}</b></p>
+<table><thead><tr><th>ID</th><th>Incident</th><th>Action + evidence</th><th>Owner</th><th>Status</th><th class="num">Progress</th></tr></thead><tbody>
+${follows.map(f=>`<tr><td class="mono">${f.id}</td><td class="mono">INC-${String(f.serial).padStart(4,"0")}</td><td>${esc(f.action)}${f.note?`<div style="font-size:10.5px;color:var(--mut)">Evidence: ${esc(f.note)}</div>`:''}</td><td class="mono">${esc(f.pic)}</td><td><span class="pill ${f.status==="Done"||f.status==="Verified"?"p-g":f.status==="In Progress"?"p-b":"p-a"}">${esc(f.status)}</span></td><td class="num">${f.prog}%</td></tr>`).join("")||'<tr><td colspan="6">No follow-ups recorded yet.</td></tr>'}</tbody></table>`);}
+if(k==="per"){const pics={};for(const r of open){const q=r.pic||"-";pics[q]=pics[q]||{pic:q,n:0,od:0,loss:0};pics[q].n++;pics[q].loss+=(+r.total_loss||0)*1000;if(r.rca_due&&new Date(r.rca_due)<TODAY)pics[q].od++;}
+const arr=Object.values(pics).sort((a,b)=>b.od-a.od);
+return H("Personnel Monitoring Report",`<table><thead><tr><th>PIC</th><th class="num">Open</th><th class="num">Overdue</th><th class="num">Exposure</th><th class="num">Follow-up done</th></tr></thead><tbody>
+${arr.map(p=>{const fl=follows.filter(f=>f.pic===p.pic);const dn=fl.filter(f=>f.status==="Done"||f.status==="Verified").length;
+return `<tr><td class="mono"><b>${esc(p.pic)}</b></td><td class="num">${p.n}</td><td class="num">${p.od}</td><td class="num">${usd(p.loss)}</td><td class="num">${dn}/${fl.length}</td></tr>`;}).join("")}</tbody></table>`);}
+if(k==="nrg")return H("Energy & Emission Report",`<p style="font-size:12px">Derived energy <b>${META.kwh.toLocaleString("en-US")} kWh</b> over ${META.hours.toLocaleString("en-US")} operating hours · CO₂ <b>${META.co2} t</b> (Jamali factor 0.794). Method: P=√3×400×I×0.86/1000 over RUN_STATUS=ON. No energy tag exists in the baseline — proxy, never metered. Per asset: ${META.eKwh.map(e=>esc(e.tag)+" "+Math.round(e.kwh).toLocaleString("en-US")+" kWh").join(" · ")}</p>`);
+return "";}
+/* ---------- render ---------- */
+function render(){tick();const{E,od}=agg();const openN=E.filter(r=>OPEN.has(r.status)).length;
+document.getElementById("bellN").textContent=od.length;
+document.getElementById("bdgAlm").textContent=alarms().length;
+document.getElementById("bdgFol").textContent=follows.filter(f=>f.status!=="Done"&&f.status!=="Verified").length||"";
+const V={overview:vOverview,assets:vAssets,assetdet:vAssetDet,incidents:vIncidents,incdet:vIncDet,condition:vCondition,production:vProduction,energy:vEnergy,rca:vRca,followup:vFollow,alarm:vAlarm,personnel:vPersonnel,reports:vReports};
+document.querySelectorAll(".mi").forEach(b=>b.classList.toggle("on",b.dataset.v===state.v||(state.v==="assetdet"&&b.dataset.v==="assets")||(state.v==="incdet"&&b.dataset.v==="incidents")));
+document.getElementById("views").innerHTML=`<div class="view on">${(V[state.v]||vOverview)()}</div>`;
+window.scrollTo(0,0);}
+function renderList(){}
+render();
+</script>
+</body>
+</html>
