@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>CALIBER 2026 — Case 2 Performance Monitoring · Chandra Asri Pacific</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#F2F6FC;color:#1A2B4A;font:12.5px/1.5 "Plus Jakarta Sans",-apple-system,"Segoe UI",Roboto,sans-serif}
+.layout{display:grid;grid-template-columns:190px 1fr;min-height:100vh}
+/* sidebar */
+.side{background:#fff;border-right:1px solid #E3EAF3;padding:14px 10px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;height:100vh}
+.side .hide{font-size:11px;color:#6B7280;padding:4px 10px 12px;cursor:pointer}
+.mi{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:700;letter-spacing:.4px;color:#3E4F6A;cursor:pointer;text-decoration:none}
+.mi .mic{font-size:14px;width:20px;text-align:center}
+.mi.on{background:#0B4DB5;color:#fff}
+.mi:not(.on):hover{background:#EEF3FA}
+.conn{margin-top:auto;font-size:11px;color:#22B573;display:flex;align-items:center;gap:6px;padding:8px 10px}
+.conn i{width:8px;height:8px;border-radius:50%;background:#22B573;display:inline-block}
+.user{display:flex;align-items:center;gap:8px;background:#EEF3FA;border-radius:10px;padding:8px 10px}
+.avatar{width:28px;height:28px;border-radius:50%;background:#0B4DB5;color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px}
+.user .un{font-size:11px;font-weight:700}.user .ur{font-size:10px;color:#6B7280}
+/* main */
+.main{padding:0 18px 40px;min-width:0}
+.banner{background:#fff;border-bottom:1px solid #E3EAF3;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:12px 22px;margin:0 -18px 14px}
+.banner .bl{font-weight:800;font-size:13px;color:#0A2A6B}
+.banner .bl small{display:block;font-weight:600;font-size:10px;color:#6B7280}
+.banner h1{text-align:center;font-size:19px;font-weight:800;letter-spacing:.3px;color:#0A2A6B;line-height:1.25}
+.banner .br{text-align:right;font-weight:800;font-size:14px;color:#0B4DB5}
+.banner .br small{display:block;font-size:10px;color:#6B7280;font-weight:600}
+.badges{display:flex;justify-content:flex-end;gap:10px;margin-bottom:12px}
+.badge2{background:#fff;border:1px solid #E3EAF3;border-radius:10px;padding:7px 12px;font-size:11px;display:flex;gap:8px;align-items:center}
+.badge2 b{display:block;font-size:11.5px}.badge2 small{color:#6B7280}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{border-radius:12px;padding:14px 16px;color:#fff;box-shadow:0 4px 14px -6px rgb(10 42 107/.35)}
+.kpi-top{display:flex;align-items:center;gap:8px}
+.kpi-ic{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;font-size:13px}
+.kpi-label{font-size:11px;font-weight:600;opacity:.95}
+.kpi-big{font-size:25px;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.kpi-small{font-size:10.5px;opacity:.92}
+.mid{display:grid;grid-template-columns:1.35fr 1fr .95fr;gap:12px;margin-bottom:14px}
+.panel{background:#fff;border:1px solid #E3EAF3;border-radius:12px;overflow:hidden;min-width:0}
+.phead{color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.5px;padding:9px 14px;display:flex;align-items:center;gap:8px}
+.pbody{padding:12px 14px}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:#6B7280;padding:5px 6px;border-bottom:1px solid #EDF1F7;font-weight:700}
+td{padding:5px 6px;border-bottom:1px solid #F1F4F9}
+tr.tfoot td{font-weight:800;background:#F4F7FC;border-top:2px solid #E3EAF3}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:10.5px}
+.b{font-weight:700}
+.odot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+.donut-wrap{display:flex;gap:10px;align-items:center}
+.dlegend{font-size:10.5px;display:flex;flex-direction:column;gap:7px}
+.dlegend .row{display:flex;gap:6px;align-items:baseline}
+.dlegend i{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.dlegend b{margin-left:auto;font-variant-numeric:tabular-nums;padding-left:8px}
+.minibar{height:5px;background:#EDF1F7;border-radius:3px;margin-top:3px;overflow:hidden}
+.minibar i{display:block;height:100%;border-radius:3px}
+.pfoot{font-size:10px;color:#6B7280;padding:8px 14px;border-top:1px solid #F1F4F9}
+.cp{background:#fff;border:1px solid #E3EAF3;border-radius:12px;overflow:hidden}
+.cp ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 26px;padding:6px 16px 12px}
+.cp li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F1F4F9;font-size:11.5px}
+.cp-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46%}
+.cp-track{flex:1;height:4px;background:#EDF1F7;border-radius:2px}
+.cpill{font-size:10px;background:#F1F4F9;color:#6B7280;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.cpill.ok{background:#E5F6EC;color:#1AA159}.cpill.warn{background:#FDF3D7;color:#8a6d00}
+footer{margin-top:16px;font-size:10.5px;color:#6B7280}
+@media(max-width:1100px){.layout{grid-template-columns:1fr}.side{display:none}.kpis{grid-template-columns:1fr 1fr}.mid{grid-template-columns:1fr}.cp ul{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="side">
+  <div class="hide">‹ Hide menu</div>
+  <a class="mi on"><span class="mic">⌂</span>BERANDA</a>
+  <a class="mi"><span class="mic">▤</span>PROBLEM QUEUE</a>
+  <a class="mi"><span class="mic">✔</span>AI PILOT PLAN</a>
+  <a class="mi"><span class="mic">◷</span>ACTION TRACKING</a>
+  <a class="mi"><span class="mic">⧉</span>ASSET RANKING</a>
+  <a class="mi"><span class="mic">✚</span>RCA DECKS</a>
+  <a class="mi"><span class="mic">▦</span>EVIDENCE DETAIL</a>
+  <a class="mi"><span class="mic">⇪</span>EXPORT DATA</a>
+  <div class="conn"><i></i>Live computed · offline file</div>
+  <div class="user"><div class="avatar">C</div><div><div class="un">Reliability Team</div><div class="ur">Case 2 · CALIBER 2026</div></div></div>
+</nav>
+<div class="main">
+  <div class="banner">
+    <div class="bl">CHANDRA ASRI GROUP<small>Petrochemical · Energy · Infrastructure</small></div>
+    <h1>PERFORMANCE MONITORING — CASE 2<br>INTELLIGENT MANUFACTURING</h1>
+    <div class="br">CALIBER 2026<small>Single Pane of Glass · English</small></div>
+  </div>
+  <div class="badges">
+    <div class="badge2">▤<div><b>Management Contract</b><small>through August 2026</small></div></div>
+    <div class="badge2">◷<div><b>Action List Update</b><small>19 August 2026 · 380 records</small></div></div>
+  </div>
+  <div class="kpis">
+  <div class="kpi" style="background:linear-gradient(135deg,#1A73E8,#0B57D0)">
+    <div class="kpi-top"><span class="kpi-ic">◧</span><span class="kpi-label">Total Loss</span></div>
+    <div class="kpi-big">US$67.19M</div>
+    <div class="kpi-small">380 incidents · 2,261.1 h downtime</div>
+  </div>
+  <div class="kpi" style="background:linear-gradient(135deg,#E57373,#D32F2F)">
+    <div class="kpi-top"><span class="kpi-ic">◷</span><span class="kpi-label">Actions Overdue</span></div>
+    <div class="kpi-big">179</div>
+    <div class="kpi-small">of 220 with due dates · US$37.32M exposed</div>
+  </div>
+  <div class="kpi" style="background:linear-gradient(135deg,#00B8C8,#0097A7)">
+    <div class="kpi-top"><span class="kpi-ic">⚡</span><span class="kpi-label">Avg Warning Lead</span></div>
+    <div class="kpi-big">67 d</div>
+    <div class="kpi-small">42–105 days across 5 monitored assets</div>
+  </div>
+  <div class="kpi" style="background:linear-gradient(135deg,#8B5CF6,#6D3DF5)">
+    <div class="kpi-top"><span class="kpi-ic">⧉</span><span class="kpi-label">AI Retrieval @1</span></div>
+    <div class="kpi-big">87.1%</div>
+    <div class="kpi-small">@5 98.4% · similar-incident match</div>
+  </div></div>
+  <div class="mid">
+    <div class="panel">
+      <div class="phead" style="background:#0B4DB5">▤ LOSS &amp; BACKLOG PER PLANT</div>
+      <div class="pbody"><table>
+        <thead><tr><th>Plant</th><th class="num">Incid.</th><th class="num">Loss</th><th class="num">Downtime</th><th class="num">Overdue</th></tr></thead>
+        <tbody><tr><td class="mono b">ZCU</td><td class="num">62</td><td class="num">US$11.11M</td><td class="num">330.4 h</td>
+    <td class="num"><span class="odot" style="background:#E57373"></span>29</td></tr><tr><td class="mono b">ARP</td><td class="num">49</td><td class="num">US$9.08M</td><td class="num">313.3 h</td>
+    <td class="num"><span class="odot" style="background:#E57373"></span>26</td></tr><tr><td class="mono b">OPP</td><td class="num">42</td><td class="num">US$7.54M</td><td class="num">232.8 h</td>
+    <td class="num"><span class="odot" style="background:#E57373"></span>22</td></tr><tr><td class="mono b">SMX</td><td class="num">42</td><td class="num">US$7.43M</td><td class="num">242.2 h</td>
+    <td class="num"><span class="odot" style="background:#E57373"></span>21</td></tr><tr><td class="mono b">OP2</td><td class="num">37</td><td class="num">US$5.81M</td><td class="num">190.1 h</td>
+    <td class="num"><span class="odot" style="background:#F5A623"></span>15</td></tr><tr><td class="mono b">NUP</td><td class="num">24</td><td class="num">US$5.49M</td><td class="num">196.8 h</td>
+    <td class="num"><span class="odot" style="background:#F5A623"></span>10</td></tr><tr><td class="mono b">OP3</td><td class="num">32</td><td class="num">US$5.26M</td><td class="num">182.8 h</td>
+    <td class="num"><span class="odot" style="background:#E57373"></span>17</td></tr><tr><td class="mono b">BRP</td><td class="num">26</td><td class="num">US$5.10M</td><td class="num">171.4 h</td>
+    <td class="num"><span class="odot" style="background:#F5A623"></span>12</td></tr><tr><td class="mono b">CRP</td><td class="num">25</td><td class="num">US$3.34M</td><td class="num">129.9 h</td>
+    <td class="num"><span class="odot" style="background:#22B573"></span>8</td></tr><tr><td class="mono b">OPU</td><td class="num">14</td><td class="num">US$3.20M</td><td class="num">121.5 h</td>
+    <td class="num"><span class="odot" style="background:#22B573"></span>7</td></tr><tr><td class="mono b">BDX</td><td class="num">20</td><td class="num">US$2.79M</td><td class="num">104.3 h</td>
+    <td class="num"><span class="odot" style="background:#22B573"></span>8</td></tr><tr><td class="mono b">TKX</td><td class="num">7</td><td class="num">US$1.02M</td><td class="num">45.6 h</td>
+    <td class="num"><span class="odot" style="background:#22B573"></span>4</td></tr><tr class="tfoot"><td class="mono b">ALL</td><td class="num">380</td><td class="num">US$67.19M</td><td class="num">2,261.1 h</td><td class="num">179</td></tr></tbody>
+      </table></div>
+      <div class="pfoot"><span class="odot" style="background:#22B573"></span>≤8 overdue &nbsp;<span class="odot" style="background:#F5A623"></span>9–15 &nbsp;<span class="odot" style="background:#E57373"></span>&gt;15</div>
+    </div>
+    <div class="panel">
+      <div class="phead" style="background:#F5A623">◷ ACTION BACKLOG WATCH</div>
+      <div class="pbody"><div class="donut-wrap">
+        <svg width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="54" fill="none" stroke="#22B573" stroke-width="18" stroke-dasharray="142.9 196.4" stroke-dashoffset="0.0" transform="rotate(-90 70 70)"/><circle cx="70" cy="70" r="54" fill="none" stroke="#F5A623" stroke-width="18" stroke-dasharray="159.8 179.5" stroke-dashoffset="-142.9" transform="rotate(-90 70 70)"/><circle cx="70" cy="70" r="54" fill="none" stroke="#8B5CF6" stroke-width="18" stroke-dasharray="36.6 302.7" stroke-dashoffset="-302.7" transform="rotate(-90 70 70)"/>
+        <text x="70" y="64" text-anchor="middle" font-size="10" fill="#6B7280">Backlog</text>
+        <text x="70" y="84" text-anchor="middle" font-size="22" font-weight="800" fill="#1A2B4A">220</text>
+        </svg>
+        <div class="dlegend"><div class="row"><i style="background:#22B573"></i><span>Closed / resolved</span><b>160</b></div><div class="row"><i style="background:#F5A623"></i><span>Open, overdue</span><b>179</b></div><div class="row"><i style="background:#8B5CF6"></i><span>Open, on track / no due date</span><b>41</b></div></div>
+      </div></div>
+      <div class="pfoot">Center = open actions · 179 of 220 with due dates are overdue · US$37.32M exposed.</div>
+    </div>
+    <div class="panel">
+      <div class="phead" style="background:#E57373">⚠ OVERDUE SHARE PER PLANT</div>
+      <div class="pbody"><table>
+        <thead><tr><th>Plant</th><th class="num">Open</th><th class="num">Over</th><th class="num">% Over</th></tr></thead>
+        <tbody><tr><td class="mono b">ZCU</td><td class="num">62</td><td class="num">29</td>
+    <td class="num">46.77%<div class="minibar"><i style="width:82%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">ARP</td><td class="num">49</td><td class="num">26</td>
+    <td class="num">53.06%<div class="minibar"><i style="width:93%;background:#F5A623"></i></div></td></tr><tr><td class="mono b">OPP</td><td class="num">42</td><td class="num">22</td>
+    <td class="num">52.38%<div class="minibar"><i style="width:92%;background:#F5A623"></i></div></td></tr><tr><td class="mono b">SMX</td><td class="num">42</td><td class="num">21</td>
+    <td class="num">50.00%<div class="minibar"><i style="width:88%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">OP2</td><td class="num">37</td><td class="num">15</td>
+    <td class="num">40.54%<div class="minibar"><i style="width:71%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">NUP</td><td class="num">24</td><td class="num">10</td>
+    <td class="num">41.67%<div class="minibar"><i style="width:73%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">OP3</td><td class="num">32</td><td class="num">17</td>
+    <td class="num">53.13%<div class="minibar"><i style="width:93%;background:#F5A623"></i></div></td></tr><tr><td class="mono b">BRP</td><td class="num">26</td><td class="num">12</td>
+    <td class="num">46.15%<div class="minibar"><i style="width:81%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">CRP</td><td class="num">25</td><td class="num">8</td>
+    <td class="num">32.00%<div class="minibar"><i style="width:56%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">OPU</td><td class="num">14</td><td class="num">7</td>
+    <td class="num">50.00%<div class="minibar"><i style="width:88%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">BDX</td><td class="num">20</td><td class="num">8</td>
+    <td class="num">40.00%<div class="minibar"><i style="width:70%;background:#1A73E8"></i></div></td></tr><tr><td class="mono b">TKX</td><td class="num">7</td><td class="num">4</td>
+    <td class="num">57.14%<div class="minibar"><i style="width:100%;background:#F5A623"></i></div></td></tr></tbody>
+      </table></div>
+      <div class="pfoot">Bars scaled to max so small gaps stay visible.</div>
+    </div>
+  </div>
+  <div class="cp">
+    <div class="phead" style="background:#0B4DB5">✔ RCA CHECK POINTS — 5 DECKS + TRACKED FINDINGS <span style="margin-left:auto;font-weight:600;font-size:10.5px;letter-spacing:0">Open items</span></div>
+    <ul>
+  <li><span class="cp-name">PU-2101B — Mechanical Seal Leakage</span><span class="cp-track"></span>
+  <span class="cpill warn">2 CAPA open</span></li>
+  <li><span class="cp-name">KO-3201 — High Radial Vibration Trip</span><span class="cp-track"></span>
+  <span class="cpill warn">1 CAPA open</span></li>
+  <li><span class="cp-name">PM-4405B — Motor Bearing Failure</span><span class="cp-track"></span>
+  <span class="cpill warn">2 CAPA open</span></li>
+  <li><span class="cp-name">HE-3301 — High Fouling — Duty Loss &amp; High dP</span><span class="cp-track"></span>
+  <span class="cpill warn">2 CAPA open</span></li>
+  <li><span class="cp-name">BL-5702 — High Vibration</span><span class="cp-track"></span>
+  <span class="cpill warn">2 CAPA open</span></li><li><span class="cp-name">HE-3301 mismatch — PI tag vs declared downtime differs ≥1 h — logged as open item</span><span class="cp-track"></span><span class="cpill warn">Tracked</span></li><li><span class="cp-name">Taxonomy repair — 6 invalid mechanism labels merged before ranking</span><span class="cp-track"></span><span class="cpill warn">Tracked</span></li><li><span class="cp-name">Energy proxy — kWh derived from AMP × hours, labeled estimated</span><span class="cp-track"></span><span class="cpill warn">Tracked</span></li><li><span class="cp-name">KPI contract — Downtime computed 3 ways, canonical = incident DB</span><span class="cp-track"></span><span class="cpill warn">Tracked</span></li><li><span class="cp-name">Retrieval eval — Leave-one-out @1 87.1%, @5 98.4%</span><span class="cp-track"></span><span class="cpill warn">Tracked</span></li></ul>
+  </div>
+  <footer><b>Data provenance.</b> Every figure computed from the official Case 2 baseline: 380 incidents · 5 assets × 26 weekly readings · 5 × 720 hourly PI tags · 5 RCA decks. Energy/emission values are derived estimates. No network calls — this file works offline.</footer>
+</div>
+</div>
+</body>
+</html>

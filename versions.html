@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>CALIBER 2026 — Case 2 · Choose dashboard version</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0e2f3f;color:#fff;font:14px/1.6 "Plus Jakarta Sans",-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 18px}
+.box{max-width:880px;width:100%}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.4px;color:#53c3d9;margin-bottom:8px}
+h1{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+p.sub{color:#9fc3cf;margin-bottom:26px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+a.card{background:#fff;color:#113244;border-radius:18px;padding:22px;text-decoration:none;display:block;box-shadow:0 16px 40px -16px rgb(0 0 0/.5)}
+a.card:hover{transform:translateY(-2px)}
+a.card .vn{font-size:11px;font-weight:800;letter-spacing:1px;color:#1f9ab5}
+a.card h2{font-size:17px;font-weight:800;margin:6px 0}
+a.card p{font-size:12.5px;color:#4c6472}
+a.card .go{display:inline-block;margin-top:12px;font-size:12px;font-weight:800;color:#113244;background:#53c3d9;border-radius:999px;padding:6px 14px}
+.foot{margin-top:22px;font-size:11.5px;color:#9fc3cf}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="eyebrow">CALIBER 2026 · Case 2 · Chandra Asri Pacific</div>
+  <h1>Choose the dashboard version</h1>
+  <p class="sub">Same baseline behind all three: 380 incidents · 5 assets × 26 weekly readings · 5 × 720 hourly PI tags · 5 RCA decks. Only the presentation differs.</p>
+  <div class="grid">
+    <a class="card" href="v2-pln.html"><div class="vn">VERSION 2</div><h2>Plant-style monitoring board</h2><p>Sidebar + banner + 4 gradient KPIs + per-plant table + backlog donut + overdue share + RCA check points. Dense, familiar, print-friendly.</p><span class="go">Open v2 →</span></a>
+    <a class="card" href="v3-current.html"><div class="vn">VERSION 3</div><h2>Current wallboard + Detail</h2><p>Hero headline + 4 KPIs + 2 charts + top-8 queue, with Problem Queue, AI Pilot, Action Tracking and the full Detail archive.</p><span class="go">Open v3 →</span></a>
+  </div>
+  <div class="foot">Version 1 (Jarkons issue-tracker UI) on hold until the repo is accessible. Default entry <b>index.html</b> = version 3.</div>
+</div>
+</body>
+</html>
