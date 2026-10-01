@@ -1,0 +1,28 @@
+{
+ "A_incident_db": 2261.0999999999985,
+ "A_source": "Incident Database.xlsx / Downtime",
+ "B_pi_tags": 85,
+ "B_per_asset": {
+  "PU-2101B": 18,
+  "KO-3201": 32,
+  "PM-4405B": 8,
+  "HE-3301": 13,
+  "BL-5702": 14
+ },
+ "B_source": "Production Data/*.xlsx / RUN_STATUS=OFF",
+ "C_declared": 84.5,
+ "C_per_asset": {
+  "PU-2101B": 18.5,
+  "KO-3201": 32.0,
+  "PM-4405B": 8.0,
+  "HE-3301": 12.0,
+  "BL-5702": 14.0
+ },
+ "C_source": "Equipment Performance/*.xlsx / Performance Summary",
+ "mismatched_assets": [
+  "HE-3301"
+ ],
+ "canonical": "A",
+ "canonical_value": 2261.0999999999985,
+ "note": "A vs B is a scope difference (portfolio vs tagged assets). B vs C exposes a genuine 1-hour disagreement on one asset."
+}

@@ -1,0 +1,147 @@
+[
+ {
+  "tag": "PU-2101B",
+  "first": 9,
+  "alarm": 15,
+  "trip": 21,
+  "flags": [
+   [
+    "Overall Vibration (mm/s)",
+    9,
+    "band"
+   ],
+   [
+    "Seal Flush Flow (L/min)",
+    10,
+    "band"
+   ],
+   [
+    "Discharge Pressure (barg)",
+    9,
+    "band"
+   ],
+   [
+    "Bearing Temp (\u00b0C)",
+    9,
+    "band"
+   ]
+  ],
+  "mode": "Mechanical Seal Leakage"
+ },
+ {
+  "tag": "KO-3201",
+  "first": 9,
+  "alarm": 10,
+  "trip": 21,
+  "flags": [
+   [
+    "DE Radial Vibration (micron)",
+    10,
+    "band"
+   ],
+   [
+    "Lube Oil Water Content (ppm)",
+    9,
+    "band"
+   ],
+   [
+    "Lube Oil Supply Press (barg)",
+    10,
+    "band"
+   ],
+   [
+    "Bearing Metal Temp (\u00b0C)",
+    10,
+    "band"
+   ]
+  ],
+  "mode": "High Radial Vibration Trip (Bearing Distress)"
+ },
+ {
+  "tag": "PM-4405B",
+  "first": 9,
+  "alarm": 15,
+  "trip": 21,
+  "flags": [
+   [
+    "Motor DE Bearing Temp (\u00b0C)",
+    9,
+    "band"
+   ],
+   [
+    "Motor Vibration (mm/s)",
+    10,
+    "band"
+   ],
+   [
+    "Motor Ampere (A)",
+    9,
+    "band"
+   ],
+   [
+    "Winding Temp (\u00b0C)",
+    9,
+    "band"
+   ]
+  ],
+  "mode": "Motor Bearing Failure (Overheating)"
+ },
+ {
+  "tag": "HE-3301",
+  "first": 9,
+  "alarm": 11,
+  "trip": 21,
+  "flags": [
+   [
+    "Tube-side dP (bar)",
+    9,
+    "band"
+   ],
+   [
+    "Heat Duty (% design)",
+    10,
+    "band"
+   ],
+   [
+    "Cold Outlet Temp (\u00b0C)",
+    9,
+    "band"
+   ],
+   [
+    "Feed Heavy-ends (%)",
+    10,
+    "band"
+   ]
+  ],
+  "mode": "High Fouling \u2014 Duty Loss & High dP"
+ },
+ {
+  "tag": "BL-5702",
+  "first": 9,
+  "alarm": 6,
+  "trip": 21,
+  "flags": [
+   [
+    "Overall Vibration (mm/s)",
+    10,
+    "band"
+   ],
+   [
+    "2X Harmonic (mm/s)",
+    10,
+    "band"
+   ],
+   [
+    "Coupling Offset (mm)",
+    9,
+    "band"
+   ],
+   [
+    "Bearing Temp (\u00b0C)",
+    9,
+    "band"
+   ]
+  ],
+  "mode": "High Vibration (Coupling Misalignment)"
+ }
+]

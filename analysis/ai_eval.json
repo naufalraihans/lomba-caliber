@@ -1,0 +1,257 @@
+{
+ "retrieval": {
+  "n_eligible": 380,
+  "full_p1": {
+   "hits": 331,
+   "n": 380,
+   "pct": 87.10526315789474,
+   "ci_lo": 83.36059277842564,
+   "ci_hi": 90.10721269133064
+  },
+  "full_p5": {
+   "hits": 374,
+   "n": 380,
+   "pct": 98.42105263157895,
+   "ci_lo": 96.59847383473462,
+   "ci_hi": 99.2744070619686
+  },
+  "full_p10": {
+   "hits": 375,
+   "n": 380,
+   "pct": 98.68421052631578,
+   "ci_lo": 96.95722180024025,
+   "ci_hi": 99.43670736220594
+  },
+  "base_p1": {
+   "hits": 263,
+   "n": 380,
+   "pct": 69.21052631578948,
+   "ci_lo": 64.39611945439788,
+   "ci_hi": 73.64040394483766
+  },
+  "base_p5": {
+   "hits": 375,
+   "n": 380,
+   "pct": 98.68421052631578,
+   "ci_lo": 96.95722180024025,
+   "ci_hi": 99.43670736220594
+  },
+  "base_p10": {
+   "hits": 376,
+   "n": 380,
+   "pct": 98.94736842105263,
+   "ci_lo": 97.32505887088482,
+   "ci_hi": 99.58991855730433
+  },
+  "lift_p1": 17.89473684210526,
+  "lift_p5": -0.2631578947368354,
+  "lift_p10": -0.2631578947368496,
+  "prevalence_top_mech": "Leakage",
+  "prevalence_pct": 26.57894736842105,
+  "target": "same failure mechanism in the top-k neighbours",
+  "leakage_note": "failure mechanism is EXCLUDED from features; it is the target"
+ },
+ "detector": {
+  "assets": [
+   {
+    "tag": "PU-2101B",
+    "mode": "Mechanical Seal Leakage",
+    "alarm_week": 15,
+    "trip_week": 21,
+    "first_flag_week": 9,
+    "lead_weeks": 6,
+    "params_monitored": [
+     "Overall Vibration (mm/s)",
+     "Seal Flush Flow (L/min)",
+     "Discharge Pressure (barg)",
+     "Bearing Temp (\u00b0C)"
+    ],
+    "flags": [
+     {
+      "param": "Overall Vibration (mm/s)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Seal Flush Flow (L/min)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Discharge Pressure (barg)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Bearing Temp (\u00b0C)",
+      "week": 9,
+      "basis": "sustained-breach"
+     }
+    ],
+    "warmup_weeks": 8,
+    "earliest_possible_week": 9
+   },
+   {
+    "tag": "KO-3201",
+    "mode": "High Radial Vibration Trip (Bearing Distress)",
+    "alarm_week": 10,
+    "trip_week": 21,
+    "first_flag_week": 9,
+    "lead_weeks": 1,
+    "params_monitored": [
+     "DE Radial Vibration (micron)",
+     "Lube Oil Water Content (ppm)",
+     "Lube Oil Supply Press (barg)",
+     "Bearing Metal Temp (\u00b0C)"
+    ],
+    "flags": [
+     {
+      "param": "DE Radial Vibration (micron)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Lube Oil Water Content (ppm)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Lube Oil Supply Press (barg)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Bearing Metal Temp (\u00b0C)",
+      "week": 10,
+      "basis": "sustained-breach"
+     }
+    ],
+    "warmup_weeks": 8,
+    "earliest_possible_week": 9
+   },
+   {
+    "tag": "PM-4405B",
+    "mode": "Motor Bearing Failure (Overheating)",
+    "alarm_week": 15,
+    "trip_week": 21,
+    "first_flag_week": 9,
+    "lead_weeks": 6,
+    "params_monitored": [
+     "Motor DE Bearing Temp (\u00b0C)",
+     "Motor Vibration (mm/s)",
+     "Motor Ampere (A)",
+     "Winding Temp (\u00b0C)"
+    ],
+    "flags": [
+     {
+      "param": "Motor DE Bearing Temp (\u00b0C)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Motor Vibration (mm/s)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Motor Ampere (A)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Winding Temp (\u00b0C)",
+      "week": 9,
+      "basis": "sustained-breach"
+     }
+    ],
+    "warmup_weeks": 8,
+    "earliest_possible_week": 9
+   },
+   {
+    "tag": "HE-3301",
+    "mode": "High Fouling \u2014 Duty Loss & High dP",
+    "alarm_week": 11,
+    "trip_week": 21,
+    "first_flag_week": 9,
+    "lead_weeks": 2,
+    "params_monitored": [
+     "Tube-side dP (bar)",
+     "Heat Duty (% design)",
+     "Cold Outlet Temp (\u00b0C)",
+     "Feed Heavy-ends (%)"
+    ],
+    "flags": [
+     {
+      "param": "Tube-side dP (bar)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Heat Duty (% design)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Cold Outlet Temp (\u00b0C)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Feed Heavy-ends (%)",
+      "week": 10,
+      "basis": "sustained-breach"
+     }
+    ],
+    "warmup_weeks": 8,
+    "earliest_possible_week": 9
+   },
+   {
+    "tag": "BL-5702",
+    "mode": "High Vibration (Coupling Misalignment)",
+    "alarm_week": 6,
+    "trip_week": 21,
+    "first_flag_week": 9,
+    "lead_weeks": -3,
+    "params_monitored": [
+     "Overall Vibration (mm/s)",
+     "2X Harmonic (mm/s)",
+     "Coupling Offset (mm)",
+     "Bearing Temp (\u00b0C)"
+    ],
+    "flags": [
+     {
+      "param": "Overall Vibration (mm/s)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "2X Harmonic (mm/s)",
+      "week": 10,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Coupling Offset (mm)",
+      "week": 9,
+      "basis": "sustained-breach"
+     },
+     {
+      "param": "Bearing Temp (\u00b0C)",
+      "week": 9,
+      "basis": "sustained-breach"
+     }
+    ],
+    "warmup_weeks": 8,
+    "earliest_possible_week": 9
+   }
+  ],
+  "n_flagged": 5,
+  "n_total": 5,
+  "recall_pct": 100.0,
+  "ci_lo": 56.5508505247919,
+  "ci_hi": 100.00000000000003,
+  "median_lead_weeks": 2,
+  "beaten_their_alarm": 4,
+  "all_at_earliest_possible_week": true,
+  "limitation": "All five assets first flag at week 9 \u2014 the earliest week the 8-week warm-up permits. The detector is therefore reporting 'the series has left its baseline', not locating the onset of degradation. Treat as a case series (n=5), not a validated model."
+ }
+}

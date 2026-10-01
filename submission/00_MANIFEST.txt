@@ -1,0 +1,46 @@
+CALIBER 2026 - Case 2: Intelligent Manufacturing
+Submission bundle
+Generated: 2026-09-30 (prototype switched to full English, single pane of glass)
+
+Contents
+--------
+  01_prototype.html             563,783 bytes   [REAL]
+  02_demo_video.mp4                   0 bytes   [PLACEHOLDER]
+  03_presentation.pdf                15 bytes   [PLACEHOLDER]
+
+  TOTAL                         563,798 bytes  = 0.54 MB
+  LIMIT                      10,485,760 bytes  = 10.00 MB
+  HEADROOM                    9,921,962 bytes  = 9.46 MB
+
+How to open the prototype
+-------------------------
+Double-click 01_prototype.html. It runs in any modern browser from the file
+system. No internet connection, no install, no build step, no server.
+
+All three deliverables are required. A missing deliverable means
+disqualification, which is why this bundle is assembled and size-checked
+from the first day rather than at the end.
+
+Build & verification (2026-09-30)
+---------------------------------
+  Source : prototype/src/dasbor.html + prototype/src/dasbor.ts (English)
+  Build  : bun run prototype/build-dasbor.ts  -> 31/31 checks pass
+  Verify : bun prototype/cek-dasbor.ts         -> 13 tabs clean, 0 errors,
+           13/13 official figures rendered, tab labels English
+  Checks : build-dasbor.ts + cek-dasbor.ts verified from the repo root;
+           cek-dasbor.ts resolves dasbor.html relative to its own folder.
+
+What the prototype contains (13 tabs)
+-------------------------------------
+  Overview - RCA & CAPA - Case Reconstruction - KPI Contract - Energy -
+  Production - Emissions - Downtime - Problem Queue - Asset Detail -
+  Action Tracking - Model Evaluation - Data Governance
+
+Data coverage - everything supplied by the committee is used:
+  - Incident Database        380 incidents, all 23 columns (incl. equipment
+                             class A/B/C and MTO/AR numbers)
+  - Equipment Performance    5 assets x 3 sheets (26 weeks condition history)
+  - Production Data (PI)     5 assets x 721 hourly rows
+  - RCA & Downtime Data      5 documented RCA decks (4P, 4M+1E, CAPA/PAA,
+                             PIC, status, PM schedule) - all five integrated
+                             in one RCA & CAPA panel

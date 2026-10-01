@@ -1,0 +1,911 @@
+{
+ "PU-2101B": {
+  "rca_no": 1,
+  "tag": "PU-2101B",
+  "title": "Mechanical Seal Leakage",
+  "file": "RCA1 - PU-2101B Mechanical Seal Leakage.pptx",
+  "ar": "AR-2026-ARP-0117",
+  "plant": "PU-2101B  |  ARP",
+  "date_occ": "12 Mar 2026",
+  "pre_risk": "III  (Score 200)",
+  "pic_rca": "REL-05",
+  "problem_statement": "AR IDENTIFICATION",
+  "ar_type": "OPEDR (Operation) — Uptime",
+  "discipline": "ROT",
+  "eq_class": "PU-2101B  |  Class B",
+  "severity": "PRE-RISK",
+  "downtime_txt": "LOSS",
+  "loss_txt": "18.5 h",
+  "immediate_action": "Isolate PU-2101B, swap to spare PU-2101A, replace mechanical seal cartridge",
+  "date_reported": "13 Mar 2026",
+  "chronology": [
+   {
+    "ts": "11-Mar-2026",
+    "event": "ARP produced resin grade PR-5502 (Reactor Rate ± 13.6 T/H). Field operator noted minor seal weep on PU-2101B during routine round."
+   },
+   {
+    "ts": "12-Mar-2026 02:15",
+    "event": "Seal flush low-flow alarm annunciated; visible feed seal leak with low suction pressure. Pump auto-tripped on low discharge pressure."
+   },
+   {
+    "ts": "12-Mar-2026 02:40",
+    "event": "Feed section reduced; charge to reactor curtailed pending seal repair. Rotating team mobilized."
+   },
+   {
+    "ts": "12-Mar-2026 09:20",
+    "event": "Seal cartridge & shaft sleeve inspected — seal faces heat-checked / worn (dry-running signature)."
+   },
+   {
+    "ts": "12-Mar-2026 20:45",
+    "event": "New seal cartridge installed, pump commissioned, feed restored to ± 13.6 T/H."
+   }
+  ],
+  "historical_evidence": "IMPACT SUMMARY (4W)",
+  "impact_4w": {
+   "What": "Mechanical seal of PU-2101B leaked / failed",
+   "When": "12-Mar-2026 (02:15)",
+   "Scope": "Reduced charge feed to ARP reactor section",
+   "Uptime Loss": "18.5 hours  →  251.6 ton  →  $226.44k"
+  },
+  "actual_condition": "Feed reduction due to PU-2101B mechanical seal leak",
+  "target_condition": "ACTUAL CONDITION (Before Improvement)",
+  "target_metric": "Recurrence of this equipment failure mode: Before = 1 case   →   Target = 0 case",
+  "four_p": [
+   {
+    "no": "P1",
+    "param": "Pump operated above rated flow",
+    "result": "G",
+    "evidence": "Operated at 13.1–13.7 T/H vs rated max 18 T/H — within limit."
+   },
+   {
+    "no": "P2",
+    "param": "Suction pressure below NPSH margin",
+    "result": "NG",
+    "evidence": "Suction pressure dropped during feed swing; NPSH margin < 0.5 m (spec ≥ 1.0 m) — cavitation risk."
+   },
+   {
+    "no": "P3",
+    "param": "Seal flush flow below minimum",
+    "result": "NG",
+    "evidence": "Seal-flush flow measured 3–4 L/min vs 6 L/min minimum — seal ran dry intermittently."
+   },
+   {
+    "no": "P4",
+    "param": "Cooling water to seal cooler inadequate",
+    "result": "G",
+    "evidence": "Seal cooler outlet temp normal (42 °C) — cooling adequate."
+   },
+   {
+    "no": "P5",
+    "param": "Seal faces beyond service life",
+    "result": "G",
+    "evidence": "Seal in service 11 months, within 24-month design life."
+   }
+  ],
+  "four_m_1e": [
+   {
+    "no": "X1",
+    "item": "No low-NPSH / flush-flow interlock in DCS",
+    "result": "NG",
+    "evidence": "No automatic trip or alarm on loss of seal-flush flow."
+   },
+   {
+    "no": "X2",
+    "item": "Feed-swing SOP allows fast rate ramp",
+    "result": "NG",
+    "evidence": "SOP permits > 2 T/H per minute ramp, driving suction transients."
+   },
+   {
+    "no": "X3",
+    "item": "PM covers seal only, not flush system",
+    "result": "NG",
+    "evidence": "Seal-flush plan (Plan 11) not on the PM check-sheet."
+   },
+   {
+    "no": "X4",
+    "item": "Operator competency on seal-flush monitoring",
+    "result": "G",
+    "evidence": "Operators trained; no competency gap identified."
+   }
+  ],
+  "root_cause": "Premature mechanical seal failure caused by intermittent dry-running: suction cavitation during feed swings reduced NPSH and seal-flush flow dropped below the 6 L/min minimum, with no interlock to protect the seal.",
+  "capa": [
+   {
+    "rc": "P3",
+    "action": "Install seal-flush flow switch with DCS alarm on PU-2101B",
+    "plan_date": "24-Apr-2026",
+    "pic": "REL-05",
+    "status": "In Progress"
+   },
+   {
+    "rc": "X1",
+    "action": "Add low-NPSH / loss-of-flush trip interlock in DCS",
+    "plan_date": "24-May-2026",
+    "pic": "REL-02",
+    "status": "Open"
+   }
+  ],
+  "proactive": [
+   {
+    "rc": "P3",
+    "action": "Roll out flush-flow switch to PU-2101A spare",
+    "plan_date": "24-May-2026",
+    "pic": "REL-05",
+    "status": "Open"
+   },
+   {
+    "rc": "X1",
+    "action": "Apply interlock standard to all API-682 seal pumps in ARP",
+    "plan_date": "24-Jul-2026",
+    "pic": "REL-02",
+    "status": "Open"
+   }
+  ],
+  "preventive": [
+   {
+    "rc": "P2",
+    "cause": "Suction cavitation",
+    "action": "Revise feed-swing SOP to cap ramp at 1 T/H per minute",
+    "plan_date": "24-Apr-2026",
+    "pic": "ROT-01"
+   },
+   {
+    "rc": "X3",
+    "cause": "Flush system not in PM",
+    "action": "Add seal-flush system (Plan 11) to PU-2101B PM check-sheet",
+    "plan_date": "24-Apr-2026",
+    "pic": "REL-05"
+   }
+  ],
+  "pm_schedule": [
+   {
+    "pm_no": "PM-1",
+    "desc": "Weekly seal-flush flow & seal-pot level check PU-2101B",
+    "group": "Rotating",
+    "interval": "Weekly"
+   },
+   {
+    "pm_no": "PM-2",
+    "desc": "Quarterly seal condition & shaft run-out inspection",
+    "group": "Rotating",
+    "interval": "3-monthly"
+   }
+  ],
+  "risk_note": "Stage commissioning with bypass timer & operator brief",
+  "sum_downtime": "DOWNTIME",
+  "sum_prod_loss": "ESTIMATED LOSS",
+  "sum_loss": "PRE-RISK",
+  "sum_pre_risk": "18.5 h",
+  "key_actions": [
+   "Install seal-flush flow switch with DCS alarm on PU-2101B •  Add low-NPSH / loss-of-flush trip interlock in DCS •  Revise feed-swing SOP to cap ramp at 1 T/H per minute"
+  ]
+ },
+ "KO-3201": {
+  "rca_no": 2,
+  "tag": "KO-3201",
+  "title": "High Radial Vibration Trip",
+  "file": "RCA2 - KO-3201 High Radial Vibration Trip.pptx",
+  "ar": "AR-2026-ZCU-0142",
+  "plant": "KO-3201  |  ZCU",
+  "date_occ": "29 Apr 2026",
+  "pre_risk": "II  (Score 4000)",
+  "pic_rca": "REL-05",
+  "problem_statement": "AR IDENTIFICATION",
+  "ar_type": "OPEDR (Operation) — Uptime",
+  "discipline": "ROT",
+  "eq_class": "KO-3201  |  Class A",
+  "severity": "PRE-RISK",
+  "downtime_txt": "LOSS",
+  "loss_txt": "32.0 h",
+  "immediate_action": "Controlled shutdown of compression train, replace DE journal bearing, flush lube-oil system",
+  "date_reported": "30 Apr 2026",
+  "chronology": [
+   {
+    "ts": "27-Apr-2026",
+    "event": "ZCU compression train running normal; KO-3201 drive-end (DE) radial vibration trending up (from 28 to 52 micron over 5 days)."
+   },
+   {
+    "ts": "29-Apr-2026 06:40",
+    "event": "KO-3201 DE vibration reached high-high setpoint (75 micron); machinery protection system tripped the compressor."
+   },
+   {
+    "ts": "29-Apr-2026 08:10",
+    "event": "Plant rate cut to minimum; lube-oil sample taken — water content 1,800 ppm (spec < 500 ppm)."
+   },
+   {
+    "ts": "29-Apr-2026 18:00",
+    "event": "DE journal bearing removed — babbitt wiped/distressed. Lube-oil cooler tube leak confirmed."
+   },
+   {
+    "ts": "30-Apr-2026 14:40",
+    "event": "New bearing installed, lube-oil system flushed, cooler tube plugged, train restarted to 55 T/H."
+   }
+  ],
+  "historical_evidence": "IMPACT SUMMARY (4W)",
+  "impact_4w": {
+   "What": "KO-3201 tripped on high-high radial vibration",
+   "When": "29-Apr-2026 (06:40)",
+   "Scope": "ZCU compression train shutdown — full ethylene rate loss",
+   "Uptime Loss": "32.0 hours  →  1760.0 ton  →  $1584.0k"
+  },
+  "actual_condition": "Compressor trip due to bearing distress from contaminated lube oil",
+  "target_condition": "ACTUAL CONDITION (Before Improvement)",
+  "target_metric": "Recurrence of this equipment failure mode: Before = 1 case   →   Target = 0 case",
+  "four_p": [
+   {
+    "no": "P1",
+    "param": "Radial vibration above alarm",
+    "result": "NG",
+    "evidence": "DE vibration rose to 75 micron vs 45 micron alarm — bearing distress."
+   },
+   {
+    "no": "P2",
+    "param": "Lube-oil water content above spec",
+    "result": "NG",
+    "evidence": "Water content 1,800 ppm vs < 500 ppm spec — film breakdown."
+   },
+   {
+    "no": "P3",
+    "param": "Lube-oil supply pressure low",
+    "result": "G",
+    "evidence": "Header pressure 1.8 barg — within normal band."
+   },
+   {
+    "no": "P4",
+    "param": "Bearing beyond service life",
+    "result": "G",
+    "evidence": "Bearing in service 3 years vs 6-year design — within life."
+   },
+   {
+    "no": "P5",
+    "param": "Process surge / anti-surge margin",
+    "result": "G",
+    "evidence": "Anti-surge margin maintained; no surge event recorded."
+   }
+  ],
+  "four_m_1e": [
+   {
+    "no": "X1",
+    "item": "No online water-in-oil monitoring",
+    "result": "NG",
+    "evidence": "Water content only checked by weekly grab sample — slow detection."
+   },
+   {
+    "no": "X2",
+    "item": "Lube-oil cooler integrity not trended",
+    "result": "NG",
+    "evidence": "No routine cooler tube leak check between TAs."
+   },
+   {
+    "no": "X3",
+    "item": "Vibration alert limits too wide",
+    "result": "NG",
+    "evidence": "Alert at 60 micron gave little lead time before 75 micron trip."
+   },
+   {
+    "no": "X4",
+    "item": "Lube-oil purifier not in service",
+    "result": "G",
+    "evidence": "Purifier available and operational."
+   }
+  ],
+  "root_cause": "Journal-bearing babbitt distress caused by degraded oil-film strength from water ingress via a leaking lube-oil cooler tube, undetected due to absence of online water-in-oil monitoring, leading to rising vibration and a high-high trip.",
+  "capa": [
+   {
+    "rc": "P2",
+    "action": "Repair leaking lube-oil cooler tube (plug + re-test)",
+    "plan_date": "30-Apr-2026",
+    "pic": "STA-02",
+    "status": "Closed"
+   },
+   {
+    "rc": "X1",
+    "action": "Install online water-in-oil sensor on KO-3201 lube system",
+    "plan_date": "30-Jun-2026",
+    "pic": "REL-05",
+    "status": "In Progress"
+   }
+  ],
+  "proactive": [
+   {
+    "rc": "P2",
+    "action": "Retube lube-oil cooler at next TA",
+    "plan_date": "31-Oct-2026",
+    "pic": "STA-02",
+    "status": "Open"
+   },
+   {
+    "rc": "X1",
+    "action": "Apply online water-in-oil monitoring to KO-3202/3203",
+    "plan_date": "30-Sep-2026",
+    "pic": "REL-05",
+    "status": "Open"
+   }
+  ],
+  "preventive": [
+   {
+    "rc": "X3",
+    "cause": "Vibration limits too wide",
+    "action": "Tighten KO-3201 vibration alert to 45 micron & shorten trend-review cadence",
+    "plan_date": "30-May-2026",
+    "pic": "REL-05"
+   },
+   {
+    "rc": "X2",
+    "cause": "Cooler integrity not trended",
+    "action": "Add lube-oil cooler dP & conductivity trend to reliability dashboard",
+    "plan_date": "30-Jun-2026",
+    "pic": "REL-02"
+   }
+  ],
+  "pm_schedule": [
+   {
+    "pm_no": "PM-1",
+    "desc": "Weekly lube-oil water-content & particle count",
+    "group": "Reliability",
+    "interval": "Weekly"
+   },
+   {
+    "pm_no": "PM-2",
+    "desc": "6-monthly lube-oil cooler leak test",
+    "group": "Static",
+    "interval": "6-monthly"
+   },
+   {
+    "pm_no": "PM-3",
+    "desc": "Continuous vibration trend review KO-3201",
+    "group": "Reliability",
+    "interval": "Daily"
+   }
+  ],
+  "risk_note": null,
+  "sum_downtime": "DOWNTIME",
+  "sum_prod_loss": "ESTIMATED LOSS",
+  "sum_loss": "PRE-RISK",
+  "sum_pre_risk": "32.0 h",
+  "key_actions": [
+   "Repair leaking lube-oil cooler tube (plug + re-test) •  Install online water-in-oil sensor on KO-3201 lube system •  Tighten KO-3201 vibration alert to 45 micron & shorten trend-review cadence"
+  ]
+ },
+ "PM-4405B": {
+  "rca_no": 3,
+  "tag": "PM-4405B",
+  "title": "Motor Bearing Failure",
+  "file": "RCA3 - PM-4405B Motor Bearing Failure.pptx",
+  "ar": "AR-2026-NUP-0089",
+  "plant": "PM-4405B  |  NUP",
+  "date_occ": "08 Jul 2026",
+  "pre_risk": "III  (Score 200)",
+  "pic_rca": "REL-02",
+  "problem_statement": "AR IDENTIFICATION",
+  "ar_type": "OPEDR (Operation) — Uptime",
+  "discipline": "ELE",
+  "eq_class": "PM-4405B  |  Class B",
+  "severity": "PRE-RISK",
+  "downtime_txt": "LOSS",
+  "loss_txt": "8.0 h",
+  "immediate_action": "Start standby CW pump PM-4405C, isolate PM-4405B, replace motor DE & NDE bearings",
+  "date_reported": "08 Jul 2026",
+  "chronology": [
+   {
+    "ts": "06-Jul-2026",
+    "event": "Cooling-water system running on PM-4405B; motor DE bearing temperature trending up (68 → 84 °C)."
+   },
+   {
+    "ts": "08-Jul-2026 13:20",
+    "event": "Motor bearing high-temperature alarm; motor tripped on winding/bearing over-temp."
+   },
+   {
+    "ts": "08-Jul-2026 13:35",
+    "event": "Standby PM-4405C started; cooling-water supply maintained at reduced margin."
+   },
+   {
+    "ts": "08-Jul-2026 16:00",
+    "event": "Motor DE bearing found seized; grease degraded/carbonized. NDE bearing marginal."
+   },
+   {
+    "ts": "08-Jul-2026 21:20",
+    "event": "DE & NDE bearings replaced and re-greased; motor recommissioned."
+   }
+  ],
+  "historical_evidence": "IMPACT SUMMARY (4W)",
+  "impact_4w": {
+   "What": "PM-4405B motor DE bearing failed / overheated",
+   "When": "08-Jul-2026 (13:20)",
+   "Scope": "Loss of one cooling-water pump; reduced CW margin (standby covered)",
+   "Uptime Loss": "8.0 hours  →  160.0 ton  →  $112.0k"
+  },
+  "actual_condition": "CW pump motor trip due to bearing overheating",
+  "target_condition": "ACTUAL CONDITION (Before Improvement)",
+  "target_metric": "Recurrence of this equipment failure mode: Before = 1 case   →   Target = 0 case",
+  "four_p": [
+   {
+    "no": "P1",
+    "param": "Motor bearing temperature above limit",
+    "result": "NG",
+    "evidence": "DE bearing reached 84 °C vs 75 °C alarm — grease breakdown."
+   },
+   {
+    "no": "P2",
+    "param": "Motor over-loaded (high ampere)",
+    "result": "G",
+    "evidence": "Running current 132 A vs 150 A rated — within limit."
+   },
+   {
+    "no": "P3",
+    "param": "Cooling-fan / ventilation blocked",
+    "result": "G",
+    "evidence": "Fan cowl clean; ambient ventilation adequate."
+   },
+   {
+    "no": "P4",
+    "param": "Grease type incorrect",
+    "result": "G",
+    "evidence": "Correct high-temp lithium-complex grease used."
+   },
+   {
+    "no": "P5",
+    "param": "Bearing beyond service life",
+    "result": "G",
+    "evidence": "Bearing in service 2 years vs 5-year design — within life."
+   }
+  ],
+  "four_m_1e": [
+   {
+    "no": "X1",
+    "item": "Re-lubrication interval not risk-based",
+    "result": "NG",
+    "evidence": "Fixed 12-month interval too long for duty & ambient — grease degraded."
+   },
+   {
+    "no": "X2",
+    "item": "Bearing temperature not trended in CMMS",
+    "result": "NG",
+    "evidence": "No condition-based trigger; only alarm at failure point."
+   },
+   {
+    "no": "X3",
+    "item": "Vibration route excludes utility motors",
+    "result": "NG",
+    "evidence": "PM-4405B not on the monthly vibration route."
+   },
+   {
+    "no": "X4",
+    "item": "Operator round frequency",
+    "result": "G",
+    "evidence": "Rounds performed per schedule; local gauge read."
+   }
+  ],
+  "root_cause": "Motor drive-end bearing failure caused by grease degradation from an over-extended, non-risk-based re-lubrication interval, undetected due to absence of bearing-temperature trending, resulting in bearing overheating and motor trip.",
+  "capa": [
+   {
+    "rc": "X1",
+    "action": "Revise PM-4405B re-lubrication interval to risk-based (4-monthly)",
+    "plan_date": "31-Jul-2026",
+    "pic": "REL-02",
+    "status": "In Progress"
+   },
+   {
+    "rc": "X2",
+    "action": "Add motor bearing temperature trending & alert to CMMS",
+    "plan_date": "31-Aug-2026",
+    "pic": "REL-05",
+    "status": "Open"
+   }
+  ],
+  "proactive": [
+   {
+    "rc": "X1",
+    "action": "Apply risk-based re-greasing to all CW pump motors",
+    "plan_date": "31-Aug-2026",
+    "pic": "REL-02",
+    "status": "Open"
+   },
+   {
+    "rc": "X2",
+    "action": "Extend bearing-temp trending to utility motor fleet",
+    "plan_date": "30-Sep-2026",
+    "pic": "REL-05",
+    "status": "Open"
+   }
+  ],
+  "preventive": [
+   {
+    "rc": "X3",
+    "cause": "Motor not on vibration route",
+    "action": "Add PM-4405B/C to monthly vibration & thermography route",
+    "plan_date": "31-Jul-2026",
+    "pic": "REL-02"
+   },
+   {
+    "rc": "P1",
+    "cause": "Bearing over-temp",
+    "action": "Verify motor cooling-fan & louvre condition each PM",
+    "plan_date": "31-Jul-2026",
+    "pic": "ELE-01"
+   }
+  ],
+  "pm_schedule": [
+   {
+    "pm_no": "PM-1",
+    "desc": "Risk-based motor bearing re-greasing PM-4405B",
+    "group": "Electrical",
+    "interval": "4-monthly"
+   },
+   {
+    "pm_no": "PM-2",
+    "desc": "Monthly motor bearing temperature & vibration reading",
+    "group": "Reliability",
+    "interval": "Monthly"
+   }
+  ],
+  "risk_note": null,
+  "sum_downtime": "DOWNTIME",
+  "sum_prod_loss": "ESTIMATED LOSS",
+  "sum_loss": "PRE-RISK",
+  "sum_pre_risk": "8.0 h",
+  "key_actions": [
+   "Revise PM-4405B re-lubrication interval to risk-based (4-monthly) •  Add motor bearing temperature trending & alert to CMMS •  Add PM-4405B/C to monthly vibration & thermography route"
+  ]
+ },
+ "HE-3301": {
+  "rca_no": 4,
+  "tag": "HE-3301",
+  "title": "High Fouling — Duty Loss & High dP",
+  "file": "RCA4 - HE-3301 High Fouling — Duty Loss & High dP.pptx",
+  "ar": "AR-2026-ZCU-0165",
+  "plant": "HE-3301  |  ZCU",
+  "date_occ": "21 May 2026",
+  "pre_risk": "III  (Score 400)",
+  "pic_rca": "STA-02",
+  "problem_statement": "AR IDENTIFICATION",
+  "ar_type": "OPEDR (Operation) — Uptime",
+  "discipline": "STA",
+  "eq_class": "HE-3301  |  Class B",
+  "severity": "PRE-RISK",
+  "downtime_txt": "LOSS",
+  "loss_txt": "Moderate",
+  "immediate_action": "Isolate HE-3301, bypass via spare train, hydro-jet clean tube bundle",
+  "date_reported": "22 May 2026",
+  "chronology": [
+   {
+    "ts": "18-May-2026",
+    "event": "Heat-recovery section running; HE-3301 tube-side dP rising (0.4 → 0.9 bar) and cold-outlet temperature falling."
+   },
+   {
+    "ts": "21-May-2026 09:00",
+    "event": "Preheat duty dropped ~35% below design; unit rate reduced to protect downstream. Exchanger isolated."
+   },
+   {
+    "ts": "21-May-2026 11:30",
+    "event": "Tube bundle inspected — heavy coke/polymer deposition on tube side."
+   },
+   {
+    "ts": "21-May-2026 21:00",
+    "event": "Bundle hydro-jet cleaned and returned to service; duty and dP restored, rate ramped back to 30 T/H."
+   }
+  ],
+  "historical_evidence": "IMPACT SUMMARY (4W)",
+  "impact_4w": {
+   "What": "HE-3301 duty loss & high dP from tube-side fouling",
+   "When": "21-May-2026 (09:00)",
+   "Scope": "Partial rate cut of ZCU heat-recovery section",
+   "Uptime Loss": "12.0 hours  →  216.0 ton  →  $183.6k"
+  },
+  "actual_condition": "Rate cut due to HE-3301 fouling (duty loss + high dP)",
+  "target_condition": "ACTUAL CONDITION (Before Improvement)",
+  "target_metric": "Recurrence of this equipment failure mode: Before = 1 case   →   Target = 0 case",
+  "four_p": [
+   {
+    "no": "P1",
+    "param": "Tube-side dP above limit",
+    "result": "NG",
+    "evidence": "dP reached 0.9 bar vs 0.6 bar limit — heavy fouling."
+   },
+   {
+    "no": "P2",
+    "param": "Heat duty below design",
+    "result": "NG",
+    "evidence": "Duty fell to ~65% of design — loss of preheat."
+   },
+   {
+    "no": "P3",
+    "param": "Feed heavy-ends above spec",
+    "result": "NG",
+    "evidence": "Heavy-ends 2.4% vs < 1.5% design — increased fouling precursor."
+   },
+   {
+    "no": "P4",
+    "param": "Tube velocity below design",
+    "result": "G",
+    "evidence": "Tube velocity 1.9 m/s vs 1.5 m/s min — adequate."
+   },
+   {
+    "no": "P5",
+    "param": "Cooling/heating medium temperature off",
+    "result": "G",
+    "evidence": "Shell-side inlet temperature within normal band."
+   }
+  ],
+  "four_m_1e": [
+   {
+    "no": "X1",
+    "item": "No dP-based cleaning trigger",
+    "result": "NG",
+    "evidence": "Cleaning was time-based only; no dP alarm to trigger action."
+   },
+   {
+    "no": "X2",
+    "item": "Feed filtration performance not trended",
+    "result": "NG",
+    "evidence": "Upstream filter dP not monitored, allowing heavy-ends carry-over."
+   },
+   {
+    "no": "X3",
+    "item": "Fouling KPI not on dashboard",
+    "result": "NG",
+    "evidence": "No fouling factor / duty KPI tracked between TAs."
+   },
+   {
+    "no": "X4",
+    "item": "Bundle metallurgy inadequate",
+    "result": "G",
+    "evidence": "Bundle metallurgy suitable for service."
+   }
+  ],
+  "root_cause": "Accelerated tube-side coke/polymer fouling driven by higher-than-design feed heavy-ends, allowed to progress by the absence of a dP-based cleaning trigger and fouling KPI, causing duty loss, high dP and a forced rate cut.",
+  "capa": [
+   {
+    "rc": "X1",
+    "action": "Add dP-based cleaning trigger & alarm for HE-3301",
+    "plan_date": "22-Jun-2026",
+    "pic": "STA-02",
+    "status": "In Progress"
+   },
+   {
+    "rc": "P3",
+    "action": "Tighten feed heavy-ends control & filtration",
+    "plan_date": "30-Jun-2026",
+    "pic": "ROT-01",
+    "status": "Open"
+   }
+  ],
+  "proactive": [
+   {
+    "rc": "X1",
+    "action": "Apply dP-trigger logic to parallel exchangers HE-3302/3303",
+    "plan_date": "22-Jul-2026",
+    "pic": "STA-02",
+    "status": "Open"
+   },
+   {
+    "rc": "P3",
+    "action": "Review upstream fractionation cut-point control",
+    "plan_date": "31-Jul-2026",
+    "pic": "ROT-01",
+    "status": "Open"
+   }
+  ],
+  "preventive": [
+   {
+    "rc": "X3",
+    "cause": "No fouling KPI",
+    "action": "Add fouling factor & duty KPI to reliability dashboard",
+    "plan_date": "22-Jun-2026",
+    "pic": "STA-02"
+   },
+   {
+    "rc": "X2",
+    "cause": "Filter not trended",
+    "action": "Add upstream filter dP trend & replacement trigger",
+    "plan_date": "30-Jun-2026",
+    "pic": "ROT-01"
+   }
+  ],
+  "pm_schedule": [
+   {
+    "pm_no": "PM-1",
+    "desc": "Daily HE-3301 dP & duty trend review",
+    "group": "Process",
+    "interval": "Daily"
+   },
+   {
+    "pm_no": "PM-2",
+    "desc": "Bundle inspection & cleaning at dP trigger / next TA",
+    "group": "Static",
+    "interval": "Condition / TA"
+   }
+  ],
+  "risk_note": null,
+  "sum_downtime": "DOWNTIME",
+  "sum_prod_loss": "ESTIMATED LOSS",
+  "sum_loss": "PRE-RISK",
+  "sum_pre_risk": "12.0 h",
+  "key_actions": [
+   "Add dP-based cleaning trigger & alarm for HE-3301 •  Tighten feed heavy-ends control & filtration •  Add fouling factor & duty KPI to reliability dashboard"
+  ]
+ },
+ "BL-5702": {
+  "rca_no": 5,
+  "tag": "BL-5702",
+  "title": "High Vibration",
+  "file": "RCA5 - BL-5702 High Vibration.pptx",
+  "ar": "AR-2026-OPP-0203",
+  "plant": "BL-5702  |  OPP",
+  "date_occ": "17 Jun 2026",
+  "pre_risk": "III  (Score 400)",
+  "pic_rca": "ROT-01",
+  "problem_statement": "AR IDENTIFICATION",
+  "ar_type": "OPEDR (Operation) — Uptime",
+  "discipline": "ROT",
+  "eq_class": "BL-5702  |  Class A",
+  "severity": "PRE-RISK",
+  "downtime_txt": "LOSS",
+  "loss_txt": "14.0 h",
+  "immediate_action": "Stop BL-5702, re-align coupling, replace worn coupling element",
+  "date_reported": "18 Jun 2026",
+  "chronology": [
+   {
+    "ts": "15-Jun-2026",
+    "event": "OPP running normal; BL-5702 vibration trending up (4.2 → 8.5 mm/s) with 2X harmonic rising."
+   },
+   {
+    "ts": "17-Jun-2026 04:30",
+    "event": "BL-5702 vibration reached alarm (11 mm/s); blower stopped to prevent damage — powder handling section halted."
+   },
+   {
+    "ts": "17-Jun-2026 07:00",
+    "event": "Coupling element found worn/cracked; laser alignment showed 0.35 mm offset (spec < 0.05 mm)."
+   },
+   {
+    "ts": "17-Jun-2026 18:30",
+    "event": "Coupling element replaced, unit re-aligned to < 0.05 mm, blower restarted to 38 T/H."
+   }
+  ],
+  "historical_evidence": "IMPACT SUMMARY (4W)",
+  "impact_4w": {
+   "What": "BL-5702 high vibration from coupling misalignment",
+   "When": "17-Jun-2026 (04:30)",
+   "Scope": "OPP powder-handling section stop",
+   "Uptime Loss": "14.0 hours  →  532.0 ton  →  $478.8k"
+  },
+  "actual_condition": "Blower stop due to high vibration (misalignment)",
+  "target_condition": "ACTUAL CONDITION (Before Improvement)",
+  "target_metric": "Recurrence of this equipment failure mode: Before = 1 case   →   Target = 0 case",
+  "four_p": [
+   {
+    "no": "P1",
+    "param": "Overall vibration above alarm",
+    "result": "NG",
+    "evidence": "Vibration reached 11 mm/s vs 7 mm/s alarm — misalignment signature."
+   },
+   {
+    "no": "P2",
+    "param": "Coupling alignment out of tolerance",
+    "result": "NG",
+    "evidence": "Offset 0.35 mm vs < 0.05 mm spec — angular/parallel misalignment."
+   },
+   {
+    "no": "P3",
+    "param": "Bearing condition degraded",
+    "result": "G",
+    "evidence": "Bearing envelope/shock-pulse normal — no bearing defect."
+   },
+   {
+    "no": "P4",
+    "param": "Foundation / soft-foot",
+    "result": "NG",
+    "evidence": "Soft-foot 0.12 mm found on one foot — contributed to misalignment."
+   },
+   {
+    "no": "P5",
+    "param": "Rotor unbalance",
+    "result": "G",
+    "evidence": "1X component within balance grade — no unbalance."
+   }
+  ],
+  "four_m_1e": [
+   {
+    "no": "X1",
+    "item": "Alignment check not in routine PM",
+    "result": "NG",
+    "evidence": "PM did not include periodic laser alignment / soft-foot check."
+   },
+   {
+    "no": "X2",
+    "item": "Coupling element life not tracked",
+    "result": "NG",
+    "evidence": "Elastomer coupling element run beyond recommended 12-month life."
+   },
+   {
+    "no": "X3",
+    "item": "Vibration route interval too long",
+    "result": "NG",
+    "evidence": "Monthly route missed the fast-rising 2-day trend."
+   },
+   {
+    "no": "X4",
+    "item": "Alignment tools / competency",
+    "result": "G",
+    "evidence": "Laser alignment tool & trained technicians available."
+   }
+  ],
+  "root_cause": "High vibration from coupling misalignment aggravated by soft-foot and an over-aged elastomer coupling element, undetected because periodic alignment/soft-foot checks were absent from the PM and the vibration route interval was too long.",
+  "capa": [
+   {
+    "rc": "X1",
+    "action": "Add periodic laser alignment & soft-foot check to BL-5702 PM",
+    "plan_date": "18-Jul-2026",
+    "pic": "ROT-01",
+    "status": "In Progress"
+   },
+   {
+    "rc": "X2",
+    "action": "Track coupling element life & replace at 12 months",
+    "plan_date": "18-Jul-2026",
+    "pic": "REL-05",
+    "status": "Open"
+   }
+  ],
+  "proactive": [
+   {
+    "rc": "X1",
+    "action": "Roll out alignment check to all Class-A blowers in OPP",
+    "plan_date": "18-Aug-2026",
+    "pic": "ROT-01",
+    "status": "Open"
+   },
+   {
+    "rc": "X2",
+    "action": "Create coupling-element replacement register for OPP trains",
+    "plan_date": "31-Aug-2026",
+    "pic": "REL-05",
+    "status": "Open"
+   }
+  ],
+  "preventive": [
+   {
+    "rc": "X3",
+    "cause": "Route interval too long",
+    "action": "Shorten BL-5702 vibration route to weekly",
+    "plan_date": "18-Jul-2026",
+    "pic": "REL-05"
+   },
+   {
+    "rc": "P4",
+    "cause": "Soft-foot",
+    "action": "Correct soft-foot & re-shim baseplate BL-5702",
+    "plan_date": "18-Jun-2026",
+    "pic": "ROT-01"
+   }
+  ],
+  "pm_schedule": [
+   {
+    "pm_no": "PM-1",
+    "desc": "6-monthly laser alignment & soft-foot check BL-5702",
+    "group": "Rotating",
+    "interval": "6-monthly"
+   },
+   {
+    "pm_no": "PM-2",
+    "desc": "Coupling element inspection/replacement",
+    "group": "Rotating",
+    "interval": "12-monthly"
+   },
+   {
+    "pm_no": "PM-3",
+    "desc": "Weekly vibration trend review BL-5702",
+    "group": "Reliability",
+    "interval": "Weekly"
+   }
+  ],
+  "risk_note": null,
+  "sum_downtime": "DOWNTIME",
+  "sum_prod_loss": "ESTIMATED LOSS",
+  "sum_loss": "PRE-RISK",
+  "sum_pre_risk": "14.0 h",
+  "key_actions": [
+   "Add periodic laser alignment & soft-foot check to BL-5702 PM •  Track coupling element life & replace at 12 months •  Shorten BL-5702 vibration route to weekly"
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+_build/
+.build/
+*.bak
+*.bak-id
+*.bak-mixed
+
+_audit_*.py
+_sweep_*.py
+_add_pilot.py
+_audit_out*.txt
+_arsip_sweep/
+
+Supporting Data/
+*.zip
+The Case - CALIBER 2026.pdf
+MOM_TECHNICAL_MEETING_CALIBER2026.*
+Timeline_CALIBER2026.xlsx
+REKAP_QA_TECHNICAL_MEETING.*
+
+.case.txt
+documents_session-*.zip
