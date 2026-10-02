@@ -37,7 +37,7 @@ const ctx = vm.createContext(Object.assign({ console }, sandbox));
 const api = vm.runInContext(m[1] + "\n;({render, go, state, V: (typeof V!=='undefined'?V:null), INC, EQC, META, eff, agg, alarms, plantAgg: (typeof plantAgg!=='undefined'?plantAgg:null), plantCards: (typeof plantCards!=='undefined'?plantCards:null)});", ctx);
 
 // note: incdet is rendered via openInc() modal flow, not via state.v; skip direct render
-const views = ["lobby", "overview", "assets", "assetdet", "incidents", "condition", "production", "energy", "rca", "followup", "alarm", "personnel", "reports"];
+const views = ["lobby", "overview", "assets", "assetdet", "incidents", "logsheet", "condition", "production", "energy", "rca", "followup", "alarm", "personnel", "reports"];
 const errs = [];
 // goa state-dependent views need setup
 const setup = {
@@ -71,6 +71,7 @@ const lob = (() => { vm.runInContext("state.v='lobby';render();", ctx); return e
 const cond = (() => { vm.runInContext("state.v='condition';render();", ctx); return els.views.innerHTML; })();
 const en = (() => { vm.runInContext("state.v='energy';render();", ctx); return els.views.innerHTML; })();
 const fol = (() => { vm.runInContext("state.v='followup';render();", ctx); return els.views.innerHTML; })();
+const log = (() => { vm.runInContext("state.v='logsheet';render();", ctx); return els.views.innerHTML; })();
 const checks = [
   ["overview has 380", /380/.test(ov)],
   ["overview has US$", /US\$/.test(ov)],
@@ -91,6 +92,11 @@ const checks = [
   ["logo-mark present", t.includes("logo-mark")],
   ["import CSV button", /Import CSV/.test(inc)],
   ["duty badge topbar", t.includes('id="onduty"')],
+  ["logsheet trip header", /TRIP LOGSHEET/.test(log)],
+  ["logsheet trip columns", /Trip/.test(log) && /Normal/.test(log) && /Duration/.test(log)],
+  ["logsheet followup col", /Follow-up/.test(log)],
+  ["logsheet cause col", /Cause/.test(log)],
+  ["logsheet nav entry", t.includes('data-v="logsheet"')],
 ];
 // Indonesian leftovers in UI strings (exclude data titles which may contain ID? data is EN; check common words)
 const idWords = ["\u00c9diting", "tindak lanjut", "petugas", "gangguan", "tambah", "simpan", "Lihat", "Cari ", "Beranda", "Laporan", "Pemantauan", "Pengaturan", "Bantuan", "Selamat", "Pagi", "bulan", "tahun", "dengan", "untuk", "dari ", "yang ", "adalah", "tidak", "sudah", "belum"];

@@ -244,6 +244,36 @@ input[type=range]{width:100px}
 .hero3 .hs{background:rgba(255,255,255,.12);border-radius:10px;padding:8px 16px;min-width:130px}
 .hero3 .hs b{display:block;font-size:20px}
 .hero3 .hs span{font-size:10.5px;color:#C9D5E8}
+.logwrap{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.loghead{padding:16px 16px 12px}
+.loghead h2{font-size:15px;font-weight:800;letter-spacing:-.01em}
+.loghead .sub{color:var(--mut);font-size:11.5px;margin-top:2px}
+.logfilt{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 12px;align-items:center}
+.logfilt select,.logfilt input{border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-family:inherit;font-size:11.5px;background:#fff;color:var(--ink)}
+.logtable{width:100%;border-collapse:collapse;font-size:11.5px;min-width:1180px}
+.logtable th{position:sticky;top:0;background:#F8FAFF;z-index:2;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);padding:9px 10px;border-bottom:1px solid var(--line);border-top:1px solid var(--line);text-align:left;font-weight:700;white-space:nowrap}
+.logtable td{padding:9px 10px;border-bottom:1px solid #F1F5F9;vertical-align:top}
+.logtable tbody tr{cursor:pointer}
+.logtable tbody tr:hover td{background:#F8FAFF}
+tr.logcrit td:first-child{border-left:3px solid #DC2626}
+tr.logwarn td:first-child{border-left:3px solid #D97706}
+tr.logok td:first-child{border-left:3px solid #16A34A}
+.dur-short{color:#D97706;font-weight:800;white-space:nowrap}
+.dur-long{color:#DC2626;font-weight:800;white-space:nowrap}
+.causecat{color:#1D4ED8;font-weight:700}
+.causedet{color:var(--mut);font-size:10.5px;max-width:230px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.st .dt{width:8px;height:8px;border-radius:50%;flex:none}
+.st-red{color:#DC2626}.st-red .dt{background:#DC2626}
+.st-pur{color:#7C3AED}.st-pur .dt{background:#7C3AED}
+.st-grn{color:#16A34A}.st-grn .dt{background:#16A34A}
+.cmdpill{display:inline-block;font-size:9.5px;font-weight:800;border-radius:6px;padding:1px 7px;margin-top:4px;color:#fff}
+.cmd1{background:#059669}.cmd2{background:#B45309}
+.evthumb{width:40px;height:30px;border-radius:6px;object-fit:cover;border:1px solid var(--line)}
+.evbox{display:inline-flex;width:40px;height:30px;border-radius:6px;align-items:center;justify-content:center;border:1px dashed var(--line);background:#F8FAFF}
+.logpg{display:flex;gap:6px;align-items:center;justify-content:flex-end;padding:12px 16px;font-size:11.5px;color:var(--mut);flex-wrap:wrap}
+.logpg button{border:1px solid var(--line);background:#fff;border-radius:7px;min-width:28px;height:28px;cursor:pointer;font-family:inherit;font-size:11.5px}
+.logpg button.on{background:#0A2342;color:#fff;border-color:#0A2342}
 /* ---------- responsive: small phone ---------- */
 @media(max-width:480px){
 .row5,.row4{grid-template-columns:1fr}
@@ -264,6 +294,7 @@ h1{font-size:16px}
   <button class="mi" data-v="overview" onclick="go('overview')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Overview</button>
   <button class="mi" data-v="assets" onclick="go('assets')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span>Assets</button>
   <button class="mi" data-v="incidents" onclick="go('incidents')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>Incidents</button>
+  <button class="mi" data-v="logsheet" onclick="go('logsheet')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>Logsheet</button>
   <button class="mi" data-v="condition" onclick="go('condition')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c2.5 0 2.5-6 5-6s2.5 12 5 12 2.5-12 5-12 2.5 6 5 6"/></svg></span>Condition</button>
   <button class="mi" data-v="production" onclick="go('production')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7 12 12l8.7-5M12 22V12"/></svg></span>Production</button>
   <button class="mi" data-v="energy" onclick="go('energy')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>Energy</button>
@@ -331,7 +362,7 @@ function ring(pct,color){const C=2*Math.PI*44;return `<div class="ring"><svg wid
 function modal(h){const m=document.getElementById("modal");m.innerHTML=`<div class="mbox">${h}</div>`;m.classList.add("on");m.onclick=e=>{if(e.target.id==="modal")closeModal();};}
 function closeModal(){const m=document.getElementById("modal");m.classList.remove("on");m.innerHTML="";}
 function toast(t){const d=document.createElement("div");d.className="tst";d.textContent=t;document.getElementById("toast").appendChild(d);setTimeout(()=>d.remove(),3200);}
-const state={v:"lobby",pg:1,q:"",af:"ALL",ap:"ALL",detTag:EQC[0].tag,rcaTag:EQC[0].tag,ctag:EQC[0].tag,cp:0,rep:null,sub:"ov",onduty:""};
+const state={v:"lobby",pg:1,q:"",af:"ALL",ap:"ALL",detTag:EQC[0].tag,rcaTag:EQC[0].tag,ctag:EQC[0].tag,cp:0,rep:null,sub:"ov",onduty:"",lgpg:1,lgq:"",lgunit:"ALL",lgcause:"ALL",lgst:"ALL"};
 function go(v){state.v=v;state.pg=1;render();}
 function tick(){const el=document.getElementById("clock");if(el){const n=new Date();el.textContent="01 October 2026 - "+String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0")+" WIB";}}
 setInterval(tick,15000);
@@ -348,6 +379,11 @@ function spark(pts,color){const w=96,h=30,p=3;const f=pts.filter(v=>v!=null&&isF
 /* horizontal bar row: label + track + value, whole row clickable */
 function hbar(label,val,mx,color,onclick){const w=mx?Math.max(6,Math.round(val/mx*100)):0;return `<button class="rankrow" onclick="${onclick}" title="Open detail"><span class="rankno" style="background:${color}">${esc(label.slice(0,1))}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(label)}</b><b class="mono">${val}</b></div><div class="rankbar" style="width:${w}%;background:${color};margin-top:4px"></div></div></button>`;}
 /* ================= VIEWS (shared) ================= */
+/* ---------- Logsheet helpers: one row = one incident, PLN-style ---------- */
+function lgCause(r){const m=String(r.mech||"");if(/leak/i.test(m))return{cat:"Leakage / component",det:String(r.component||"")+": "+String(r.title||"")};if(/vibr/i.test(m))return{cat:"High vibration",det:String(r.component||"")+": "+String(r.title||"")};if(/worn/i.test(m))return{cat:"Worn out / aging",det:String(r.component||"")+": "+String(r.title||"")};if(/crack/i.test(m))return{cat:"Crack / fracture",det:String(r.component||"")+": "+String(r.title||"")};if(/foul/i.test(m))return{cat:"Fouling / deposit",det:String(r.component||"")+": "+String(r.title||"")};if(/error|malfunc|loose|stuck|break|overheat|low|motor|mech|high/i.test(m))return{cat:m,det:String(r.component||"")+": "+String(r.title||"")};return{cat:m||"Recorded",det:String(r.component||"")+": "+String(r.title||"")};}
+function lgTrip(r){const hrs=+r.downtime||0;if(hrs<=0)return{start:String(r.date).slice(0,10),end:"-",mins:0,txt:"-",cls:"dur-short"};const d0=new Date(String(r.date).slice(0,10)+"T00:00:00");const d1=new Date(d0.getTime()+hrs*3600e3);const mins=Math.round(hrs*60);const h=Math.floor(mins/60),mm=mins%60;const txt=h?h+" h "+mm+" min":mm+" min";return{start:fD(r.date),end:fD(d1.getFullYear()+"-"+String(d1.getMonth()+1).padStart(2,"0")+"-"+String(d1.getDate()).padStart(2,"0")),mins,txt,cls:hrs>=1?"dur-long":"dur-short"};}
+function lgStatus(r){const fl=follows.filter(f=>f.serial===r.serial);const done=fl.filter(f=>f.status==="Done"||f.status==="Verified").length;const st=stOf(r);if(st==="Closed"||done>0)return{cls:"st-grn",txt:"Done",cmd:fl.length>0?1:0};if(fl.length)return{cls:"st-pur",txt:"In progress",cmd:fl.length>1?2:1};if(st==="Overdue")return{cls:"st-red",txt:"Open - overdue",cmd:0};return{cls:"st-pur",txt:"Open",cmd:0};}
+function lgRelay(r){const d=String(r.discipline||"").toUpperCase();if(d==="ELE")return"MOTOR PROT";if(d==="INS")return"SENSOR";return"MECH SEAL";}
 function plantAgg(){const E=eff();const m={};E.forEach(r=>{const k=r.plant||"?";m[k]=m[k]||{u:k,n:0,loss:0,od:0,open:0};m[k].n++;m[k].loss+=(+r.total_loss||0)*1000;if(OPEN.has(r.status)){m[k].open++;if(r.rca_due&&new Date(r.rca_due)<TODAY)m[k].od++;}});return Object.values(m).sort((a,b)=>b.loss-a.loss);}
 function mechAgg(){const E=eff();const m={};E.forEach(r=>{const k=r.mech||"?";m[k]=m[k]||{k,n:0,loss:0};m[k].n++;m[k].loss+=(+r.total_loss||0)*1000;});return Object.values(m).sort((a,b)=>b.loss-a.loss);}
 function worstOd(){const od=agg().od;return od.map(r=>{const o={};for(const k in r)o[k]=r[k];o.late=lateOf(r)||0;return o;}).sort((a,b)=>(+b.total_loss||0)*b.late-(+a.total_loss||0)*a.late)[0];}
@@ -481,6 +517,32 @@ ${page.map(r=>{const sv=sevOf(r),st=stOf(r);const ed=edits[r.serial]?" ✎":"";r
 <td><span class="pill ${pillS(sv)}">${sv}</span></td><td><span class="pill ${pillT(st)}">${st}</span></td><td class="num">${usd((+r.total_loss||0)*1000)}</td>
 <td onclick="event.stopPropagation()"><button class="link" onclick="editInc(${r.serial})">${ICO.edit} Edit</button> - <button class="link" onclick="newFol(${r.serial})">Follow-up</button></td></tr>`;}).join("")}</tbody></table></div>
 <div class="pager">Showing ${page.length} of ${rows.length}<button onclick="state.pg=1;render()">‹</button><button class="on">${state.pg}</button><span>of ${pages}</span><button onclick="state.pg=${Math.min(pages,state.pg+1)};render()">›</button></div></div></div>`;}
+
+function evArt(seed,ok){let h=0;for(const c of String(seed))h=(h*31+c.charCodeAt(0))%997;const tree=h%3===0,pump=h%3===1;const inner=tree?`<rect x="6" y="4" width="28" height="18" rx="2" fill="#1A56DB"/><circle cx="20" cy="26" r="8" fill="#16A34A"/><rect x="18" y="30" width="4" height="8" fill="#92400E"/>`:pump?`<rect x="6" y="14" width="28" height="14" rx="4" fill="#1f9ab5"/><circle cx="20" cy="21" r="5" fill="#fff"/>`:`<rect x="10" y="6" width="20" height="22" rx="2" fill="#fff" stroke="#0A2342"/><circle cx="20" cy="16" r="5" fill="none" stroke="#DC2626" stroke-width="2"/>`;
+return `<span class="evbox" title="Evidence attached - tap row for detail"><svg viewBox="0 0 40 34" style="width:34px;height:28px">${inner}${ok?'<circle cx="33" cy="7" r="4" fill="#16A34A"/>':""}</svg></span>`;}
+function vLogsheet(){const E=eff();let rows=[...E].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+if(state.lgunit!=="ALL")rows=rows.filter(r=>r.plant===state.lgunit);
+if(state.lgcause!=="ALL"){const q=state.lgcause.toLowerCase();rows=rows.filter(r=>lgCause(r).cat.toLowerCase()===q);}
+if(state.lgst!=="ALL"){rows=rows.filter(r=>lgStatus(r).txt===state.lgst);}
+if(state.lgq){const q=state.lgq.toLowerCase();rows=rows.filter(r=>(r.plant+" "+r.tag+" "+r.title+" "+r.mech+(r.pic||"")+(r.ar||"")).toLowerCase().includes(q));}
+const units=[...new Set(E.map(r=>r.plant))].sort();
+const causes=[...new Set(E.map(r=>lgCause(r).cat))].sort();
+const sts=[...new Set(E.map(r=>lgStatus(r).txt))];
+const per=25,pages=Math.max(1,Math.ceil(rows.length/per));if(state.lgpg>pages)state.lgpg=pages;
+const page=rows.slice((state.lgpg-1)*per,state.lgpg*per);
+const from=rows.length?(state.lgpg-1)*per+1:0,to=(state.lgpg-1)*per+page.length;
+return `<h1><span class="live-dot"></span> Logsheet - every trip, one line each</h1><div class="sub">Newest trip first - tap any row for the full story + evidence. Filters below narrow the book.</div>
+<div class="howto"><b>How to read:</b> TRIP = when it stopped. NORMAL = when it ran again. DURATION orange = short, red = 1 hour+. CAUSE blue = what broke. FOLLOW-UP dot: red = nobody on it, purple = in progress, green = done.</div>
+<div class="logwrap"><div class="loghead"><h2>TRIP LOGSHEET</h2><div class="sub">${rows.length} events - page ${state.lgpg} of ${pages} - tap a row for detail${state.lgunit!=="ALL"||state.lgcause!=="ALL"||state.lgst!=="ALL"||state.lgq?` - filtered <button class="link" onclick="state.lgunit='ALL';state.lgcause='ALL';state.lgst='ALL';state.lgq='';state.lgpg=1;render()">(show all)</button>`:""}</div></div>
+<div class="logfilt"><input placeholder="Search tag, title, PIC…" style="max-width:220px" value="${esc(state.lgq)}" oninput="state.lgq=this.value;state.lgpg=1;renderList()">
+<select onchange="state.lgunit=this.value;state.lgpg=1;render()"><option value="ALL">All units</option>${units.map(u=>`<option${u===state.lgunit?" selected":""}>${esc(u)}</option>`).join("")}</select>
+<select onchange="state.lgcause=this.value;state.lgpg=1;render()"><option value="ALL">All causes</option>${causes.map(c=>`<option${c===state.lgcause?" selected":""}>${esc(c)}</option>`).join("")}</select>
+<select onchange="state.lgst=this.value;state.lgpg=1;render()"><option value="ALL">All follow-ups</option>${sts.map(s=>`<option${s===state.lgst?" selected":""}>${esc(s)}</option>`).join("")}</select>
+<span style="flex:1"></span><button class="btn ghost" onclick="exportCSV()">${ICO.dl} Export CSV</button></div>
+<div class="tscroll"><table class="logtable"><thead><tr><th>Trip</th><th>Normal</th><th>Unit</th><th>Tag / section</th><th>Source</th><th>Duration</th><th>Loss</th><th>Signal</th><th>Cause</th><th>Follow-up</th></tr></thead><tbody>
+${page.map(r=>{const t=lgTrip(r),c=lgCause(r),s=lgStatus(r);const sev=sevOf(r);const cls=sev==="Critical"?"logcrit":sev==="Warning"?"logwarn":"logok";const fl=follows.filter(f=>f.serial===r.serial);
+return `<tr class="${cls}" onclick="openInc(${r.serial})" title="INC-${String(r.serial).padStart(4,"0")} - tap for detail"><td class="mono" style="white-space:nowrap">${t.start}</td><td class="mono" style="white-space:nowrap">${t.end}</td><td><b>${esc(r.plant)}</b></td><td><b class="mono">${esc(r.tag)}</b><div style="font-size:10px;color:var(--mut)">${esc(String(r.title).slice(0,34))}</div></td><td style="color:var(--mut)">${esc(r.eq_class||"-")}</td><td class="${t.cls}">${t.txt}</td><td class="num">${usd((+r.total_loss||0)*1000)}</td><td style="color:var(--mut)">${lgRelay(r)}</td><td><div class="causecat">${esc(c.cat)}</div><div class="causedet" title="${esc(c.det)}">${esc(c.det)}</div></td><td><span class="st ${s.cls}"><span class="dt"></span>${s.txt} →</span>${s.cmd?`<br><span class="cmdpill ${s.cmd>1?"cmd2":"cmd1"}">order ke-${s.cmd}</span>`:""}<br><span style="display:inline-flex;gap:4px;margin-top:4px" onclick="event.stopPropagation()">${fl.length?evArt(r.serial+r.tag,true):evArt(r.serial+r.tag,false)}</span></td></tr>`;}).join("")||'<tr><td colspan="10" style="text-align:center;color:var(--mut);padding:26px">No rows match these filters.</td></tr>'}</tbody></table></div>
+<div class="logpg">Showing ${from}-${to} of ${rows.length}<button onclick="state.lgpg=1;render()">‹‹</button><button onclick="state.lgpg=${Math.max(1,state.lgpg-1)};render()">‹</button><button class="on">${state.lgpg}</button><span>of ${pages}</span><button onclick="state.lgpg=${Math.min(pages,state.lgpg+1)};render()">›</button><button onclick="state.lgpg=${pages};render()">››</button></div></div>${srcBtn("Incident DB")}`;}
 
 function openInc(s){state.incS=s;state.sub="ov";go("incdet");}
 function vIncDet(){const E=eff();const r=E.find(x=>x.serial===state.incS)||E[0];const d=RCA[r.tag];const sv=sevOf(r),st=stOf(r);
@@ -748,9 +810,9 @@ document.getElementById("bellN").textContent=od.length;
 const odb=document.getElementById("onduty");if(odb)odb.innerHTML=state.onduty?("on duty: <b>"+esc(state.onduty)+"</b>"):"";
 document.getElementById("bdgAlm").textContent=alarms().length;
 document.getElementById("bdgFol").textContent=follows.filter(f=>f.status!=="Done"&&f.status!=="Verified").length||"";
-const V={lobby:vLobby,overview:vOverview,assets:vAssets,assetdet:vAssetDet,incidents:vIncidents,incdet:vIncDet,condition:vCondition,production:vProduction,energy:vEnergy,rca:vRca,followup:vFollow,alarm:vAlarm,personnel:vPersonnel,reports:vReports};
+const V={lobby:vLobby,overview:vOverview,assets:vAssets,assetdet:vAssetDet,incidents:vIncidents,logsheet:vLogsheet,incdet:vIncDet,condition:vCondition,production:vProduction,energy:vEnergy,rca:vRca,followup:vFollow,alarm:vAlarm,personnel:vPersonnel,reports:vReports};
 document.querySelectorAll(".mi").forEach(b=>b.classList.toggle("on",b.dataset.v===state.v||(state.v==="assetdet"&&b.dataset.v==="assets")||(state.v==="incdet"&&b.dataset.v==="incidents")));
-const items=[["lobby","home","Lobby"],["overview","grid","Overview"],["assets","gear","Assets"],["incidents","warn","Incidents"],["condition","wave","Condition"],["production","box","Production"],["energy","bolt","Energy"],["rca","search","RCA"],["reports","doc","Reports"],["followup","check","Follow-up"],["alarm","bell","Alarms & PIC"],["personnel","user","Personnel"]];
+const items=[["lobby","home","Lobby"],["overview","grid","Overview"],["assets","gear","Assets"],["incidents","warn","Incidents"],["logsheet","clip","Logsheet"],["condition","wave","Condition"],["production","box","Production"],["energy","bolt","Energy"],["rca","search","RCA"],["reports","doc","Reports"],["followup","check","Follow-up"],["alarm","bell","Alarms & PIC"],["personnel","user","Personnel"]];
 const mn=document.getElementById("mnav");
 if(mn&&!mn.dataset.built){mn.innerHTML=items.map(x=>`<button class="mi" data-v="${x[0]}" onclick="go('${x[0]}');document.querySelector('.mnav').classList.remove('on')"><span class="ic">${ICO[x[1]]}</span>${x[2]}</button>`).join("");mn.dataset.built="1";}
 if(mn)mn.querySelectorAll(".mi").forEach(b=>b.classList.toggle("on",b.dataset.v===state.v));
