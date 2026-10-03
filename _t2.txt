@@ -4,10 +4,10 @@
 <h1 class="anim" style="--d:.2s">One file. One truth.<br>From data to decision.</h1>
 <p class="sub anim" style="--d:.3s">380 incidents over 31 months, read from a single governed table. No server, no internet, no install.</p>
 <div class="kpi4 anim" style="--d:.4s">
-<div><b data-count="67.19" data-dec="2" data-pre="$" data-suf="M">$0.00M</b><span>USD exposure in scope</span></div>
-<div><b data-count="2261" data-suf=" h">0 h</b><span>downtime, __N__ records</span></div>
-<div><b data-count="__NOD__">0</b><span>overdue actions (__O1Y__ past 1 year)</span></div>
-<div><b data-count="__P1__" data-dec="1" data-suf="%">0%</b><span>AI retrieval at rank 1</span></div>
+<div><b data-count="67.19" data-dec="2" data-pre="$" data-suf="M" data-final="$67.19M">$67.19M</b><span>USD exposure in scope</span></div>
+<div><b data-count="2261" data-suf=" h" data-final="2261 h">2261 h</b><span>downtime, __N__ records</span></div>
+<div><b data-count="__NOD__" data-final="__NOD__">__NOD__</b><span>overdue actions (__O1Y__ past 1 year)</span></div>
+<div><b data-count="__P1__" data-dec="1" data-suf="%" data-final="__P1__%">__P1__%</b><span>AI retrieval at rank 1</span></div>
 </div>
 <div class="fig anim" style="--d:.55s;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);margin-top:16px">
 <h3 style="color:#8FB6D9">Monthly loss exposure &mdash; Jan 2024 to Jul 2026</h3>
@@ -156,8 +156,8 @@ __BA_RET__
 <div class="fig anim" style="--d:.2s">
 <h3>Fig. 5 &mdash; KO-3201 DE vibration, 26 weeks (micron) &mdash; LIVE TRACE</h3>
 __VIBSVG__
-<div class="cap">Real condition history. Dot replays weeks 1&ndash;26 when this slide opens. ALARM week 10, TRIP week 21: 77 days to act.</div>
-<div class="vibread">Reading: <span id="vibread">press 8 to replay</span> &nbsp;&middot;&nbsp; State: <span id="vibstat">READY</span></div>
+<div class="cap">Real condition history. ALARM week 10, TRIP week 21: 77 days to act. Live replay runs on screen.</div>
+<div class="vibread">Reading: <span id="vibread">76.5 &#181;m &#8212; TRIP</span> &nbsp;&middot;&nbsp; State: <span id="vibstat">TRIPPED</span></div>
 </div>
 <div>
 <div class="fig anim" style="--d:.3s">

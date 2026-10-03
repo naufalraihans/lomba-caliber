@@ -68,11 +68,11 @@ table.data td.n,table.data th.n{text-align:right;font-family:var(--mono);font-we
 .babar{display:flex;align-items:flex-end;gap:12px;margin-top:8px}
 .bacol{flex:1;text-align:center}
 .bacol b{font-size:26px;font-family:var(--disp);display:block}
-.bc-b{color:var(--red)}.bc-a{color:#4ADE80}
+.bc-b{color:var(--red)}.bc-a{color:var(--green)}
 .batrack{height:86px;background:#E4E9EF;border-radius:6px;display:flex;align-items:flex-end;overflow:hidden;margin:6px auto;max-width:120px}
 .baarr{font-size:22px;font-weight:800;color:var(--mut);padding-bottom:34px}
-.bacol span{font-family:var(--mono);font-size:10.5px;color:#E5EAF2;font-weight:700}
-.banote{font-size:11.5px;color:#C9D5E8;text-align:center;margin-top:4px}
+.bacol span{font-family:var(--mono);font-size:10px;font-weight:700}
+.banote{font-size:11px;color:var(--mut);text-align:center;margin-top:4px}
 ul.rows{list-style:none;margin-top:12px}
 ul.rows li{font-size:14px;padding:8px 0 8px 28px;position:relative;border-top:1px solid var(--line)}
 ul.rows li:before{content:"";position:absolute;left:2px;top:12px;width:12px;height:12px;border-radius:3px;background:var(--accent)}
@@ -112,12 +112,16 @@ ul.rows li b.n{font-family:var(--mono)}
 .person b{font-size:16px}
 .person span{font-family:var(--mono);font-size:11px;color:var(--mut)}
 @media print{
-html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
-.slide{display:flex;width:100%;aspect-ratio:auto;height:100vh;max-height:100vh;page-break-after:always;page-break-inside:avoid;border-radius:0;overflow:hidden}
+@page{size:13.333in 7.5in;margin:0}
+html,body{background:#fff}
+.stage{padding:0;display:block;min-height:auto}
+.slide{display:flex;width:1280px;height:720px;aspect-ratio:auto;border-radius:0;overflow:hidden;page-break-after:always;break-inside:avoid}
 .slide:last-child{page-break-after:auto}
 .nav{display:none}.anim{opacity:1!important;animation:none!important}
 .fill{width:var(--w)!important;animation:none!important}.fillv{height:var(--h)!important;animation:none!important}
 .mbars i,.grow{animation:none!important}.drawline{stroke-dashoffset:0!important;animation:none!important}
+#vibdot{opacity:1!important}
+.babar .batrack i{min-height:12px}
 }
 @media (prefers-reduced-motion:reduce){.anim,.fill,.fillv,.mbars i,.grow,.drawline{animation-duration:.01ms!important}}
 </style>
@@ -130,15 +134,15 @@ html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
 <h1 class="anim" style="--d:.2s">One file. One truth.<br>From data to decision.</h1>
 <p class="sub anim" style="--d:.3s">380 incidents over 31 months, read from a single governed table. No server, no internet, no install.</p>
 <div class="kpi4 anim" style="--d:.4s">
-<div><b data-count="67.19" data-dec="2" data-pre="$" data-suf="M">$0.00M</b><span>USD exposure in scope</span></div>
-<div><b data-count="2261" data-suf=" h">0 h</b><span>downtime, 380 records</span></div>
-<div><b data-count="179">0</b><span>overdue actions (109 past 1 year)</span></div>
-<div><b data-count="87.1" data-dec="1" data-suf="%">0%</b><span>AI retrieval at rank 1</span></div>
+<div><b data-count="67.19" data-dec="2" data-pre="$" data-suf="M" data-final="$67.19M">$67.19M</b><span>USD exposure in scope</span></div>
+<div><b data-count="2261" data-suf=" h" data-final="2261 h">2261 h</b><span>downtime, 380 records</span></div>
+<div><b data-count="179" data-final="179">179</b><span>overdue actions (109 past 1 year)</span></div>
+<div><b data-count="87.1" data-dec="1" data-suf="%" data-final="87.1%">87.1%</b><span>AI retrieval at rank 1</span></div>
 </div>
 <div class="fig anim" style="--d:.55s;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);margin-top:16px">
 <h3 style="color:#8FB6D9">Monthly loss exposure &mdash; Jan 2024 to Jul 2026</h3>
 <svg viewBox='0 0 260 44' class='spark'><polyline points='0.0,32.0 8.7,19.4 17.3,35.0 26.0,29.5 34.7,28.3 43.3,33.9 52.0,32.0 60.7,33.1 69.3,34.3 78.0,24.9 86.7,21.9 95.3,16.6 104.0,18.1 112.7,27.2 121.3,11.1 130.0,26.7 138.7,32.9 147.3,25.5 156.0,38.4 164.7,20.2 173.3,33.7 182.0,30.8 190.7,38.7 199.3,26.4 208.0,31.8 216.7,26.6 225.3,29.9 234.0,0.0 242.7,26.7 251.3,21.4 260.0,25.4' fill='none' stroke='#7DD3FC' stroke-width='2.2'/></svg>
-<div class="cap" style="color:#C9D5E8">Peak $5.56MM &mdash; average $2.17MM per month. The full 31-month curve is on slide 2.</div>
+<div class="cap" style="color:#C9D5E8">Peak $5.56M &mdash; average $2.17MM per month. The full 31-month curve is on slide 2.</div>
 </div>
 <div class="foot"><span>Jenny &middot; Hafidz &middot; Naufal &mdash; Advisor: Mr. Bayu Aji</span><span>01 / 11</span></div>
 </section>
@@ -151,12 +155,12 @@ html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
 <h3>Fig. 1 &mdash; Monthly loss exposure, 31 months (kUSD)</h3>
 <div class="mbars"><i class="" style="--h:27.3%" title="Jan 24: $1.52M"></i><i class="" style="--h:55.9%" title="Feb 24: $3.11M"></i><i class="" style="--h:20.5%" title="Mar 24: $1.14M"></i><i class="" style="--h:33.0%" title="Apr 24: $1.83M"></i><i class="" style="--h:35.7%" title="May 24: $1.98M"></i><i class="" style="--h:23.0%" title="Jun 24: $1.28M"></i><i class="" style="--h:27.2%" title="Jul 24: $1.52M"></i><i class="" style="--h:24.7%" title="Aug 24: $1.37M"></i><i class="" style="--h:22.0%" title="Sep 24: $1.22M"></i><i class="" style="--h:43.4%" title="Oct 24: $2.41M"></i><i class="" style="--h:50.2%" title="Nov 24: $2.79M"></i><i class="" style="--h:62.4%" title="Dec 24: $3.47M"></i><i class="" style="--h:58.8%" title="Jan 25: $3.27M"></i><i class="" style="--h:38.1%" title="Feb 25: $2.12M"></i><i class="" style="--h:74.8%" title="Mar 25: $4.16M"></i><i class="" style="--h:39.4%" title="Apr 25: $2.19M"></i><i class="" style="--h:25.3%" title="May 25: $1.41M"></i><i class="" style="--h:42.1%" title="Jun 25: $2.34M"></i><i class="" style="--h:12.6%" title="Jul 25: $0.70M"></i><i class="" style="--h:54.0%" title="Aug 25: $3.01M"></i><i class="" style="--h:23.4%" title="Sep 25: $1.30M"></i><i class="" style="--h:30.0%" title="Oct 25: $1.67M"></i><i class="" style="--h:12.1%" title="Nov 25: $0.68M"></i><i class="" style="--h:39.9%" title="Dec 25: $2.22M"></i><i class="" style="--h:27.8%" title="Jan 26: $1.55M"></i><i class="" style="--h:39.5%" title="Feb 26: $2.20M"></i><i class="" style="--h:32.1%" title="Mar 26: $1.79M"></i><i class="peak" style="--h:100.0%" title="Apr 26: $5.56M"></i><i class="" style="--h:39.3%" title="May 26: $2.19M"></i><i class="" style="--h:51.3%" title="Jun 26: $2.85M"></i><i class="" style="--h:42.4%" title="Jul 26: $2.36M"></i></div>
 <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--mut);margin-top:4px"><span>Jan 24</span><span>Jan 25</span><span>Apr 26 peak</span><span>Jul 26</span></div>
-<div class="cap">Source: baseline Incident Database, 380 records x 23 columns. Red = Apr 2026 peak $5.56MM. Dashed reading: 2026 run-rate $2.64MM/mo vs 2024 $1.97MM/mo (+34%).</div>
+<div class="cap">Source: baseline Incident Database, 380 records x 23 columns. Red = Apr 2026 peak $5.56M. Dashed reading: 2026 run-rate $2.64M/mo vs 2024 $1.97M/mo (+34%).</div>
 </div>
 <div>
 <div class="grid2 anim" style="--d:.3s;margin-top:0">
 <div class="fig"><h3>2026 vs 2024</h3><b class="mono" style="font-size:26px;color:var(--red)">+34%</b><div class="cap">run-rate per month</div></div>
-<div class="fig"><h3>Worst month</h3><b class="mono" style="font-size:26px;color:var(--red)">$5.56MM</b><div class="cap">April 2026</div></div>
+<div class="fig"><h3>Worst month</h3><b class="mono" style="font-size:26px;color:var(--red)">$5.56M</b><div class="cap">April 2026</div></div>
 <div class="fig"><h3>Behind overdue</h3><b class="mono" style="font-size:26px;color:var(--red)">56%</b><div class="cap">of exposure, ownerless</div></div>
 <div class="fig"><h3>Stale &gt; 1 yr</h3><b class="mono" style="font-size:26px;color:var(--red)">109</b><div class="cap">actions, oldest 926 d</div></div>
 </div>
@@ -282,8 +286,8 @@ html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
 <div class="fig anim" style="--d:.2s">
 <h3>Fig. 5 &mdash; KO-3201 DE vibration, 26 weeks (micron) &mdash; LIVE TRACE</h3>
 <svg viewBox='0 0 620 200' class='chart' id='vibsvg'><rect x='44' y='14' width='564' height='111.5' fill='#16A34A' opacity='.08'/><rect x='44' y='125.5' width='564' height='0.0' fill='#D97706' opacity='.12'/><rect x='44' y='27.8' width='564' height='97.6' fill='#D97706' opacity='.12'/><line x1='44' y1='125.5' x2='608' y2='125.5' stroke='#D97706' stroke-width='1.6' stroke-dasharray='6 4'/><text x='544' y='119.5' font-size='10' font-weight='800' fill='#D97706'>ALARM ~38</text><line x1='44' y1='41.7' x2='608' y2='41.7' stroke='#DC2626' stroke-width='1.6' stroke-dasharray='6 4'/><text x='550' y='35.7' font-size='10' font-weight='800' fill='#DC2626'>TRIP ~71</text><polyline id='vibline' points='44.0,147.6 66.6,152.6 89.1,145.5 111.7,147.3 134.2,148.2 156.8,144.1 179.4,135.5 201.9,135.0 224.5,131.2 247.0,125.6 269.6,120.7 292.2,115.6 314.7,105.8 337.3,96.4 359.8,91.7 382.4,79.6 405.0,71.6 427.5,68.0 450.1,52.4 472.6,40.0 495.2,27.8 517.8,152.1 540.3,150.6 562.9,152.6 585.4,151.3 608.0,151.8' fill='none' stroke='#1A56DB' stroke-width='2.6' stroke-linejoin='round'/><circle id='vibdot' r='6' fill='#DC2626' stroke='#fff' stroke-width='2.5'/><text x='44.0' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W1</text><text x='224.5' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W9</text><text x='495.2' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W21</text><text x='608.0' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W26</text></svg>
-<div class="cap">Real condition history. Dot replays weeks 1&ndash;26 when this slide opens. ALARM week 10, TRIP week 21: 77 days to act.</div>
-<div class="vibread">Reading: <span id="vibread">press 8 to replay</span> &nbsp;&middot;&nbsp; State: <span id="vibstat">READY</span></div>
+<div class="cap">Real condition history. ALARM week 10, TRIP week 21: 77 days to act. Live replay runs on screen.</div>
+<div class="vibread">Reading: <span id="vibread">76.5 &#181;m &#8212; TRIP</span> &nbsp;&middot;&nbsp; State: <span id="vibstat">TRIPPED</span></div>
 </div>
 <div>
 <div class="fig anim" style="--d:.3s">
@@ -307,17 +311,17 @@ html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
 <div class="fig anim" style="--d:.3s;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)">
 <h3 style="color:#8FB6D9">Monthly loss + overdue</h3>
 <div class='babar'><div class='bacol'><b class='bc-b'>$2.64M</b><span class='batrack'><i class='fillv' style='--h:100%;background:#DC2626'></i></span><span>BASELINE 2026</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>$1.97M</b><span class='batrack'><i class='fillv' style='--h:75%;background:#16A34A'></i></span><span>TARGET</span></div></div><div class='banote'>fix-first on top-3 = 52% of exposure</div>
-<div style="height:14px"></div>
+<div style="height:10px"></div>
 <div class='babar'><div class='bacol'><b class='bc-b'>179</b><span class='batrack'><i class='fillv' style='--h:100%;background:#DC2626'></i></span><span>OVERDUE NOW</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>70</b><span class='batrack'><i class='fillv' style='--h:39%;background:#16A34A'></i></span><span>TARGET</span></div></div><div class='banote'>109 actions >1 year old drop out</div>
 </div>
 <div class="fig anim" style="--d:.4s;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)">
 <h3 style="color:#8FB6D9">Retrieval + warning window</h3>
 <div class='babar'><div class='bacol'><b class='bc-b'>69.2%</b><span class='batrack'><i class='fillv' style='--h:79%;background:#DC2626'></i></span><span>BASELINE MODEL</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>87.1%</b><span class='batrack'><i class='fillv' style='--h:100%;background:#16A34A'></i></span><span>FULL MODEL</span></div></div><div class='banote'>+17.9 pts from uniting 4 sources</div>
-<div style="height:14px"></div>
+<div style="height:10px"></div>
 <div class='babar'><div class='bacol'><b class='bc-b'>1</b><span class='batrack'><i class='fillv' style='--h:1%;background:#DC2626'></i></span><span>REACTIVE</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>67</b><span class='batrack'><i class='fillv' style='--h:100%;background:#16A34A'></i></span><span>WITH CONDITION</span></div></div><div class='banote'>mean ALARM-to-TRIP gap, 26-week history</div>
 </div>
 </div>
-<div class="foot" style="bottom:12px"><span>Recovery target = back to 2024 monthly level ($1.97MM/mo)</span><span>09 / 11</span></div>
+<div class="foot"><span>Recovery target = back to 2024 monthly level ($1.97M/mo)</span><span>09 / 11</span></div>
 </section>
 
 <section class="slide" data-t="20">
@@ -411,7 +415,7 @@ try{localStorage.setItem('deck3',String(i));}catch(e){}
 if(location.hash!=='#s'+(i+1))history.replaceState(null,'','#s'+(i+1));
 stopVib();if(i===7)playVib();cnt();paint();}
 function go(d){show(i+d);}
-window.__vib=[28.9, 26.9, 29.7, 29.0, 28.7, 30.3, 33.7, 33.9, 35.4, 37.7, 39.6, 41.6, 45.5, 49.2, 51.1, 55.9, 59.1, 60.5, 66.7, 71.7, 76.5, 27.1, 27.7, 26.9, 27.4, 27.2];window.__vst=["NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "TRIP", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL"];window.__deck={show:show};
+window.__deck={show:show};
 document.addEventListener('DOMContentLoaded',function(){
 S=Array.prototype.slice.call(document.querySelectorAll('.slide'));D=document.getElementById('dots');
 S.forEach(function(_,k){var d=document.createElement('i');d.onclick=function(){show(k);};D.appendChild(d);});

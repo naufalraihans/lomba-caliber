@@ -112,12 +112,16 @@ ul.rows li b.n{font-family:var(--mono)}
 .person b{font-size:16px}
 .person span{font-family:var(--mono);font-size:11px;color:var(--mut)}
 @media print{
-html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
-.slide{display:flex;width:100%;aspect-ratio:auto;height:100vh;max-height:100vh;page-break-after:always;page-break-inside:avoid;border-radius:0;overflow:hidden}
+@page{size:13.333in 7.5in;margin:0}
+html,body{background:#fff}
+.stage{padding:0;display:block;min-height:auto}
+.slide{display:flex;width:1280px;height:720px;aspect-ratio:auto;border-radius:0;overflow:hidden;page-break-after:always;break-inside:avoid}
 .slide:last-child{page-break-after:auto}
 .nav{display:none}.anim{opacity:1!important;animation:none!important}
 .fill{width:var(--w)!important;animation:none!important}.fillv{height:var(--h)!important;animation:none!important}
 .mbars i,.grow{animation:none!important}.drawline{stroke-dashoffset:0!important;animation:none!important}
+#vibdot{opacity:1!important}
+.babar .batrack i{min-height:12px}
 }
 @media (prefers-reduced-motion:reduce){.anim,.fill,.fillv,.mbars i,.grow,.drawline{animation-duration:.01ms!important}}
 </style>
