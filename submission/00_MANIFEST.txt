@@ -1,37 +1,41 @@
 CALIBER 2026 - Case 2: Intelligent Manufacturing
 Submission bundle
-Generated: 2026-10-03 (deck REV 2: data-centric, 11 slides with real charts)
+Generated: 2026-10-04 (deck REV 5: editable .pptx, 11 slides, native charts)
 
 Contents
 --------
-  01_prototype.html             260,463 bytes   [REAL - dashboard, 14 tabs]
+  01_prototype.html             ~255 KB   [REAL - dashboard]
   02_demo_video.mp4                   0 bytes   [PLACEHOLDER - record after deck freeze]
-  03_presentation.pdf              176,723 bytes   [REAL - 11 slides A4 landscape]
+  03_presentation.pdf           ~522 KB   [REAL - 11 slides, print render of deck.html]
+  03_presentation.pptx          ~100 KB   [REAL - 11 slides 16:9, NATIVE editable charts/tables]
 
-  TOTAL                           ~0.42 MB
+  TOTAL                           ~0.9 MB
   LIMIT                          10.00 MB
-  HEADROOM                        ~9.58 MB
+  HEADROOM                        ~9.1 MB
 
-Deck REV 2 - every number from the baseline, no invented stats
+Deck REV 5 - same story as REV 4, rebuilt as editable PowerPoint
 ---------------------------------------------------------------
-  slides  : 1 cover   380 / US$67.19M / 2,261.1 h / 179 overdue / 87.1%
-            2 problem quantified   monthly loss line, 2026 run-rate +34% vs 2024
-            3 baseline scorecard   mechanism Pareto, unit ranking (measured)
+  slides  : 1 cover   380 / US$67.19M / 2,261 h / 179 overdue / 87.1%
+            2 problem quantified   monthly loss column chart, 31 months
+            3 baseline scorecard   mechanism chart + unit table (measured)
             4 Q1 foundation        four sources -> one table
-            5 Q2 single pane       fix-first Pareto + unit ranking
+            5 Q2 single pane       fix-first chart + unit ranking chart
             6 action aging         179 overdue aged; 109 > 1 year
             7 Q3 AI                87.1% (CI 83.4-90.1) vs baseline 69.2%
-            8 KO-3201 + lead       67-day mean warning window
+            8 KO-3201 + lead       26-week vibration line + ALARM 45 / TRIP 75
             9 before vs target     4 modeled commitments, basis stated
             10 honest impact       measured / labeled / out-of-scope
             11 team + next
-  target   : every "target" is a modeled commitment from baseline, labeled,
+  editable: every chart is a native PowerPoint chart (right-click Edit Data),
+            every table is a native table, logo is a separate picture object.
+  source  : all numbers recomputed from analysis/embed_data.json (380 records)
+            + analysis/ai_eval.json. Builder script: _deck_pptx.py.
+  target  : every "target" is a modeled commitment from baseline, labeled,
              not a measured result. Energy proxy + CCTV illustration declared additions.
 
 How to present
 --------------
-Open deck.html in Chrome, F11 fullscreen, arrows/click to move.
-Or present 03_presentation.pdf directly. Both are the same 11 slides.
+Open submission/03_presentation.pptx in PowerPoint, F5 fullscreen.
 Talk track: NASKAH_3MENIT.md (180 seconds).
 
 All three deliverables are required. A missing deliverable means disqualification.
