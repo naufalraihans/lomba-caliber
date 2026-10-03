@@ -24,8 +24,8 @@ body{background:var(--bg);color:var(--ink);font:12.5px/1.5 "Plus Jakarta Sans",I
 .sbsep{border-top:1px solid rgba(255,255,255,.12);margin:10px 4px}
 .sbh{font-size:10px;letter-spacing:1px;color:#7E8FAD;padding:6px 12px 2px;font-weight:700}
 .main{min-width:0;padding:0 20px 46px}
-.top{position:sticky;top:0;z-index:20;background:rgba(243,245,249,.92);backdrop-filter:blur(8px);display:flex;align-items:center;gap:12px;padding:12px 0}
-.search{flex:1;max-width:460px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;color:var(--mut);font-size:12px;font-family:inherit}
+.top{position:sticky;top:0;z-index:20;background:rgba(243,245,249,.92);backdrop-filter:blur(8px);display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
+.search{flex:1 1 240px;min-width:0;max-width:460px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;color:var(--mut);font-size:12px;font-family:inherit}
 .top .dt{margin-left:auto;font-size:11.5px;color:var(--mut);font-weight:600;white-space:nowrap}
 .bell{width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;position:relative;font-size:15px}
 .bell i{position:absolute;top:-6px;right:-6px;background:#DC2626;color:#fff;font-size:9.5px;font-weight:800;border-radius:999px;padding:1px 6px;font-style:normal}
@@ -137,7 +137,10 @@ select.mini-sel{border:1px solid var(--line);border-radius:7px;padding:5px 8px;f
 .iced svg{width:11px;height:11px;vertical-align:-1px}
 .logo-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#03BED7,#192F7B);display:grid;place-items:center;flex:none}
 .logo-mark svg{width:19px;height:19px}
-.logo-img{height:30px;background:#fff;border-radius:8px;padding:3px 10px;flex:none}
+.logo-img{height:30px;background:#fff;border-radius:8px;padding:3px 10px;flex:none;max-width:100%}
+.sb .logo{flex-direction:column;align-items:flex-start;gap:6px}
+.sb .logo-img{height:26px}
+.mi .bdg:empty{display:none}
 .mhead .logo-img{height:24px}
 .clickable{cursor:pointer;transition:transform .12s,box-shadow .12s}
 .clickable:hover{transform:translateY(-2px);box-shadow:0 6px 18px -8px rgb(10 35 66/.25)}
@@ -799,7 +802,7 @@ const units=plantAgg();const wu=units[0];
 const feats=[["grid","Operations overview","KPIs, plant status, alerts","overview"],["warn","Incidents + CCTV wall","380 records, map, cameras","incidents"],["gear","Assets health","5 monitored, tap for detail","assets"],["check","Follow-up board","track every action","followup"],["bell","Alarm dispatch","send to PIC / group","alarm"],["user","Personnel + duty","numbers, roster, load","personnel"]];
 return `<div class="lobby-hero"><div class="lab" style="font-size:11px;letter-spacing:1px;color:#9FB3D1;font-weight:700"><span class="live-dot"></span> LIVE - 380 RECORDS - 12 UNITS - 5 ASSETS</div><h1>Which unit needs you right now?</h1>
 <p>${usd(totLoss)} at risk - ${od.length} overdue - worst: <b>${wu?wu.u:"-"}</b>${w?` - single worst <b class="mono">${esc(w.tag)}</b> ${w.late}d late, ${usd((+w.total_loss||0)*1000)}, PIC ${esc(w.pic||"-")}`:""}. Tap a card - every number opens its proof.</p>
-<div class="hero3"><div class="hs"><span>Exposure</span><b>${usd(totLoss)}</b></div><div class="hs"><span>Overdue</span><b>${od.length}</b></div><div class="hs"><span>Closed</span><b>${closed} / ${E.length}</b></div><div class="hs"><span>Follow-ups done</span><b>${s.done} / ${follows.length||0}</b></div></div>
+<div class="hero3"><div class="hs"><span>Exposure</span><b>${usd(totLoss)}</b></div><div class="hs"><span>Overdue</span><b>${od.length}</b></div><div class="hs"><span>Closed</span><b>${closed} / ${E.length}</b></div><div class="hs"><span>Follow-ups done</span><b>${follows.length?s.done+" / "+follows.length:"0"}</b></div></div>
 <div class="btnrow" style="margin-top:16px"><button class="btn" style="background:#fff;color:#0A2342" onclick="go('overview')">See plant status →</button><button class="btn ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)" onclick="state.q='${w?esc(w.tag):""}';go('incidents')">Worst incident →</button></div></div>
 <div class="howto"><b>Start here:</b> 1 = worst unit, tap it. 2 = worst incident, tap it. 3 = who owns it, tap to dispatch. No reading needed - follow the red.</div>
 <div class="feat6">${feats.map(f=>`<button class="feat" onclick="go('${f[3]}')"><span class="ic" style="width:26px;height:26px">${ICO[f[0]]}</span><div><b>${f[1]}</b><p>${f[2]}</p></div></button>`).join("")}</div>
@@ -819,8 +822,8 @@ const mn=document.getElementById("mnav");
 if(mn&&!mn.dataset.built){mn.innerHTML=items.map(x=>`<button class="mi" data-v="${x[0]}" onclick="go('${x[0]}');document.querySelector('.mnav').classList.remove('on')"><span class="ic">${ICO[x[1]]}</span>${x[2]}</button>`).join("");mn.dataset.built="1";}
 if(mn)mn.querySelectorAll(".mi").forEach(b=>b.classList.toggle("on",b.dataset.v===state.v));
 document.getElementById("views").innerHTML=`<div class="view on">${(V[state.v]||vOverview)()}</div>`;
-window.scrollTo(0,0);}
-function renderList(){}
+if(!window.__noscroll)window.scrollTo(0,0);}
+function renderList(){const a=document.activeElement;const ph=a&&a.placeholder||"";const sy=window.scrollY||0;window.__noscroll=true;try{render();}finally{window.__noscroll=false;}window.scrollTo(0,sy);const inp=[...document.querySelectorAll(".main input")].find(i=>i.placeholder===ph)||document.querySelector(".main input");if(inp&&ph){inp.focus();try{inp.setSelectionRange(inp.value.length,inp.value.length);}catch(e){}}}
 render();
 </script>
 </body>
