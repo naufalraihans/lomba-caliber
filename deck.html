@@ -6,319 +6,355 @@
 <title>CALIBER 2026 - Case 2 - Presentation Deck</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#0A2342;--blue:#1A56DB;--sky:#3B82F6;--bg:#F3F5F9;--mut:#5B6B82;--red:#DC2626;--green:#16A34A;--amber:#D97706;--line:#E5E7EB}
-html,body{background:#0B1526;-webkit-font-smoothing:antialiased}
-body{font:15.5px/1.5 "Plus Jakarta Sans",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111928}
-.stage{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
-.slide{width:min(1200px,96vw);aspect-ratio:16/9;background:#fff;border-radius:16px;padding:44px 52px 54px;display:none;flex-direction:column;position:relative;overflow:hidden}
+:root{--navy:#0A2342;--blue:#1A56DB;--sky:#3B82F6;--accent:#00669C;--paper:#EEF1F5;--ink:#0C1A26;--mut:#586C80;--green:#0F6B46;--amber:#8A4A06;--red:#A52A1E;--line:#D9E1E9;--mono:'Cascadia Mono','JetBrains Mono',Consolas,ui-monospace,monospace;--disp:'Bahnschrift','Segoe UI Variable Display','Segoe UI',system-ui,sans-serif}
+html,body{background:#0B1526}
+body{font:16px/1.5 'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:10px}
+.slide{width:min(1240px,97vw);aspect-ratio:16/9;background:var(--paper);background-image:linear-gradient(rgba(0,102,156,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,156,.05) 1px,transparent 1px);background-size:48px 48px;border-radius:14px;padding:40px 52px 56px;display:none;flex-direction:column;position:relative;overflow:hidden}
 .slide.on{display:flex}
-.slide.dark{background:linear-gradient(135deg,#0A2342 0%,#16336E 55%,#1A56DB 100%);color:#fff}
-.kick{font-size:11.5px;font-weight:800;letter-spacing:2.4px;color:var(--sky);text-transform:uppercase;margin-bottom:8px}
-.dark .kick{color:#9FB3D1}
-h1{font-size:44px;line-height:1.1;letter-spacing:-.025em;font-weight:800}
-h2{font-size:31px;line-height:1.15;letter-spacing:-.02em;font-weight:800}
-h3{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.slide.dark{background:linear-gradient(135deg,#081A38 0%,#0E2C63 55%,#1A56DB 100%);color:#fff}
+.slide.dark::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.slide.dark>*{position:relative}
+.kick{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.dark .kick{color:#8FB6D9}
+h1{font-family:var(--disp);font-size:52px;line-height:1.02;font-weight:700;letter-spacing:-.02em}
+h2{font-family:var(--disp);font-size:36px;line-height:1.08;font-weight:700;letter-spacing:-.015em}
+h2 em{font-style:normal;color:var(--accent)}
 .dark h1,.dark h2{color:#fff}
-.sub{color:var(--mut);font-size:15.5px;max-width:940px;margin-top:6px}
+.sub{color:var(--mut);font-size:15.5px;max-width:960px;margin-top:6px}
 .dark .sub{color:#C9D5E8}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px;align-items:start}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
-.grid23{display:grid;grid-template-columns:1.15fr 1fr;gap:24px;margin-top:14px;align-items:start}
-.stat{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
-.stat b{display:block;font-size:27px;letter-spacing:-.03em;line-height:1.1}
-.stat span{font-size:11.5px;color:var(--mut);font-weight:600;display:block;margin-top:3px;line-height:1.35}
-.dark .stat{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.18)}
-.dark .stat span{color:#C9D5E8}
-.stat .sp{margin-top:8px;display:block}
-.spark{width:100%;height:34px;display:block}
+.grid23{display:grid;grid-template-columns:1.12fr 1fr;gap:22px;margin-top:14px;align-items:start}
+.fig{background:#fff;border:1px solid var(--line);border-radius:4px;padding:14px 16px 8px}
+.fig h3{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.fig .cap{font-family:var(--mono);font-size:10.5px;color:var(--mut);margin-top:6px;line-height:1.45}
 .chart{width:100%;height:auto;display:block}
-.pane{border:1.5px solid var(--line);border-radius:13px;padding:14px 16px 10px;background:#fff}
-.pane h3{margin-bottom:6px}
-.pane .cap{font-size:11.5px;color:var(--mut);margin-top:2px;line-height:1.4}
-table{width:100%;border-collapse:collapse;font-size:12.5px}
-th{text-align:left;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);padding:7px 6px;border-bottom:1.5px solid var(--line)}
-td{padding:7px 6px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
-td.num{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
-th.num{text-align:right}
-.tag{display:inline-block;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
-.bar{display:block;height:7px;background:#F1F5F9;border-radius:99px;overflow:hidden;min-width:70px}
-.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}
-.chain{display:flex;gap:0;margin-top:16px;flex-wrap:wrap;align-items:stretch}
-.step{flex:1;min-width:110px;background:var(--bg);border:1px solid var(--line);padding:12px 10px;font-size:12.5px;font-weight:800;text-align:center}
-.step small{display:block;font-weight:600;color:var(--mut);font-size:10.5px;margin-top:3px;font-variant-numeric:tabular-nums}
-.step:first-child{border-radius:11px 0 0 11px}
-.step:last-child{border-radius:0 11px 11px 0;background:#DBEAFE;border-color:#BFDBFE}
-.arr{align-self:center;padding:0 7px;color:var(--sky);font-weight:800;font-size:16px}
-.logo{height:42px;background:#fff;border-radius:9px;padding:5px 13px}
-ul.tight{list-style:none;margin-top:11px}
-ul.tight li{font-size:14.5px;padding:5px 0 5px 26px;position:relative;line-height:1.45}
-ul.tight li:before{content:"";position:absolute;left:2px;top:9px;width:11px;height:11px;border-radius:3px;background:var(--sky)}
-ul.tight li.g:before{background:var(--green)}ul.tight li.r:before{background:var(--red)}ul.tight li.a:before{background:var(--amber)}
-.pill{display:inline-block;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 11px;margin:2px 5px 2px 0}
-.p-r{background:#FEE2E2;color:#991B1B}.p-g{background:#DCFCE7;color:#166534}.p-a{background:#FEF3C7;color:#92400E}.p-b{background:#DBEAFE;color:#1D4ED8}
-.baml{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
-.baml td{padding:9px 7px;border-bottom:1px solid var(--line)}
-.baml .bn{font-weight:800;width:15%}
-.baml .bb{color:var(--red);font-weight:700;width:12%;font-variant-numeric:tabular-nums}
-.baml .ar{color:#9CA3AF;width:3%;text-align:center}
-.baml .ba{color:var(--green);font-weight:800;width:13%;font-variant-numeric:tabular-nums}
-.baml .meth{color:var(--mut);font-size:11.5px;line-height:1.4}
-.dlt{display:inline-block;font-size:11px;font-weight:800;border-radius:7px;padding:2px 8px}
-.dlt.g{background:#DCFCE7;color:#166534}
-.foot{position:absolute;bottom:17px;left:52px;right:52px;display:flex;justify-content:space-between;font-size:11px;color:#9AA7BD;font-weight:600}
-.dark .foot{color:#9FB3D1}
-.src{font-size:10.5px;color:#9AA7BD;margin-top:7px;font-weight:600}
-.nav{display:flex;align-items:center;gap:13px;color:#C9D5E8;font-size:12.5px;font-weight:700;padding:4px 0 18px}
-.nav button{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:9px;padding:8px 17px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.spark{width:100%;height:36px;display:block}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}
+table.data th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);text-align:left;padding:7px 8px;border:1px solid var(--line);background:#F6F8FA}
+table.data td{padding:7px 8px;border:1px solid var(--line);vertical-align:middle}
+table.data td.n,table.data th.n{text-align:right;font-family:var(--mono);font-weight:700}
+.mono{font-family:var(--mono)}
+.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:18px;border-top:2px solid var(--ink)}
+.kpi4>div{padding:12px 14px 0;border-left:1px solid var(--line)}
+.kpi4>div:first-child{border-left:0;padding-left:0}
+.kpi4 b{font-family:var(--disp);font-size:34px;font-weight:700;letter-spacing:-.02em;display:block;line-height:1}
+.kpi4 span{font-size:11.5px;color:var(--mut);font-weight:600}
+.dark .kpi4{border-top-color:rgba(255,255,255,.5)}
+.dark .kpi4>div{border-left-color:rgba(255,255,255,.2)}
+.dark .kpi4 span{color:#C9D5E8}
+.chain{display:flex;align-items:stretch;margin-top:16px}
+.step{flex:1;background:#fff;border:1px solid var(--line);padding:11px 8px;font-size:12.5px;font-weight:800;text-align:center}
+.step small{display:block;font-family:var(--mono);font-weight:600;color:var(--mut);font-size:10.5px;margin-top:3px}
+.step.hot{background:var(--accent);border-color:var(--accent);color:#fff}
+.step.hot small{color:#D6E9F5}
+.arr{align-self:center;padding:0 6px;color:var(--accent);font-weight:800;font-size:17px}
+.mbars{display:flex;align-items:flex-end;gap:4px;height:150px;margin-top:6px;border-bottom:2px solid var(--ink);padding-bottom:0}
+.mbars i{flex:1;background:var(--accent);border-radius:3px 3px 0 0;min-height:4px;opacity:.82}
+.mbars i.peak{background:var(--red);opacity:1}
+.urow{display:grid;grid-template-columns:52px 1fr 74px 56px;gap:10px;align-items:center;padding:5px 0;font-size:12.5px}
+.ulab{font-family:var(--mono);font-weight:800}
+.utrack{height:12px;background:#E4E9EF;border-radius:99px;overflow:hidden;display:block}
+.fill{display:block;height:100%;background:var(--blue);border-radius:99px;width:0}
+.agrow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:8px;align-items:end}
+.agcol{text-align:center}
+.agcol b{font-family:var(--disp);font-size:24px;display:block}
+.agtrack{height:110px;background:#E4E9EF;border-radius:6px;display:flex;align-items:flex-end;overflow:hidden;margin:6px 0}
+.fillv{display:block;width:100%;height:0}
+.agcol span{font-family:var(--mono);font-size:11px;font-weight:700}
+.agcol em{font-style:normal;font-size:10px;color:var(--mut);display:block}
+.babar{display:flex;align-items:flex-end;gap:12px;margin-top:8px}
+.bacol{flex:1;text-align:center}
+.bacol b{font-size:26px;font-family:var(--disp);display:block}
+.bc-b{color:var(--red)}.bc-a{color:#4ADE80}
+.batrack{height:86px;background:#E4E9EF;border-radius:6px;display:flex;align-items:flex-end;overflow:hidden;margin:6px auto;max-width:120px}
+.baarr{font-size:22px;font-weight:800;color:var(--mut);padding-bottom:34px}
+.bacol span{font-family:var(--mono);font-size:10.5px;color:#E5EAF2;font-weight:700}
+.banote{font-size:11.5px;color:#C9D5E8;text-align:center;margin-top:4px}
+ul.rows{list-style:none;margin-top:12px}
+ul.rows li{font-size:14px;padding:8px 0 8px 28px;position:relative;border-top:1px solid var(--line)}
+ul.rows li:before{content:"";position:absolute;left:2px;top:12px;width:12px;height:12px;border-radius:3px;background:var(--accent)}
+ul.rows li.g:before{background:var(--green)}ul.rows li.r:before{background:var(--red)}ul.rows li.a:before{background:var(--amber)}
+ul.rows li b.n{font-family:var(--mono)}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;border-radius:4px;padding:2px 9px;margin:1px 4px 1px 0}
+.p-r{background:#F9D9D4;color:var(--red)}.p-g{background:#CDEBD9;color:var(--green)}.p-a{background:#F5E3C2;color:var(--amber)}.p-b{background:#D3E3F5;color:var(--accent)}
+.logo{height:42px;background:#fff;border-radius:8px;padding:5px 13px}
+.foot{position:absolute;bottom:16px;left:52px;right:52px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--mut);font-weight:600}
+.dark .foot{color:#8FB6D9}
+.nav{display:flex;align-items:center;gap:12px;color:#C9D5E8;font-size:12.5px;font-weight:700;font-family:var(--mono)}
+.nav button{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:9px;padding:8px 17px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--mono)}
 .nav button:hover{background:rgba(255,255,255,.3)}
 .dots{display:flex;gap:7px}
 .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer}
 .dots i.on{background:#fff}
-@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.slide.on>*{animation:rise .4s both}
+.timerbox{font-family:var(--mono);font-size:12px;color:#C9D5E8}
+.anim{opacity:0}
+.slide.on .anim{animation:rise .55s cubic-bezier(.22,.72,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.slide.on .fill{animation:growx 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,.3s)}
+@keyframes growx{from{width:0}to{width:var(--w)}}
+.slide.on .fillv{animation:growy .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,.3s)}
+@keyframes growy{from{height:0}to{height:var(--h)}}
+.slide.on .mbars i{animation:barup .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.mbars i:nth-child(1){--d:.05s}.mbars i:nth-child(n+6){--d:.2s}.mbars i:nth-child(n+12){--d:.35s}.mbars i:nth-child(n+18){--d:.5s}.mbars i:nth-child(n+24){--d:.65s}
+@keyframes barup{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1)}}
+.mbars i{--d:.1s}
+.slide.on .grow{animation:barup .7s cubic-bezier(.2,.7,.2,1) both;transform-origin:bottom}
+.slide.on .drawline{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 1.4s ease .5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+#vibdot{opacity:0}
+.playing #vibdot{opacity:1}
+.vibread{font-family:var(--mono);font-size:12px;font-weight:700}
+.face{width:54px;height:54px;flex:none}
+.person{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 16px}
+.person b{font-size:16px}
+.person span{font-family:var(--mono);font-size:11px;color:var(--mut)}
 @media print{
 html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
-.slide{display:flex;width:100%;aspect-ratio:auto;height:100vh;max-height:100vh;page-break-after:always;page-break-inside:avoid;border-radius:0;overflow:hidden;padding:44px 52px 54px}
+.slide{display:flex;width:100%;aspect-ratio:auto;height:100vh;max-height:100vh;page-break-after:always;page-break-inside:avoid;border-radius:0;overflow:hidden}
 .slide:last-child{page-break-after:auto}
-.nav{display:none}.slide.on>*{animation:none}
+.nav{display:none}.anim{opacity:1!important;animation:none!important}
+.fill{width:var(--w)!important;animation:none!important}.fillv{height:var(--h)!important;animation:none!important}
+.mbars i,.grow{animation:none!important}.drawline{stroke-dashoffset:0!important;animation:none!important}
 }
+@media (prefers-reduced-motion:reduce){.anim,.fill,.fillv,.mbars i,.grow,.drawline{animation-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <div class="stage">
-
-<!-- 1 COVER -->
-<section class="slide dark on">
-<img class="logo" src="data:image/png;base64,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" alt="Chandra Asri">
-<div class="kick" style="margin-top:16px">CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</div>
-<h1>One file. One truth.<br>From data to decision.</h1>
-<p class="sub">380 incidents over 31 months, read from a single governed table. No server, no internet, no install.</p>
-<div class="grid4">
-<div class="stat"><b>$67.19M</b><span>USD exposure in scope</span></div>
-<div class="stat"><b>$2,261 h</b><span>downtime across 380 records</span></div>
-<div class="stat"><b>179</b><span>overdue actions (109 past 1 year)</span></div>
-<div class="stat"><b>87.1%</b><span>AI retrieval @ rank 1</span><span class="sp"><svg viewBox="0 0 200 40" class="spark" aria-hidden="true"><polyline points="0.0,29.6 6.7,18.7 13.3,32.2 20.0,27.4 26.7,26.4 33.3,31.2 40.0,29.6 46.7,30.6 53.3,31.6 60.0,23.5 66.7,20.9 73.3,16.2 80.0,17.6 86.7,25.5 93.3,11.5 100.0,25.0 106.7,30.4 113.3,24.0 120.0,35.2 126.7,19.4 133.3,31.1 140.0,28.6 146.7,35.4 153.3,24.8 160.0,29.4 166.7,25.0 173.3,27.8 180.0,1.9 186.7,25.0 193.3,20.4 200.0,23.9" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linejoin="round"/></svg></span></div>
+<section class="slide dark on" data-t="15">
+<img class="logo anim" style="--d:.05s" src="data:image/png;base64,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" alt="Chandra Asri">
+<div class="kick anim" style="--d:.12s;margin-top:16px">CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</div>
+<h1 class="anim" style="--d:.2s">One file. One truth.<br>From data to decision.</h1>
+<p class="sub anim" style="--d:.3s">380 incidents over 31 months, read from a single governed table. No server, no internet, no install.</p>
+<div class="kpi4 anim" style="--d:.4s">
+<div><b data-count="67.19" data-dec="2" data-pre="$" data-suf="M">$0.00M</b><span>USD exposure in scope</span></div>
+<div><b data-count="2261" data-suf=" h">0 h</b><span>downtime, 380 records</span></div>
+<div><b data-count="179">0</b><span>overdue actions (109 past 1 year)</span></div>
+<div><b data-count="87.1" data-dec="1" data-suf="%">0%</b><span>AI retrieval at rank 1</span></div>
 </div>
-<div class="src" style="color:#9FB3D1">Monthly loss exposure, Jan 2024 &rarr; Jul 2026 &mdash; peak $5.6M, average $2.17M per month.</div>
+<div class="fig anim" style="--d:.55s;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);margin-top:16px">
+<h3 style="color:#8FB6D9">Monthly loss exposure &mdash; Jan 2024 to Jul 2026</h3>
+<svg viewBox='0 0 260 44' class='spark'><polyline points='0.0,32.0 8.7,19.4 17.3,35.0 26.0,29.5 34.7,28.3 43.3,33.9 52.0,32.0 60.7,33.1 69.3,34.3 78.0,24.9 86.7,21.9 95.3,16.6 104.0,18.1 112.7,27.2 121.3,11.1 130.0,26.7 138.7,32.9 147.3,25.5 156.0,38.4 164.7,20.2 173.3,33.7 182.0,30.8 190.7,38.7 199.3,26.4 208.0,31.8 216.7,26.6 225.3,29.9 234.0,0.0 242.7,26.7 251.3,21.4 260.0,25.4' fill='none' stroke='#7DD3FC' stroke-width='2.2'/></svg>
+<div class="cap" style="color:#C9D5E8">Peak $5.56MM &mdash; average $2.17MM per month. The full 31-month curve is on slide 2.</div>
+</div>
 <div class="foot"><span>Jenny &middot; Hafidz &middot; Naufal &mdash; Advisor: Mr. Bayu Aji</span><span>01 / 11</span></div>
 </section>
 
-<!-- 2 PROBLEM WITH DATA -->
-<section class="slide">
-<div class="kick">The problem, quantified</div>
-<h2>The loss curve is going up, not down.</h2>
+<section class="slide" data-t="25">
+<div class="kick anim" style="--d:.05s">The problem, quantified</div>
+<h2 class="anim" style="--d:.12s">The loss curve is going <em>up</em>, not down.</h2>
 <div class="grid23">
-<div class="pane"><h3>Monthly loss exposure &mdash; 31 months</h3>
-<svg viewBox="0 0 560 170" class="chart" role="img"><line x1="46" y1="148.0" x2="550" y2="148.0" stroke="#E5E7EB" stroke-width="1"/><text x="40" y="151.5" text-anchor="end" font-size="9" fill="#6B7280">0.0M</text><line x1="46" y1="102.7" x2="550" y2="102.7" stroke="#E5E7EB" stroke-width="1"/><text x="40" y="106.2" text-anchor="end" font-size="9" fill="#6B7280">2.0M</text><line x1="46" y1="57.3" x2="550" y2="57.3" stroke="#E5E7EB" stroke-width="1"/><text x="40" y="60.8" text-anchor="end" font-size="9" fill="#6B7280">4.0M</text><line x1="46" y1="12.0" x2="550" y2="12.0" stroke="#E5E7EB" stroke-width="1"/><text x="40" y="15.5" text-anchor="end" font-size="9" fill="#6B7280">6.0M</text><polygon points="46,148.0 46.0,113.6 62.8,77.7 79.6,122.2 96.4,106.5 113.2,103.1 130.0,119.0 146.8,113.7 163.6,116.9 180.4,120.3 197.2,93.4 214.0,84.8 230.8,69.5 247.6,74.0 264.4,100.0 281.2,53.8 298.0,98.4 314.8,116.1 331.6,95.0 348.4,132.1 365.2,79.9 382.0,118.5 398.8,110.2 415.6,132.7 432.4,97.7 449.2,113.0 466.0,98.3 482.8,107.6 499.6,22.1 516.4,98.5 533.2,83.4 550.0,94.6 550,148.0" fill="#1A56DB" opacity=".10"/><polyline points="46.0,113.6 62.8,77.7 79.6,122.2 96.4,106.5 113.2,103.1 130.0,119.0 146.8,113.7 163.6,116.9 180.4,120.3 197.2,93.4 214.0,84.8 230.8,69.5 247.6,74.0 264.4,100.0 281.2,53.8 298.0,98.4 314.8,116.1 331.6,95.0 348.4,132.1 365.2,79.9 382.0,118.5 398.8,110.2 415.6,132.7 432.4,97.7 449.2,113.0 466.0,98.3 482.8,107.6 499.6,22.1 516.4,98.5 533.2,83.4 550.0,94.6" fill="none" stroke="#1A56DB" stroke-width="2.2" stroke-linejoin="round"/><line x1="46" y1="98.9" x2="550" y2="98.9" stroke="#D97706" stroke-width="1.6" stroke-dasharray="5 4"/><text x="550" y="93.9" text-anchor="end" font-size="9" font-weight="700" fill="#D97706">avg 2.2M</text><circle cx="499.6" cy="22.1" r="3.6" fill="#DC2626"/><text x="499.6" y="15.1" text-anchor="middle" font-size="9" font-weight="700" fill="#DC2626">peak 5.6M</text><text x="46.0" y="164" text-anchor="middle" font-size="9" fill="#6B7280">Jan 24</text><text x="298.0" y="164" text-anchor="middle" font-size="9" fill="#6B7280">Jan 25</text><text x="550.0" y="164" text-anchor="middle" font-size="9" fill="#6B7280">Jul 26</text></svg>
-<div class="cap">Real baseline from the incident database. Dashed line = long-run average $2.17M/month.</div></div>
-<div>
-<div class="grid2" style="margin-top:0">
-<div class="stat"><b style="color:var(--red)">+34%</b><span>2026 run-rate vs 2024 ($1.97M &rarr; $2.64M/mo)</span></div>
-<div class="stat"><b style="color:var(--red)">$5.56M</b><span>worst single month (Apr 2026)</span></div>
-<div class="stat"><b style="color:var(--red)">$56%</b><span>of exposure sits behind an overdue action</span></div>
-<div class="stat"><b style="color:var(--red)">109</b><span>actions already overdue by more than a year</span></div>
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 1 &mdash; Monthly loss exposure, 31 months (kUSD)</h3>
+<div class="mbars"><i class="" style="--h:27.3%" title="Jan 24: $1.52M"></i><i class="" style="--h:55.9%" title="Feb 24: $3.11M"></i><i class="" style="--h:20.5%" title="Mar 24: $1.14M"></i><i class="" style="--h:33.0%" title="Apr 24: $1.83M"></i><i class="" style="--h:35.7%" title="May 24: $1.98M"></i><i class="" style="--h:23.0%" title="Jun 24: $1.28M"></i><i class="" style="--h:27.2%" title="Jul 24: $1.52M"></i><i class="" style="--h:24.7%" title="Aug 24: $1.37M"></i><i class="" style="--h:22.0%" title="Sep 24: $1.22M"></i><i class="" style="--h:43.4%" title="Oct 24: $2.41M"></i><i class="" style="--h:50.2%" title="Nov 24: $2.79M"></i><i class="" style="--h:62.4%" title="Dec 24: $3.47M"></i><i class="" style="--h:58.8%" title="Jan 25: $3.27M"></i><i class="" style="--h:38.1%" title="Feb 25: $2.12M"></i><i class="" style="--h:74.8%" title="Mar 25: $4.16M"></i><i class="" style="--h:39.4%" title="Apr 25: $2.19M"></i><i class="" style="--h:25.3%" title="May 25: $1.41M"></i><i class="" style="--h:42.1%" title="Jun 25: $2.34M"></i><i class="" style="--h:12.6%" title="Jul 25: $0.70M"></i><i class="" style="--h:54.0%" title="Aug 25: $3.01M"></i><i class="" style="--h:23.4%" title="Sep 25: $1.30M"></i><i class="" style="--h:30.0%" title="Oct 25: $1.67M"></i><i class="" style="--h:12.1%" title="Nov 25: $0.68M"></i><i class="" style="--h:39.9%" title="Dec 25: $2.22M"></i><i class="" style="--h:27.8%" title="Jan 26: $1.55M"></i><i class="" style="--h:39.5%" title="Feb 26: $2.20M"></i><i class="" style="--h:32.1%" title="Mar 26: $1.79M"></i><i class="peak" style="--h:100.0%" title="Apr 26: $5.56M"></i><i class="" style="--h:39.3%" title="May 26: $2.19M"></i><i class="" style="--h:51.3%" title="Jun 26: $2.85M"></i><i class="" style="--h:42.4%" title="Jul 26: $2.36M"></i></div>
+<div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--mut);margin-top:4px"><span>Jan 24</span><span>Jan 25</span><span>Apr 26 peak</span><span>Jul 26</span></div>
+<div class="cap">Source: baseline Incident Database, 380 records x 23 columns. Red = Apr 2026 peak $5.56MM. Dashed reading: 2026 run-rate $2.64MM/mo vs 2024 $1.97MM/mo (+34%).</div>
 </div>
-<ul class="tight">
-<li class="r">Six functions, six dashboards, six KPI definitions &mdash; time spent validating before deciding.</li>
-<li class="a">Alerts fire, but nobody owns them: 220 actions open, 179 past due.</li>
-<li class="r">Root cause found late, so the same mechanism keeps repeating.</li>
+<div>
+<div class="grid2 anim" style="--d:.3s;margin-top:0">
+<div class="fig"><h3>2026 vs 2024</h3><b class="mono" style="font-size:26px;color:var(--red)">+34%</b><div class="cap">run-rate per month</div></div>
+<div class="fig"><h3>Worst month</h3><b class="mono" style="font-size:26px;color:var(--red)">$5.56MM</b><div class="cap">April 2026</div></div>
+<div class="fig"><h3>Behind overdue</h3><b class="mono" style="font-size:26px;color:var(--red)">56%</b><div class="cap">of exposure, ownerless</div></div>
+<div class="fig"><h3>Stale &gt; 1 yr</h3><b class="mono" style="font-size:26px;color:var(--red)">109</b><div class="cap">actions, oldest 926 d</div></div>
+</div>
+<ul class="rows anim" style="--d:.45s">
+<li class="r">Six functions, six dashboards, six KPI definitions &mdash; hours validating before deciding.</li>
+<li class="a">220 actions open, 179 past due, median age 463 days.</li>
 </ul>
 </div>
 </div>
-<div class="foot"><span>Source: baseline Incident Database, 380 records x 23 columns</span><span>02 / 11</span></div>
+<div class="foot"><span>Source: baseline Incident Database</span><span>02 / 11</span></div>
 </section>
 
-<!-- 3 BASELINE SCORECARD -->
-<section class="slide">
-<div class="kick">Baseline scorecard</div>
-<h2>What we inherited &mdash; measured, not asserted.</h2>
+<section class="slide" data-t="20">
+<div class="kick anim" style="--d:.05s">Baseline scorecard</div>
+<h2 class="anim" style="--d:.12s">What we inherited &mdash; <em>measured</em>, not asserted.</h2>
 <div class="grid23">
-<div class="pane"><h3>Exposure by failure mechanism</h3>
-<table><thead><tr><th>#</th><th>Mechanism</th><th class="num">Cases</th><th class="num">Loss</th><th class="num">Share</th><th></th></tr></thead>
-<tbody><tr><td><b>1</b></td><td>Leakage</td><td class="num">101</td><td class="num">$17.00M</td><td class="num">25.3%</td><td><span class="bar"><i style="width:100%"></i></span></td></tr><tr><td><b>2</b></td><td>High Vibration</td><td class="num">57</td><td class="num">$9.88M</td><td class="num">14.7%</td><td><span class="bar"><i style="width:58%"></i></span></td></tr><tr><td><b>3</b></td><td>Worn Out</td><td class="num">47</td><td class="num">$8.17M</td><td class="num">12.2%</td><td><span class="bar"><i style="width:48%"></i></span></td></tr><tr><td><b>4</b></td><td>Crack</td><td class="num">20</td><td class="num">$6.55M</td><td class="num">9.8%</td><td><span class="bar"><i style="width:39%"></i></span></td></tr><tr><td><b>5</b></td><td>Fouling</td><td class="num">20</td><td class="num">$3.70M</td><td class="num">5.5%</td><td><span class="bar"><i style="width:22%"></i></span></td></tr></tbody></table>
-<div class="cap">Top 3 mechanisms = 52% of total exposure ($35.04M of $67.19M) in just 205 of 380 records.</div></div>
-<div class="pane"><h3>Where the money is, by unit</h3>
-<table><thead><tr><th>#</th><th>Unit</th><th class="num">Cases</th><th class="num">Overdue</th><th class="num">Loss</th><th></th></tr></thead>
-<tbody><tr><td><b>1</b></td><td><span class="tag">ZCU</span></td><td class="num">62</td><td class="num">29</td><td class="num">$11.11M</td><td><span class="bar"><i style="width:100%"></i></span></td></tr><tr><td><b>2</b></td><td><span class="tag">ARP</span></td><td class="num">49</td><td class="num">26</td><td class="num">$9.08M</td><td><span class="bar"><i style="width:82%"></i></span></td></tr><tr><td><b>3</b></td><td><span class="tag">OPP</span></td><td class="num">42</td><td class="num">22</td><td class="num">$7.54M</td><td><span class="bar"><i style="width:68%"></i></span></td></tr><tr><td><b>4</b></td><td><span class="tag">SMX</span></td><td class="num">42</td><td class="num">21</td><td class="num">$7.43M</td><td><span class="bar"><i style="width:67%"></i></span></td></tr><tr><td><b>5</b></td><td><span class="tag">OP2</span></td><td class="num">37</td><td class="num">15</td><td class="num">$5.81M</td><td><span class="bar"><i style="width:52%"></i></span></td></tr><tr><td><b>6</b></td><td><span class="tag">NUP</span></td><td class="num">24</td><td class="num">10</td><td class="num">$5.49M</td><td><span class="bar"><i style="width:49%"></i></span></td></tr></tbody></table>
-<div class="cap">Unit ZCU alone carries $11.11M and 29 overdue actions.</div></div>
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 2 &mdash; Exposure by failure mechanism (Pareto)</h3>
+<svg viewBox='0 0 600 230' class='chart'><rect class='grow' x='28.4' y='26.0' width='56.5' height='152.0' rx='5' fill='#1A56DB'/><text x='56.7' y='19.0' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$17.00M</text><text x='56.7' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Leakage</text><text x='56.7' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>101 cases</text><rect class='grow' x='125.8' y='89.7' width='56.5' height='88.3' rx='5' fill='#1A56DB'/><text x='154.0' y='82.7' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$9.88M</text><text x='154.0' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>High Vibratio</text><text x='154.0' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>57 cases</text><rect class='grow' x='223.1' y='105.0' width='56.5' height='73.0' rx='5' fill='#1A56DB'/><text x='251.3' y='98.0' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$8.17M</text><text x='251.3' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Worn Out</text><text x='251.3' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>47 cases</text><rect class='grow' x='320.4' y='119.4' width='56.5' height='58.6' rx='5' fill='#9CA3AF'/><text x='348.7' y='112.4' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$6.55M</text><text x='348.7' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Crack</text><text x='348.7' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>20 cases</text><rect class='grow' x='417.8' y='144.9' width='56.5' height='33.1' rx='5' fill='#9CA3AF'/><text x='446.0' y='137.9' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$3.70M</text><text x='446.0' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Fouling</text><text x='446.0' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>20 cases</text><rect class='grow' x='515.1' y='145.6' width='56.5' height='32.4' rx='5' fill='#9CA3AF'/><text x='543.3' y='138.6' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$3.63M</text><text x='543.3' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Error</text><text x='543.3' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>20 cases</text><polyline class='drawline' points='56.7,125.2 154.0,94.5 251.3,69.1 348.7,48.8 446.0,37.3 543.3,26.0' fill='none' stroke='#DC2626' stroke-width='2.4'/><circle cx='56.7' cy='125.2' r='4' fill='#DC2626'/><circle cx='154.0' cy='94.5' r='4' fill='#DC2626'/><circle cx='251.3' cy='69.1' r='4' fill='#DC2626'/><circle cx='348.7' cy='48.8' r='4' fill='#DC2626'/><circle cx='446.0' cy='37.3' r='4' fill='#DC2626'/><circle cx='543.3' cy='26.0' r='4' fill='#DC2626'/><text x='251.3' y='58.1' text-anchor='middle' font-size='13' font-weight='800' fill='#DC2626'>cum 72%</text></svg>
+<div class="cap">Source: incident mechanism column. Blue = top 3 (205 of 380 cases, $35.04MM = 52% of exposure). Red dashes = cumulative share.</div>
 </div>
-<div class="grid4" style="margin-top:14px">
-<div class="stat"><b>380</b><span>incidents / 23 columns</span></div>
-<div class="stat"><b>5</b><span>assets x 26 weeks condition</span></div>
-<div class="stat"><b>5 x 721</b><span>hourly PI production rows</span></div>
-<div class="stat"><b>5</b><span>structured RCA decks (4P / 4M+1E)</span></div>
+<div class="fig anim" style="--d:.3s">
+<h3>Fig. 3 &mdash; Where the money is, by unit</h3>
+<div class='urow'><span class='ulab'>ZCU</span><span class='utrack'><i class='fill' style='--w:100%'></i></span><b>$11.11M</b><span class='uod'>29 od</span></div><div class='urow'><span class='ulab'>ARP</span><span class='utrack'><i class='fill' style='--w:82%'></i></span><b>$9.08M</b><span class='uod'>26 od</span></div><div class='urow'><span class='ulab'>OPP</span><span class='utrack'><i class='fill' style='--w:68%'></i></span><b>$7.54M</b><span class='uod'>22 od</span></div><div class='urow'><span class='ulab'>SMX</span><span class='utrack'><i class='fill' style='--w:67%'></i></span><b>$7.43M</b><span class='uod'>21 od</span></div><div class='urow'><span class='ulab'>OP2</span><span class='utrack'><i class='fill' style='--w:52%'></i></span><b>$5.81M</b><span class='uod'>15 od</span></div><div class='urow'><span class='ulab'>NUP</span><span class='utrack'><i class='fill' style='--w:49%'></i></span><b>$5.49M</b><span class='uod'>10 od</span></div>
+<div class="cap">Bar = loss USD. <b>od</b> = overdue actions behind that unit. Unit ZCU alone: $11.11MM + 29 overdue.</div>
 </div>
-<div class="foot"><span>Every figure on this slide is recomputed from the same table</span><span>03 / 11</span></div>
+</div>
+<div class="foot"><span>Every figure recomputed from the same table</span><span>03 / 11</span></div>
 </section>
 
-<!-- 4 Q1 FOUNDATION -->
-<section class="slide">
-<div class="kick">Key question 1 &mdash; Data foundation</div>
-<h2>Four sources in. One governed table out.</h2>
-<p class="sub">Every chart on every tab reads the same incident table. Edit one record, every figure recomputes.</p>
-<div class="chain">
-<div class="step">Incident DB<small>380 x 23 cols</small></div><span class="arr">&rarr;</span>
-<div class="step">Equipment<small>5 x 26 weeks</small></div><span class="arr">&rarr;</span>
-<div class="step">Production PI<small>5 x 721 rows</small></div><span class="arr">&rarr;</span>
-<div class="step">Downtime<small>2,261.1 h total</small></div><span class="arr">&rarr;</span>
-<div class="step">ONE TABLE<small>feeds 11 views</small></div>
+<section class="slide" data-t="20">
+<div class="kick anim" style="--d:.05s">Key question 1 &mdash; Data foundation</div>
+<h2 class="anim" style="--d:.12s">Four sources in. <em>One governed table</em> out.</h2>
+<p class="sub anim" style="--d:.2s">Every chart on every view reads the same incident table. Edit one record, every figure recomputes.</p>
+<div class="chain anim" style="--d:.3s">
+<div class="step">Incident DB<small>380 x 23 cols</small></div><span class="arr">&gt;</span>
+<div class="step">Equipment<small>5 x 26 weeks</small></div><span class="arr">&gt;</span>
+<div class="step">Production PI<small>5 x 721 rows</small></div><span class="arr">&gt;</span>
+<div class="step">Downtime<small>2261.1 h</small></div><span class="arr">&gt;</span>
+<div class="step hot">ONE TABLE<small>feeds 11 views</small></div>
 </div>
-<div class="grid3" style="margin-top:18px">
-<div class="pane"><h3>Single definition</h3><div class="cap">One KPI contract: the same metric computed from incident DB, PI tags, or declared value, side by side &mdash; divergence is visible instead of hidden.</div></div>
-<div class="pane"><h3>Governed, not scraped</h3><div class="cap">Baseline defects are published in a Data Governance tab rather than silently patched: nulls, inconsistent units, and gaps are listed.</div></div>
-<div class="pane"><h3>Offline by design</h3><div class="cap">One HTML file. Runs from a USB stick with no install, no build step, no server &mdash; survives a judge's machine with no internet.</div></div>
+<div class="grid3">
+<div class="fig anim" style="--d:.4s"><h3>Single KPI contract</h3><div class="cap">Same metric from incident DB, PI tags, or declared value, side by side &mdash; divergence visible, not hidden.</div></div>
+<div class="fig anim" style="--d:.5s"><h3>Governed, not scraped</h3><div class="cap">Baseline defects published in a Data Governance view: nulls, units, gaps &mdash; listed, not patched.</div></div>
+<div class="fig anim" style="--d:.6s"><h3>Offline by design</h3><div class="cap">One HTML file from a USB stick. No install, no build, no server &mdash; survives a judge PC offline.</div></div>
 </div>
-<div class="foot"><span>Declared additions: energy proxy + CCTV illustration, both labeled</span><span>04 / 11</span></div>
+<div class="foot"><span>Additions declared: energy proxy + CCTV illustration, both labeled</span><span>04 / 11</span></div>
 </section>
 
-<!-- 5 Q2 SINGLE PANE -->
-<section class="slide">
-<div class="kick">Key question 2 &mdash; Single pane of glass</div>
-<h2>The executive view, in one screen.</h2>
-<div class="grid2">
-<div class="pane"><h3>Fix-first priority &mdash; Pareto of loss</h3><svg viewBox="0 0 540 190" class="chart" role="img"><rect x="27.2" y="14.0" width="48.9" height="142.0" rx="4" fill="#1A56DB"/><text x="51.7" y="9.0" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">17.0M</text><text x="51.7" y="170" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">Leakage</text><text x="51.7" y="182" text-anchor="middle" font-size="9" fill="#6B7280">101 cases</text><rect x="114.5" y="73.5" width="48.9" height="82.5" rx="4" fill="#1A56DB"/><text x="139.0" y="68.5" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">9.9M</text><text x="139.0" y="170" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">High Vibration</text><text x="139.0" y="182" text-anchor="middle" font-size="9" fill="#6B7280">57 cases</text><rect x="201.9" y="87.8" width="48.9" height="68.2" rx="4" fill="#1A56DB"/><text x="226.3" y="82.8" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">8.2M</text><text x="226.3" y="170" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">Worn Out</text><text x="226.3" y="182" text-anchor="middle" font-size="9" fill="#6B7280">47 cases</text><rect x="289.2" y="101.3" width="48.9" height="54.7" rx="4" fill="#9CA3AF"/><text x="313.7" y="96.3" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">6.6M</text><text x="313.7" y="170" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">Crack</text><text x="313.7" y="182" text-anchor="middle" font-size="9" fill="#6B7280">20 cases</text><rect x="376.5" y="125.1" width="48.9" height="30.9" rx="4" fill="#9CA3AF"/><text x="401.0" y="120.1" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">3.7M</text><text x="401.0" y="170" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">Fouling</text><text x="401.0" y="182" text-anchor="middle" font-size="9" fill="#6B7280">20 cases</text><rect x="463.9" y="125.7" width="48.9" height="30.3" rx="4" fill="#9CA3AF"/><text x="488.3" y="120.7" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">3.6M</text><text x="488.3" y="170" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">Error</text><text x="488.3" y="182" text-anchor="middle" font-size="9" fill="#6B7280">20 cases</text><polyline points="51.7,106.7 139.0,78.0 226.3,54.3 313.7,35.3 401.0,24.5 488.3,14.0" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4 3"/><circle cx="51.7" cy="106.7" r="3" fill="#DC2626"/><circle cx="139.0" cy="78.0" r="3" fill="#DC2626"/><circle cx="226.3" cy="54.3" r="3" fill="#DC2626"/><circle cx="313.7" cy="35.3" r="3" fill="#DC2626"/><circle cx="401.0" cy="24.5" r="3" fill="#DC2626"/><circle cx="488.3" cy="14.0" r="3" fill="#DC2626"/><text x="226.3" y="46.3" text-anchor="middle" font-size="10.5" font-weight="800" fill="#DC2626">cum 72%</text></svg>
-<div class="cap">Blue = top 3. Red dashes = cumulative share. Tapping a bar filters the incident list to that mechanism.</div></div>
-<div class="pane"><h3>Unit ranking &mdash; loss with overdue count</h3><svg viewBox="0 0 540 186" class="chart" role="img"><text x="120" y="17" text-anchor="end" font-size="11" font-weight="700" fill="#0A2342">ZCU</text><rect x="128" y="6" width="350" height="15" rx="4" fill="#F1F5F9"/><rect x="128" y="6" width="350.0" height="15" rx="4" fill="#1A56DB"/><text x="484" y="17" font-size="10.5" font-weight="700" fill="#0A2342">11.11M</text><text x="134" y="17" font-size="9.5" font-weight="700" fill="#fff">29 od</text><text x="120" y="47" text-anchor="end" font-size="11" font-weight="700" fill="#0A2342">ARP</text><rect x="128" y="36" width="350" height="15" rx="4" fill="#F1F5F9"/><rect x="128" y="36" width="286.1" height="15" rx="4" fill="#1A56DB"/><text x="484" y="47" font-size="10.5" font-weight="700" fill="#0A2342">9.08M</text><text x="134" y="47" font-size="9.5" font-weight="700" fill="#fff">26 od</text><text x="120" y="77" text-anchor="end" font-size="11" font-weight="700" fill="#0A2342">OPP</text><rect x="128" y="66" width="350" height="15" rx="4" fill="#F1F5F9"/><rect x="128" y="66" width="237.6" height="15" rx="4" fill="#1A56DB"/><text x="484" y="77" font-size="10.5" font-weight="700" fill="#0A2342">7.54M</text><text x="134" y="77" font-size="9.5" font-weight="700" fill="#fff">22 od</text><text x="120" y="107" text-anchor="end" font-size="11" font-weight="700" fill="#0A2342">SMX</text><rect x="128" y="96" width="350" height="15" rx="4" fill="#F1F5F9"/><rect x="128" y="96" width="234.2" height="15" rx="4" fill="#1A56DB"/><text x="484" y="107" font-size="10.5" font-weight="700" fill="#0A2342">7.43M</text><text x="134" y="107" font-size="9.5" font-weight="700" fill="#fff">21 od</text><text x="120" y="137" text-anchor="end" font-size="11" font-weight="700" fill="#0A2342">OP2</text><rect x="128" y="126" width="350" height="15" rx="4" fill="#F1F5F9"/><rect x="128" y="126" width="182.9" height="15" rx="4" fill="#1A56DB"/><text x="484" y="137" font-size="10.5" font-weight="700" fill="#0A2342">5.81M</text><text x="134" y="137" font-size="9.5" font-weight="700" fill="#fff">15 od</text><text x="120" y="167" text-anchor="end" font-size="11" font-weight="700" fill="#0A2342">NUP</text><rect x="128" y="156" width="350" height="15" rx="4" fill="#F1F5F9"/><rect x="128" y="156" width="172.9" height="15" rx="4" fill="#1A56DB"/><text x="484" y="167" font-size="10.5" font-weight="700" fill="#0A2342">5.49M</text><text x="134" y="167" font-size="9.5" font-weight="700" fill="#fff">10 od</text></svg>
-<div class="cap">Bar = loss in USD. <b>od</b> = overdue actions behind that unit. Tap to filter.</div></div>
-</div>
-<div class="grid4" style="margin-top:13px">
-<div class="stat"><b>$67.19M</b><span>hero exposure card</span></div>
-<div class="stat"><b>179</b><span>overdue, owner + age on every row</span></div>
-<div class="stat"><b>11</b><span>views, every KPI clickable to source</span></div>
-<div class="stat"><b>0</b><span>charts without a data provenance link</span></div>
-</div>
-<div class="foot"><span>Trip logsheet: one row per trip, colored duration + follow-up dot</span><span>05 / 11</span></div>
-</section>
-
-<!-- 6 OVERDUE AGING -->
-<section class="slide">
-<div class="kick">Action tracking &mdash; aging of overdue</div>
-<h2>109 actions are more than a year late.</h2>
+<section class="slide" data-t="25">
+<div class="kick anim" style="--d:.05s">Key question 2 &mdash; Single pane of glass</div>
+<h2 class="anim" style="--d:.12s">The executive view, <em>in one screen</em>.</h2>
 <div class="grid23">
-<div class="pane"><h3>Overdue actions by age (179 total)</h3><svg viewBox="0 0 540 175" class="chart" role="img"><line x1="40" y1="135.0" x2="530" y2="135.0" stroke="#E5E7EB"/><text x="34" y="138.5" text-anchor="end" font-size="9" fill="#6B7280">0</text><line x1="40" y1="94.7" x2="530" y2="94.7" stroke="#E5E7EB"/><text x="34" y="98.2" text-anchor="end" font-size="9" fill="#6B7280">42</text><line x1="40" y1="54.3" x2="530" y2="54.3" stroke="#E5E7EB"/><text x="34" y="57.8" text-anchor="end" font-size="9" fill="#6B7280">84</text><rect x="59.6" y="131.1" width="58.8" height="3.9" rx="5" fill="#16A34A"/><text x="89.0" y="125.1" text-anchor="middle" font-size="11" font-weight="800" fill="#16A34A">4</text><text x="89.0" y="153" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">0-30</text><text x="89.0" y="165" text-anchor="middle" font-size="8.5" fill="#6B7280">days</text><rect x="157.6" y="113.8" width="58.8" height="21.2" rx="5" fill="#3B82F6"/><text x="187.0" y="107.8" text-anchor="middle" font-size="11" font-weight="800" fill="#3B82F6">22</text><text x="187.0" y="153" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">31-90</text><text x="187.0" y="165" text-anchor="middle" font-size="8.5" fill="#6B7280">days</text><rect x="255.6" y="122.5" width="58.8" height="12.5" rx="5" fill="#D97706"/><text x="285.0" y="116.5" text-anchor="middle" font-size="11" font-weight="800" fill="#D97706">13</text><text x="285.0" y="153" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">91-180</text><text x="285.0" y="165" text-anchor="middle" font-size="8.5" fill="#6B7280">days</text><rect x="353.6" y="105.1" width="58.8" height="29.9" rx="5" fill="#EA580C"/><text x="383.0" y="99.1" text-anchor="middle" font-size="11" font-weight="800" fill="#EA580C">31</text><text x="383.0" y="153" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">181-365</text><text x="383.0" y="165" text-anchor="middle" font-size="8.5" fill="#6B7280">days</text><rect x="451.6" y="29.8" width="58.8" height="105.2" rx="5" fill="#DC2626"/><text x="481.0" y="23.8" text-anchor="middle" font-size="11" font-weight="800" fill="#DC2626">109</text><text x="481.0" y="153" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">>365</text><text x="481.0" y="165" text-anchor="middle" font-size="8.5" fill="#6B7280">days</text></svg>
-<div class="cap">Real distribution of 179 overdue actions measured at 19-Aug-2026. Median age 463 days, oldest 926 days.</div></div>
-<div class="pane"><h3>Before vs target</h3><svg viewBox="0 0 250 170" class="chart" role="img"><rect x="40.0" y="39.3" width="62" height="84.7" rx="6" fill="#DC2626"/><text x="71.0" y="32.3" text-anchor="middle" font-size="14" font-weight="800" fill="#DC2626">179</text><text x="71.0" y="144" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">OVERDUE NOW</text><text x="71.0" y="157" text-anchor="middle" font-size="9" fill="#6B7280">109 &gt;1 year</text><rect x="148.0" y="90.9" width="62" height="33.1" rx="6" fill="#16A34A"/><text x="179.0" y="83.9" text-anchor="middle" font-size="14" font-weight="800" fill="#16A34A">70</text><text x="179.0" y="144" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">TARGET</text><text x="125.0" y="16" text-anchor="middle" font-size="11" font-weight="800" fill="#6B7280">&#8594;</text></svg>
-<div class="cap"><b>Target basis:</b> every action gets an owner and a due date at creation, so nothing can age past its due date &mdash; the board blocks closure without evidence.</div>
-<ul class="tight" style="margin-top:6px">
-<li class="g">Red dot = nobody on it. Purple = in progress. Green = done.</li>
-<li class="a">Overdue carries $37.32M of exposure (56% of total).</li>
-</ul></div>
+<div class="fig anim" style="--d:.2s">
+<h3>Fix-first priority &mdash; tap a bar, the list filters</h3>
+<svg viewBox='0 0 600 230' class='chart'><rect class='grow' x='28.4' y='26.0' width='56.5' height='152.0' rx='5' fill='#1A56DB'/><text x='56.7' y='19.0' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$17.00M</text><text x='56.7' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Leakage</text><text x='56.7' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>101 cases</text><rect class='grow' x='125.8' y='89.7' width='56.5' height='88.3' rx='5' fill='#1A56DB'/><text x='154.0' y='82.7' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$9.88M</text><text x='154.0' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>High Vibratio</text><text x='154.0' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>57 cases</text><rect class='grow' x='223.1' y='105.0' width='56.5' height='73.0' rx='5' fill='#1A56DB'/><text x='251.3' y='98.0' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$8.17M</text><text x='251.3' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Worn Out</text><text x='251.3' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>47 cases</text><rect class='grow' x='320.4' y='119.4' width='56.5' height='58.6' rx='5' fill='#9CA3AF'/><text x='348.7' y='112.4' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$6.55M</text><text x='348.7' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Crack</text><text x='348.7' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>20 cases</text><rect class='grow' x='417.8' y='144.9' width='56.5' height='33.1' rx='5' fill='#9CA3AF'/><text x='446.0' y='137.9' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$3.70M</text><text x='446.0' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Fouling</text><text x='446.0' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>20 cases</text><rect class='grow' x='515.1' y='145.6' width='56.5' height='32.4' rx='5' fill='#9CA3AF'/><text x='543.3' y='138.6' text-anchor='middle' font-size='12' font-weight='800' fill='#0A2342'>$3.63M</text><text x='543.3' y='200' text-anchor='middle' font-size='11' font-weight='700' fill='#0A2342'>Error</text><text x='543.3' y='216' text-anchor='middle' font-size='10' fill='#5B6B82'>20 cases</text><polyline class='drawline' points='56.7,125.2 154.0,94.5 251.3,69.1 348.7,48.8 446.0,37.3 543.3,26.0' fill='none' stroke='#DC2626' stroke-width='2.4'/><circle cx='56.7' cy='125.2' r='4' fill='#DC2626'/><circle cx='154.0' cy='94.5' r='4' fill='#DC2626'/><circle cx='251.3' cy='69.1' r='4' fill='#DC2626'/><circle cx='348.7' cy='48.8' r='4' fill='#DC2626'/><circle cx='446.0' cy='37.3' r='4' fill='#DC2626'/><circle cx='543.3' cy='26.0' r='4' fill='#DC2626'/><text x='251.3' y='58.1' text-anchor='middle' font-size='13' font-weight='800' fill='#DC2626'>cum 72%</text></svg>
+<div class="cap">Top 3 = 52% of exposure. Priority is money order, not loudest voice.</div>
 </div>
-<div class="foot"><span>Target is a modeled commitment, not a measured result</span><span>06 / 11</span></div>
-</section>
-
-<!-- 7 Q3 AI -->
-<section class="slide">
-<div class="kick">Key question 3 &mdash; AI root cause</div>
-<h2>AI suggests. Humans close.</h2>
-<div class="grid23">
-<div class="pane"><h3>Similar-incident retrieval, before vs after</h3>
-<div class="grid2" style="margin-top:4px">
-<div><svg viewBox="0 0 250 170" class="chart" role="img"><rect x="40.0" y="56.7" width="62" height="67.3" rx="6" fill="#DC2626"/><text x="71.0" y="49.7" text-anchor="middle" font-size="14" font-weight="800" fill="#DC2626">69.2%</text><text x="71.0" y="144" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">BASELINE MODEL</text><text x="71.0" y="157" text-anchor="middle" font-size="9" fill="#6B7280">feature-lite</text><rect x="148.0" y="39.3" width="62" height="84.7" rx="6" fill="#16A34A"/><text x="179.0" y="32.3" text-anchor="middle" font-size="14" font-weight="800" fill="#16A34A">87.1%</text><text x="179.0" y="144" text-anchor="middle" font-size="10" font-weight="800" fill="#0A2342">FULL MODEL</text><text x="125.0" y="16" text-anchor="middle" font-size="11" font-weight="800" fill="#6B7280">&#8594;</text></svg></div>
-<div class="pane" style="border:0;padding:0">
-<ul class="tight" style="margin-top:4px">
-<li class="g"><b>87.1%</b> correct match at rank 1 (full model)</li>
-<li class="g"><b>98.4%</b> at rank 5</li>
-<li class="a">Baseline model with thin features: <b>69.2%</b></li>
-<li><b>+17.9 points</b> from uniting the four sources</li>
-</ul></div></div>
-<div class="cap">Both numbers measured leave-one-out on all 380 records &mdash; not a demo set. Full model 95% CI 83.4–90.1%.</div></div>
 <div>
-<div class="grid2" style="margin-top:0">
-<div class="stat"><b>87.1%</b><span>rank-1 retrieval, CI 83.4-90.1%</span></div>
-<div class="stat"><b>+17.9 pts</b><span>vs feature-lite baseline (69.2%)</span></div>
+<div class="fig anim" style="--d:.3s">
+<h3>Unit ranking &mdash; loss with overdue</h3>
+<div class='urow'><span class='ulab'>ZCU</span><span class='utrack'><i class='fill' style='--w:100%'></i></span><b>$11.11M</b><span class='uod'>29 od</span></div><div class='urow'><span class='ulab'>ARP</span><span class='utrack'><i class='fill' style='--w:82%'></i></span><b>$9.08M</b><span class='uod'>26 od</span></div><div class='urow'><span class='ulab'>OPP</span><span class='utrack'><i class='fill' style='--w:68%'></i></span><b>$7.54M</b><span class='uod'>22 od</span></div><div class='urow'><span class='ulab'>SMX</span><span class='utrack'><i class='fill' style='--w:67%'></i></span><b>$7.43M</b><span class='uod'>21 od</span></div><div class='urow'><span class='ulab'>OP2</span><span class='utrack'><i class='fill' style='--w:52%'></i></span><b>$5.81M</b><span class='uod'>15 od</span></div><div class='urow'><span class='ulab'>NUP</span><span class='utrack'><i class='fill' style='--w:49%'></i></span><b>$5.49M</b><span class='uod'>10 od</span></div>
 </div>
-<ul class="tight">
-<li class="g">Problem tank &rarr; root-cause indication &rarr; prioritized alerts &rarr; tracked action.</li>
-<li class="g"><b>Top-10 exposure plan</b> drafted in one click, each row with owner + PM schedule.</li>
-<li class="r">Human-in-the-loop: AI never closes an action, the PIC does.</li>
+<ul class="rows anim" style="--d:.4s">
+<li class="g">8 KPI cards + trip logsheet: one row per trip, colored duration, follow-up dot.</li>
+<li><span class="pill p-g">0 charts</span> without a data-provenance link.</li>
 </ul>
-<div class="src">Full method, confidence intervals and honest limits published in the Model Evaluation tab.</div>
+</div>
+</div>
+<div class="foot"><span>Nothing is decoration &mdash; every click opens proof</span><span>05 / 11</span></div>
+</section>
+
+<section class="slide" data-t="25">
+<div class="kick anim" style="--d:.05s">Action tracking &mdash; aging of overdue</div>
+<h2 class="anim" style="--d:.12s">109 actions are <em>more than a year</em> late.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 4 &mdash; Overdue actions by age, days (179 total)</h3>
+<div class="agrow"><div class='agcol'><b style='color:#16A34A'>4</b><span class='agtrack'><i class='fillv' style='--h:4%;background:#16A34A'></i></span><span>0-30</span><em>days</em></div><div class='agcol'><b style='color:#3B82F6'>22</b><span class='agtrack'><i class='fillv' style='--h:20%;background:#3B82F6'></i></span><span>31-90</span><em>days</em></div><div class='agcol'><b style='color:#D97706'>13</b><span class='agtrack'><i class='fillv' style='--h:12%;background:#D97706'></i></span><span>91-180</span><em>days</em></div><div class='agcol'><b style='color:#EA580C'>31</b><span class='agtrack'><i class='fillv' style='--h:28%;background:#EA580C'></i></span><span>181-365</span><em>days</em></div><div class='agcol'><b style='color:#DC2626'>109</b><span class='agtrack'><i class='fillv' style='--h:100%;background:#DC2626'></i></span><span>>365</span><em>days</em></div></div>
+<div class="cap">Measured at 19-Aug-2026. Median 463 d, oldest 926 d. $37.32MM of exposure (56%) sits behind these rows.</div>
+</div>
+<div class="fig anim" style="--d:.3s">
+<h3>Before vs target &mdash; modeled commitment</h3>
+<div class='babar'><div class='bacol'><b class='bc-b'>179</b><span class='batrack'><i class='fillv' style='--h:100%;background:#DC2626'></i></span><span>OVERDUE NOW</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>70</b><span class='batrack'><i class='fillv' style='--h:39%;background:#16A34A'></i></span><span>TARGET</span></div></div><div class='banote'>109 actions >1 year old drop out</div>
+<div class="cap">Basis: owner + due date mandatory at creation; closure blocked without evidence. Not a measured result.</div>
+<ul class="rows" style="margin-top:6px">
+<li class="r">Red dot = nobody on it. Purple = in progress. Green = done.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Target modeled from this baseline</span><span>06 / 11</span></div>
+</section>
+
+<section class="slide" data-t="30">
+<div class="kick anim" style="--d:.05s">Key question 3 &mdash; AI root cause</div>
+<h2 class="anim" style="--d:.12s">AI suggests. <em>Humans close.</em></h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Similar-incident retrieval, before vs after</h3>
+<div class='babar'><div class='bacol'><b class='bc-b'>69.2%</b><span class='batrack'><i class='fillv' style='--h:79%;background:#DC2626'></i></span><span>BASELINE MODEL</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>87.1%</b><span class='batrack'><i class='fillv' style='--h:100%;background:#16A34A'></i></span><span>FULL MODEL</span></div></div><div class='banote'>+17.9 pts from uniting 4 sources</div>
+<div style="margin-top:10px"><svg viewBox='0 0 300 54' class='chart'><line x1='20' y1='27' x2='280' y2='27' stroke='#E5E7EB' stroke-width='6' stroke-linecap='round'/><line x1='236.7' y1='27' x2='254.3' y2='27' stroke='#1A56DB' stroke-width='6' stroke-linecap='round'/><circle cx='246.5' cy='27' r='9' fill='#1A56DB' stroke='#fff' stroke-width='3'/><text x='20' y='50' font-size='10' fill='#5B6B82'>83.4%</text><text x='280' y='50' text-anchor='end' font-size='10' fill='#5B6B82'>90.1%</text></svg></div>
+<div class="cap">Both measured leave-one-out on all 380 records. 95% CI 83.4&ndash;90.1%. Method in Model Evaluation tab.</div>
+</div>
+<div>
+<div class="grid2 anim" style="--d:.3s;margin-top:0">
+<div class="fig"><h3>Rank 1</h3><b class="mono" style="font-size:26px;color:var(--accent)">87.1%</b><div class="cap">full model</div></div>
+<div class="fig"><h3>Lift</h3><b class="mono" style="font-size:26px;color:var(--green)">+17.9</b><div class="cap">pts vs thin baseline</div></div>
+</div>
+<ul class="rows anim" style="--d:.4s">
+<li class="g">Tank &gt; indication &gt; prioritized alerts &gt; tracked action with guidance.</li>
+<li class="g"><b class="n">Top-10</b> exposure plan in one click, owner + PM schedule each row.</li>
+<li class="r">AI never closes an action. The PIC does.</li>
+</ul>
 </div>
 </div>
 <div class="foot"><span>Measurable, reproducible, published</span><span>07 / 11</span></div>
 </section>
 
-<!-- 8 KO-3201 + LEAD -->
-<section class="slide">
-<div class="kick">Case reconstruction &mdash; compressor KO-3201</div>
-<h2>From signal to owner, and 67 days of warning.</h2>
-<div class="chain">
-<div class="step">Signal<small>vibration trend</small></div><span class="arr">&rarr;</span>
-<div class="step">Alarm<small>week flagged</small></div><span class="arr">&rarr;</span>
-<div class="step">Trip<small>downtime logged</small></div><span class="arr">&rarr;</span>
-<div class="step">Loss<small>USD in table</small></div><span class="arr">&rarr;</span>
-<div class="step">Owner + CAPA<small>PIC &middot; PM schedule</small></div>
+<section class="slide" data-t="30">
+<div class="kick anim" style="--d:.05s">Case reconstruction &mdash; compressor KO-3201</div>
+<h2 class="anim" style="--d:.12s">Watch it degrade. <em>67 days</em> of warning.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 5 &mdash; KO-3201 DE vibration, 26 weeks (micron) &mdash; LIVE TRACE</h3>
+<svg viewBox='0 0 620 200' class='chart' id='vibsvg'><rect x='44' y='14' width='564' height='111.5' fill='#16A34A' opacity='.08'/><rect x='44' y='125.5' width='564' height='0.0' fill='#D97706' opacity='.12'/><rect x='44' y='27.8' width='564' height='97.6' fill='#D97706' opacity='.12'/><line x1='44' y1='125.5' x2='608' y2='125.5' stroke='#D97706' stroke-width='1.6' stroke-dasharray='6 4'/><text x='544' y='119.5' font-size='10' font-weight='800' fill='#D97706'>ALARM ~38</text><line x1='44' y1='41.7' x2='608' y2='41.7' stroke='#DC2626' stroke-width='1.6' stroke-dasharray='6 4'/><text x='550' y='35.7' font-size='10' font-weight='800' fill='#DC2626'>TRIP ~71</text><polyline id='vibline' points='44.0,147.6 66.6,152.6 89.1,145.5 111.7,147.3 134.2,148.2 156.8,144.1 179.4,135.5 201.9,135.0 224.5,131.2 247.0,125.6 269.6,120.7 292.2,115.6 314.7,105.8 337.3,96.4 359.8,91.7 382.4,79.6 405.0,71.6 427.5,68.0 450.1,52.4 472.6,40.0 495.2,27.8 517.8,152.1 540.3,150.6 562.9,152.6 585.4,151.3 608.0,151.8' fill='none' stroke='#1A56DB' stroke-width='2.6' stroke-linejoin='round'/><circle id='vibdot' r='6' fill='#DC2626' stroke='#fff' stroke-width='2.5'/><text x='44.0' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W1</text><text x='224.5' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W9</text><text x='495.2' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W21</text><text x='608.0' y='192' text-anchor='middle' font-size='10' fill='#5B6B82'>W26</text></svg>
+<div class="cap">Real condition history. Dot replays weeks 1&ndash;26 when this slide opens. ALARM week 10, TRIP week 21: 77 days to act.</div>
+<div class="vibread">Reading: <span id="vibread">press 8 to replay</span> &nbsp;&middot;&nbsp; State: <span id="vibstat">READY</span></div>
 </div>
-<div class="grid23" style="margin-top:14px">
-<div class="pane"><h3>Warning window per asset &mdash; first ALARM &rarr; TRIP</h3><svg viewBox="0 0 540 165" class="chart" role="img"><line x1="40" y1="127.0" x2="530" y2="127.0" stroke="#E5E7EB"/><text x="34" y="130.5" text-anchor="end" font-size="9" fill="#6B7280">0d</text><line x1="40" y1="89.3" x2="530" y2="89.3" stroke="#E5E7EB"/><text x="34" y="92.8" text-anchor="end" font-size="9" fill="#6B7280">42d</text><line x1="40" y1="51.7" x2="530" y2="51.7" stroke="#E5E7EB"/><text x="34" y="55.2" text-anchor="end" font-size="9" fill="#6B7280">84d</text><rect x="61.6" y="89.3" width="54.9" height="37.7" rx="5" fill="#16A34A"/><text x="89.0" y="83.3" text-anchor="middle" font-size="10.5" font-weight="800" fill="#16A34A">42d</text><text x="89.0" y="145" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">PU-2101B</text><rect x="159.6" y="89.3" width="54.9" height="37.7" rx="5" fill="#16A34A"/><text x="187.0" y="83.3" text-anchor="middle" font-size="10.5" font-weight="800" fill="#16A34A">42d</text><text x="187.0" y="145" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">PM-4405B</text><rect x="257.6" y="64.2" width="54.9" height="62.8" rx="5" fill="#16A34A"/><text x="285.0" y="58.2" text-anchor="middle" font-size="10.5" font-weight="800" fill="#16A34A">70d</text><text x="285.0" y="145" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">HE-3301</text><rect x="355.6" y="57.9" width="54.9" height="69.1" rx="5" fill="#16A34A"/><text x="383.0" y="51.9" text-anchor="middle" font-size="10.5" font-weight="800" fill="#16A34A">77d</text><text x="383.0" y="145" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">KO-3201</text><rect x="453.6" y="32.8" width="54.9" height="94.2" rx="5" fill="#16A34A"/><text x="481.0" y="26.8" text-anchor="middle" font-size="10.5" font-weight="800" fill="#16A34A">105d</text><text x="481.0" y="145" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0A2342">BL-5702</text></svg>
-<div class="cap">Real gap from 26-week condition history. Mean <b>67 days</b>, range 42&ndash;105 days &mdash; the time available to act before a trip.</div></div>
-<div class="pane"><h3>Why it matters</h3>
-<table><thead><tr><th>Asset</th><th class="num">Lead</th><th class="num">Read</th></tr></thead><tbody><tr><td><span class="tag">PU-2101B</span></td><td class="num">42 d</td><td class="num">Actionable</td></tr><tr><td><span class="tag">PM-4405B</span></td><td class="num">42 d</td><td class="num">Actionable</td></tr><tr><td><span class="tag">HE-3301</span></td><td class="num">70 d</td><td class="num">Before trip</td></tr><tr><td><span class="tag">KO-3201</span></td><td class="num">77 d</td><td class="num">Before trip</td></tr><tr><td><span class="tag">BL-5702</span></td><td class="num">105 d</td><td class="num">Before trip</td></tr></tbody></table>
-<div class="cap">All 5 RCA decks integrated (4P / 4M+1E, CAPA, PIC, status, PM schedule) &mdash; chronology and correlation one tap from any row.</div></div>
+<div>
+<div class="fig anim" style="--d:.3s">
+<h3>Warning window per asset &mdash; first ALARM to TRIP</h3>
+<div class="agrow"><div class='agcol'><b style='color:#16A34A'>42d</b><span class='agtrack'><i class='fillv' style='--h:40%;background:#16A34A'></i></span><span>PU-2101B</span></div><div class='agcol'><b style='color:#16A34A'>42d</b><span class='agtrack'><i class='fillv' style='--h:40%;background:#16A34A'></i></span><span>PM-4405B</span></div><div class='agcol'><b style='color:#16A34A'>70d</b><span class='agtrack'><i class='fillv' style='--h:67%;background:#16A34A'></i></span><span>HE-3301</span></div><div class='agcol'><b style='color:#16A34A'>77d</b><span class='agtrack'><i class='fillv' style='--h:73%;background:#16A34A'></i></span><span>KO-3201</span></div><div class='agcol'><b style='color:#16A34A'>105d</b><span class='agtrack'><i class='fillv' style='--h:100%;background:#16A34A'></i></span><span>BL-5702</span></div></div>
+<div class="cap">Mean 67 days across 5 assets. All 5 RCA decks integrated (4P / 4M+1E, CAPA, PIC, PM schedule).</div>
 </div>
-<div class="foot"><span>Demo path: RCA tab &rarr; KO-3201</span><span>08 / 11</span></div>
+<ul class="rows anim" style="--d:.4s">
+<li class="g">Signal &gt; alarm &gt; trip &gt; loss &gt; owner + CAPA &mdash; one tap from any row.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Demo path: RCA tab, KO-3201</span><span>08 / 11</span></div>
 </section>
 
-<!-- 9 BEFORE vs AFTER -->
-<section class="slide dark">
-<div class="kick">Impact &mdash; before vs target</div>
-<h2>Four numbers we commit to moving.</h2>
-<p class="sub">Baseline column = measured from the committee data. Target column = modeled commitment with its basis stated.</p>
-<table class="baml" style="background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden">
-<thead><tr><th class="bn" style="color:#9FB3D1">Metric</th><th class="bb" style="color:#FCA5A5">Before</th><th class="ar" style="color:#9FB3D1"></th><th class="ba" style="color:#86EFAC">Target</th><th style="color:#9FB3D1"></th><th class="meth" style="color:#C9D5E8">Basis</th></tr></thead>
-<tbody><tr><td class="bn">Monthly loss</td><td class="bb">$2.64M/mo</td>
-<td class="ar">&#8594;</td><td class="ba">$1.97M/mo</td><td><span class="dlt g">-25%</span></td>
-<td class="meth">2026 running rate vs 2024 level. Fix-first on top-3 mechanisms covers 52% of exposure.</td></tr><tr><td class="bn">Overdue actions</td><td class="bb">179 of 220</td>
-<td class="ar">&#8594;</td><td class="ba">70</td><td><span class="dlt g">-61%</span></td>
-<td class="meth">109 actions already past due by 1 year+. Board forces an owner and a due date at creation.</td></tr><tr><td class="bn">Retrieval @1</td><td class="bb">69.2%</td>
-<td class="ar">&#8594;</td><td class="ba">87.1%</td><td><span class="dlt g">+17.9 pts</span></td>
-<td class="meth">Both measured leave-one-out on n=380. Full model CI 83.4-90.1%.</td></tr><tr><td class="bn">Warning window</td><td class="bb">reactive</td>
-<td class="ar">&#8594;</td><td class="ba">67 days</td><td><span class="dlt g">new</span></td>
-<td class="meth">Mean gap between first ALARM week and TRIP week across all 5 assets, from 26-week condition history.</td></tr></tbody></table>
-<div class="src" style="color:#9FB3D1;margin-top:11px">Targets are modeled from this baseline, not measured results. We publish the basis so the assumption can be challenged, not the number.</div>
-<div class="foot"><span>Loss recovery target = return to 2024 monthly level</span><span>09 / 11</span></div>
+<section class="slide dark" data-t="25">
+<div class="kick anim" style="--d:.05s">Impact &mdash; before vs target</div>
+<h2 class="anim" style="--d:.12s">Four numbers we commit to moving.</h2>
+<p class="sub anim" style="--d:.2s">Baseline = measured. Target = modeled commitment with basis stated, in the open.</p>
+<div class="grid23">
+<div class="fig anim" style="--d:.3s;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)">
+<h3 style="color:#8FB6D9">Monthly loss + overdue</h3>
+<div class='babar'><div class='bacol'><b class='bc-b'>$2.64M</b><span class='batrack'><i class='fillv' style='--h:100%;background:#DC2626'></i></span><span>BASELINE 2026</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>$1.97M</b><span class='batrack'><i class='fillv' style='--h:75%;background:#16A34A'></i></span><span>TARGET</span></div></div><div class='banote'>fix-first on top-3 = 52% of exposure</div>
+<div style="height:14px"></div>
+<div class='babar'><div class='bacol'><b class='bc-b'>179</b><span class='batrack'><i class='fillv' style='--h:100%;background:#DC2626'></i></span><span>OVERDUE NOW</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>70</b><span class='batrack'><i class='fillv' style='--h:39%;background:#16A34A'></i></span><span>TARGET</span></div></div><div class='banote'>109 actions >1 year old drop out</div>
+</div>
+<div class="fig anim" style="--d:.4s;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)">
+<h3 style="color:#8FB6D9">Retrieval + warning window</h3>
+<div class='babar'><div class='bacol'><b class='bc-b'>69.2%</b><span class='batrack'><i class='fillv' style='--h:79%;background:#DC2626'></i></span><span>BASELINE MODEL</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>87.1%</b><span class='batrack'><i class='fillv' style='--h:100%;background:#16A34A'></i></span><span>FULL MODEL</span></div></div><div class='banote'>+17.9 pts from uniting 4 sources</div>
+<div style="height:14px"></div>
+<div class='babar'><div class='bacol'><b class='bc-b'>1</b><span class='batrack'><i class='fillv' style='--h:1%;background:#DC2626'></i></span><span>REACTIVE</span></div><div class='baarr'>&#8594;</div><div class='bacol'><b class='bc-a'>67</b><span class='batrack'><i class='fillv' style='--h:100%;background:#16A34A'></i></span><span>WITH CONDITION</span></div></div><div class='banote'>mean ALARM-to-TRIP gap, 26-week history</div>
+</div>
+</div>
+<div class="foot" style="bottom:12px"><span>Recovery target = back to 2024 monthly level ($1.97MM/mo)</span><span>09 / 11</span></div>
 </section>
 
-<!-- 10 HONEST -->
-<section class="slide">
-<div class="kick">Impact &mdash; stated honestly</div>
-<h2>What we measure, what we label, what we skip.</h2>
+<section class="slide" data-t="20">
+<div class="kick anim" style="--d:.05s">Stated honestly</div>
+<h2 class="anim" style="--d:.12s">Measured. Labeled. <em>Out of scope.</em></h2>
 <div class="grid3">
-<div class="pane"><h3>Measured</h3><ul class="tight" style="margin-top:2px">
-<li class="g">Loss, downtime, overdue aging &mdash; from 380 real records</li>
+<div class="fig anim" style="--d:.25s"><h3>Measured</h3><ul class="rows" style="margin-top:2px">
+<li class="g">Loss, downtime, aging &mdash; 380 real records</li>
 <li class="g">Retrieval 87.1% / 98.4% leave-one-out</li>
-<li class="g">Warning window 67 days from condition history</li></ul></div>
-<div class="pane"><h3>Labeled, not hidden</h3><ul class="tight" style="margin-top:2px">
-<li class="a">Energy = derived proxy, formula printed on the slide</li>
-<li class="a">CCTV wall = illustration, unit aggregates underneath are real</li>
-<li class="a">Baseline defects listed in Data Governance</li></ul></div>
-<div class="pane"><h3>Out of scope</h3><ul class="tight" style="margin-top:2px">
-<li class="r">No live streaming (not required) &mdash; ready for PI stream</li>
-<li class="r">No automated closure &mdash; human-in-the-loop by design</li>
-<li class="r">No extra data beyond two declared additions</li></ul></div>
-</div>
-<div class="grid4" style="margin-top:15px">
-<div class="stat"><b>52%</b><span>of exposure fixable by top-3 focus</span></div>
-<div class="stat"><b>$35.04M</b><span>addressable in 3 mechanisms</span></div>
-<div class="stat"><b>109</b><span>stale actions surfaced with age</span></div>
-<div class="stat"><b>67 d</b><span>average early-warning window</span></div>
+<li class="g">Warning 67 d from history</li></ul></div>
+<div class="fig anim" style="--d:.35s"><h3>Labeled</h3><ul class="rows" style="margin-top:2px">
+<li class="a">Energy = derived proxy, formula printed</li>
+<li class="a">CCTV = illustration, aggregates real</li>
+<li class="a">Defects listed in Data Governance</li></ul></div>
+<div class="fig anim" style="--d:.45s"><h3>Out of scope</h3><ul class="rows" style="margin-top:2px">
+<li class="r">No live streaming (not required)</li>
+<li class="r">No auto-closure (human-in-loop)</li>
+<li class="r">No extra data beyond 2 declared</li></ul></div>
 </div>
 <div class="foot"><span>Honest limits score higher than hidden guesses</span><span>10 / 11</span></div>
 </section>
 
-<!-- 11 TEAM -->
-<section class="slide dark">
-<div class="kick">Team &amp; next</div>
-<h2>Jenny &middot; Hafidz &middot; Naufal</h2>
-<p class="sub">Advisor: Mr. Bayu Aji. Built from the official baseline only, plus two declared additions.</p>
-<div class="grid3" style="margin-top:20px">
-<div class="stat"><b style="font-size:19px">1 &mdash; Meter it</b><span>5 metered energy tags to replace the proxy formula</span></div>
-<div class="stat"><b style="font-size:19px">2 &mdash; Connect it</b><span>EDMS / AIMS / Digital Twin for asset context</span></div>
-<div class="stat"><b style="font-size:19px">3 &mdash; Stream it</b><span>PI live feed, architecture already decoupled for it</span></div>
+<section class="slide dark" data-t="15">
+<div class="kick anim" style="--d:.05s">Team &amp; next</div>
+<h2 class="anim" style="--d:.12s">Jenny &middot; Hafidz &middot; Naufal</h2>
+<p class="sub anim" style="--d:.2s">Advisor: Mr. Bayu Aji. Built from the official baseline only, plus two declared additions.</p>
+<div class="grid3 anim" style="--d:.3s;margin-top:18px">
+<div class="person"><svg class="face" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><circle cx="20" cy="26" r="2.2" fill="#0C1A26"/><circle cx="34" cy="26" r="2.2" fill="#0C1A26"/><path d="M18 36 Q27 43 36 36" fill="none" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Jenny</b><br><span>DECK + NARRATIVE</span></div></div>
+<div class="person"><svg class="face" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><rect x="13" y="21" width="12" height="10" rx="5" fill="none" stroke="#0C1A26" stroke-width="2.2"/><rect x="29" y="21" width="12" height="10" rx="5" fill="none" stroke="#0C1A26" stroke-width="2.2"/><path d="M25 26 h4" stroke="#0C1A26" stroke-width="2.2"/><path d="M19 38 Q27 43 35 38" fill="none" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Hafidz</b><br><span>VOICE + DEMO</span></div></div>
+<div class="person"><svg class="face" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><path d="M8 24 Q27 4 46 24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><line x1="6" y1="25" x2="48" y2="25" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="31" r="2.2" fill="#0C1A26"/><circle cx="34" cy="31" r="2.2" fill="#0C1A26"/><path d="M19 40 Q27 45 35 40" fill="none" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Naufal</b><br><span>DATA + BUILD</span></div></div>
 </div>
-<p style="margin-top:26px;font-size:20px;color:#fff;font-weight:700">One file. One truth. From data to decision.</p>
+<div class="grid3 anim" style="--d:.45s;margin-top:14px">
+<div class="fig" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><h3 style="color:#8FB6D9">1 &mdash; Meter it</h3><div class="cap" style="color:#C9D5E8">5 metered energy tags replace the proxy</div></div>
+<div class="fig" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><h3 style="color:#8FB6D9">2 &mdash; Connect it</h3><div class="cap" style="color:#C9D5E8">EDMS / AIMS / Twin for asset context</div></div>
+<div class="fig" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><h3 style="color:#8FB6D9">3 &mdash; Stream it</h3><div class="cap" style="color:#C9D5E8">PI live feed, decoupled already</div></div>
+</div>
+<p class="anim" style="--d:.55s;margin-top:20px;font-size:20px;font-weight:700">One file. One truth. From data to decision.</p>
 <div class="foot"><span>CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</span><span>11 / 11</span></div>
 </section>
 
@@ -329,17 +365,68 @@ html,body{background:#fff}.stage{padding:0;display:block;min-height:auto}
 <div class="dots" id="dots"></div>
 <button onclick="go(1)">Next &#8594;</button>
 <span id="cnt">1 / 11</span>
-<span style="opacity:.65">Arrows or click &middot; F11 fullscreen &middot; Print to PDF</span>
+<span class="timerbox" id="tmr">00:00 / target 03:00 &middot; T start &middot; F fullscreen</span>
 </div>
 </div>
 <script>
-let i=0;const S=[...document.querySelectorAll(".slide")];const D=document.getElementById("dots");
-S.forEach((_,k)=>{const d=document.createElement("i");d.onclick=()=>show(k);D.appendChild(d);});
-function show(k){i=(k+S.length)%S.length;S.forEach((s,j)=>s.classList.toggle("on",j===i));[...D.children].forEach((d,j)=>d.classList.toggle("on",j===i));document.getElementById("cnt").textContent=(i+1)+" / "+S.length;}
+var i=0,S=[],D=null,TG=[15,25,20,20,25,25,30,30,25,20,15],t0=null,run=false,el=0;
+function fmt(ms){var s=Math.floor(ms/1000);return (s<600?'0':'')+Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
+function tc(k){var t=0;for(var j=0;j<=k;j++)t+=TG[j];return t*1000;}
+function paint(){var e=document.getElementById('tmr');if(!e)return;var t=tc(i);
+e.textContent=fmt(el)+' / target '+fmt(t)+(run?'':' (paused)')+' \u00b7 T start \u00b7 F fullscreen';
+e.style.color=(el-t>45000)?'#F87171':(el-t>5000)?'#FBBF24':'#C9D5E8';}
+setInterval(function(){if(run){el+=500;}paint();},500);
+var vibT=[],__VX=[],__VY=[];
+function stopVib(){vibT.forEach(clearTimeout);vibT=[];document.body.classList.remove('playing');}
+function vibXY(){__VX=[];__VY=[];var line=document.getElementById('vibline');if(!line)return;
+var str=(line.getAttribute('points')||'').trim().split(/[\s,]+/);
+for(var j=0;j+1<str.length;j+=2){__VX.push(parseFloat(str[j]));__VY.push(parseFloat(str[j+1]));}}
+function playVib(){
+stopVib();var dot=document.getElementById('vibdot'),
+rd=document.getElementById('vibread'),st=document.getElementById('vibstat');
+vibXY();if(!__VX.length||!dot)return;
+document.body.classList.add('playing');var k=0;
+function step(){if(k>=__VX.length){stopVib();if(rd)rd.textContent='26.9 \u00b5m \u2014 NORMAL (post-trip recovery)';if(st)st.textContent='RECOVERED';return;}
+dot.setAttribute('cx',__VX[k]);dot.setAttribute('cy',__VY[k]);
+var v=window.__vib[k]||0,s=window.__vst[k]||'';
+if(rd)rd.textContent=v.toFixed(1)+' \u00b5m \u2014 '+s;
+if(st){st.textContent=(s==='TRIP'?'TRIPPED':s==='ALARM'?'OVER LIMIT':'NORMAL');st.style.color=(s==='TRIP')?'#A52A1E':(s==='ALARM')?'#8A4A06':'#0F6B46';}
+k++;vibT.push(setTimeout(step,260));}
+step();}
+function cnt(){var s=S[i];if(!s)return;s.querySelectorAll('[data-count]').forEach(function(e){
+var t=parseFloat(e.getAttribute('data-count')),dec=parseInt(e.getAttribute('data-dec')||'0',10),
+pre=e.getAttribute('data-pre')||'',suf=e.getAttribute('data-suf')||'',a=null;
+function f(x){return pre+x.toFixed(dec)+suf;}
+var st=null;function tick(ts){if(!st)st=ts;var p=Math.min(1,(ts-st)/1100);
+e.textContent=f(t*(1-Math.pow(1-p,3)));if(p<1)a=requestAnimationFrame(tick);}
+a=requestAnimationFrame(tick);});}
+function show(k){i=(k+S.length)%S.length;
+S.forEach(function(s,j){var on=(j===i);
+if(on&&!s.classList.contains('on')){var a=s.querySelectorAll('.anim,.fill,.fillv,.mbars i,.grow,.drawline');
+Array.prototype.forEach.call(a,function(e){var o=e.style.animation;e.style.animation='none';void e.offsetWidth;e.style.animation=o||'';});}
+s.classList.toggle('on',on);});
+var dots=D.children;for(var j=0;j<dots.length;j++)dots[j].classList.toggle('on',j===i);
+document.getElementById('cnt').textContent=(i+1)+' / '+S.length;
+try{localStorage.setItem('deck3',String(i));}catch(e){}
+if(location.hash!=='#s'+(i+1))history.replaceState(null,'','#s'+(i+1));
+stopVib();if(i===7)playVib();cnt();paint();}
 function go(d){show(i+d);}
-document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" ")go(1);if(e.key==="ArrowLeft")go(-1);});
-document.querySelector(".stage").addEventListener("click",e=>{if(e.target.closest(".slide")&&!e.target.closest("button"))go(1);});
-show(0);
+window.__vib=[28.9, 26.9, 29.7, 29.0, 28.7, 30.3, 33.7, 33.9, 35.4, 37.7, 39.6, 41.6, 45.5, 49.2, 51.1, 55.9, 59.1, 60.5, 66.7, 71.7, 76.5, 27.1, 27.7, 26.9, 27.4, 27.2];window.__vst=["NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "ALARM", "TRIP", "NORMAL", "NORMAL", "NORMAL", "NORMAL", "NORMAL"];window.__deck={show:show};
+document.addEventListener('DOMContentLoaded',function(){
+S=Array.prototype.slice.call(document.querySelectorAll('.slide'));D=document.getElementById('dots');
+S.forEach(function(_,k){var d=document.createElement('i');d.onclick=function(){show(k);};D.appendChild(d);});
+var sv=0;try{sv=parseInt(localStorage.getItem('deck3')||'0',10)||0;}catch(e){}
+if(location.hash&&/^#s\d+$/.test(location.hash))sv=parseInt(location.hash.slice(2),10)-1;
+show(Math.max(0,Math.min(S.length-1,sv)));});
+document.addEventListener('keydown',function(e){if(e.metaKey||e.ctrlKey||e.altKey)return;var k=e.key;
+if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();go(1);}
+else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();go(-1);}
+else if(k==='Home'){e.preventDefault();show(0);}else if(k==='End'){e.preventDefault();show(S.length-1);}
+else if(k==='t'||k==='T'){if(!run&&el===0){el=0;}run=!run;}
+else if(k==='r'||k==='R'){el=0;run=false;paint();}
+else if(k==='f'||k==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
+else if(k>='1'&&k<='9'){var d=parseInt(k,10)-1;if(d<S.length)show(d);}});
+document.querySelector('.stage').addEventListener('click',function(e){if(e.target.closest('button'))return;if(e.clientX<window.innerWidth*0.18)go(-1);else go(1);});
 </script>
 </body>
 </html>

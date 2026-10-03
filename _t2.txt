@@ -1,0 +1,233 @@
+<section class="slide dark on" data-t="15">
+<img class="logo anim" style="--d:.05s" src="data:image/png;base64,__LOGO__" alt="Chandra Asri">
+<div class="kick anim" style="--d:.12s;margin-top:16px">CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</div>
+<h1 class="anim" style="--d:.2s">One file. One truth.<br>From data to decision.</h1>
+<p class="sub anim" style="--d:.3s">380 incidents over 31 months, read from a single governed table. No server, no internet, no install.</p>
+<div class="kpi4 anim" style="--d:.4s">
+<div><b data-count="67.19" data-dec="2" data-pre="$" data-suf="M">$0.00M</b><span>USD exposure in scope</span></div>
+<div><b data-count="2261" data-suf=" h">0 h</b><span>downtime, __N__ records</span></div>
+<div><b data-count="__NOD__">0</b><span>overdue actions (__O1Y__ past 1 year)</span></div>
+<div><b data-count="__P1__" data-dec="1" data-suf="%">0%</b><span>AI retrieval at rank 1</span></div>
+</div>
+<div class="fig anim" style="--d:.55s;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);margin-top:16px">
+<h3 style="color:#8FB6D9">Monthly loss exposure &mdash; Jan 2024 to Jul 2026</h3>
+__SPARK__
+<div class="cap" style="color:#C9D5E8">Peak __PEAK__M &mdash; average __MMEAN__M per month. The full 31-month curve is on slide 2.</div>
+</div>
+<div class="foot"><span>Jenny &middot; Hafidz &middot; Naufal &mdash; Advisor: Mr. Bayu Aji</span><span>01 / 11</span></div>
+</section>
+
+<section class="slide" data-t="25">
+<div class="kick anim" style="--d:.05s">The problem, quantified</div>
+<h2 class="anim" style="--d:.12s">The loss curve is going <em>up</em>, not down.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 1 &mdash; Monthly loss exposure, 31 months (kUSD)</h3>
+<div class="mbars">__BARS__</div>
+<div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--mut);margin-top:4px"><span>Jan 24</span><span>Jan 25</span><span>Apr 26 peak</span><span>Jul 26</span></div>
+<div class="cap">Source: baseline Incident Database, 380 records x 23 columns. Red = Apr 2026 peak __PEAK__M. Dashed reading: 2026 run-rate __A26__M/mo vs 2024 __A24__M/mo (+__GROWTH__%).</div>
+</div>
+<div>
+<div class="grid2 anim" style="--d:.3s;margin-top:0">
+<div class="fig"><h3>2026 vs 2024</h3><b class="mono" style="font-size:26px;color:var(--red)">+__GROWTH__%</b><div class="cap">run-rate per month</div></div>
+<div class="fig"><h3>Worst month</h3><b class="mono" style="font-size:26px;color:var(--red)">__PEAK__M</b><div class="cap">April 2026</div></div>
+<div class="fig"><h3>Behind overdue</h3><b class="mono" style="font-size:26px;color:var(--red)">__ODLP__%</b><div class="cap">of exposure, ownerless</div></div>
+<div class="fig"><h3>Stale &gt; 1 yr</h3><b class="mono" style="font-size:26px;color:var(--red)">__O1Y__</b><div class="cap">actions, oldest __MAXAGE__ d</div></div>
+</div>
+<ul class="rows anim" style="--d:.45s">
+<li class="r">Six functions, six dashboards, six KPI definitions &mdash; hours validating before deciding.</li>
+<li class="a">__NOPEN__ actions open, __NOD__ past due, median age __MEDAGE__ days.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Source: baseline Incident Database</span><span>02 / 11</span></div>
+</section>
+
+<section class="slide" data-t="20">
+<div class="kick anim" style="--d:.05s">Baseline scorecard</div>
+<h2 class="anim" style="--d:.12s">What we inherited &mdash; <em>measured</em>, not asserted.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 2 &mdash; Exposure by failure mechanism (Pareto)</h3>
+__PARETO__
+<div class="cap">Source: incident mechanism column. Blue = top 3 (__TOP3N__ of __N__ cases, __TOP3__M = __TOP3SH__% of exposure). Red dashes = cumulative share.</div>
+</div>
+<div class="fig anim" style="--d:.3s">
+<h3>Fig. 3 &mdash; Where the money is, by unit</h3>
+__UNITS__
+<div class="cap">Bar = loss USD. <b>od</b> = overdue actions behind that unit. Unit __WU__ alone: __WULOSS__M + __WUOD__ overdue.</div>
+</div>
+</div>
+<div class="foot"><span>Every figure recomputed from the same table</span><span>03 / 11</span></div>
+</section>
+
+<section class="slide" data-t="20">
+<div class="kick anim" style="--d:.05s">Key question 1 &mdash; Data foundation</div>
+<h2 class="anim" style="--d:.12s">Four sources in. <em>One governed table</em> out.</h2>
+<p class="sub anim" style="--d:.2s">Every chart on every view reads the same incident table. Edit one record, every figure recomputes.</p>
+<div class="chain anim" style="--d:.3s">
+<div class="step">Incident DB<small>__N__ x 23 cols</small></div><span class="arr">&gt;</span>
+<div class="step">Equipment<small>5 x 26 weeks</small></div><span class="arr">&gt;</span>
+<div class="step">Production PI<small>5 x 721 rows</small></div><span class="arr">&gt;</span>
+<div class="step">Downtime<small>__DT__ h</small></div><span class="arr">&gt;</span>
+<div class="step hot">ONE TABLE<small>feeds 11 views</small></div>
+</div>
+<div class="grid3">
+<div class="fig anim" style="--d:.4s"><h3>Single KPI contract</h3><div class="cap">Same metric from incident DB, PI tags, or declared value, side by side &mdash; divergence visible, not hidden.</div></div>
+<div class="fig anim" style="--d:.5s"><h3>Governed, not scraped</h3><div class="cap">Baseline defects published in a Data Governance view: nulls, units, gaps &mdash; listed, not patched.</div></div>
+<div class="fig anim" style="--d:.6s"><h3>Offline by design</h3><div class="cap">One HTML file from a USB stick. No install, no build, no server &mdash; survives a judge PC offline.</div></div>
+</div>
+<div class="foot"><span>Additions declared: energy proxy + CCTV illustration, both labeled</span><span>04 / 11</span></div>
+</section>
+
+<section class="slide" data-t="25">
+<div class="kick anim" style="--d:.05s">Key question 2 &mdash; Single pane of glass</div>
+<h2 class="anim" style="--d:.12s">The executive view, <em>in one screen</em>.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fix-first priority &mdash; tap a bar, the list filters</h3>
+__PARETO__
+<div class="cap">Top 3 = __TOP3SH__% of exposure. Priority is money order, not loudest voice.</div>
+</div>
+<div>
+<div class="fig anim" style="--d:.3s">
+<h3>Unit ranking &mdash; loss with overdue</h3>
+__UNITS__
+</div>
+<ul class="rows anim" style="--d:.4s">
+<li class="g">8 KPI cards + trip logsheet: one row per trip, colored duration, follow-up dot.</li>
+<li><span class="pill p-g">0 charts</span> without a data-provenance link.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Nothing is decoration &mdash; every click opens proof</span><span>05 / 11</span></div>
+</section>
+
+<section class="slide" data-t="25">
+<div class="kick anim" style="--d:.05s">Action tracking &mdash; aging of overdue</div>
+<h2 class="anim" style="--d:.12s">__O1Y__ actions are <em>more than a year</em> late.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 4 &mdash; Overdue actions by age, days (__NOD__ total)</h3>
+<div class="agrow">__AGING__</div>
+<div class="cap">Measured at 19-Aug-2026. Median __MEDAGE__ d, oldest __MAXAGE__ d. __ODL__M of exposure (__ODLP__%) sits behind these rows.</div>
+</div>
+<div class="fig anim" style="--d:.3s">
+<h3>Before vs target &mdash; modeled commitment</h3>
+__BA_OD__
+<div class="cap">Basis: owner + due date mandatory at creation; closure blocked without evidence. Not a measured result.</div>
+<ul class="rows" style="margin-top:6px">
+<li class="r">Red dot = nobody on it. Purple = in progress. Green = done.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Target modeled from this baseline</span><span>06 / 11</span></div>
+</section>
+
+<section class="slide" data-t="30">
+<div class="kick anim" style="--d:.05s">Key question 3 &mdash; AI root cause</div>
+<h2 class="anim" style="--d:.12s">AI suggests. <em>Humans close.</em></h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Similar-incident retrieval, before vs after</h3>
+__BA_RET__
+<div style="margin-top:10px">__CI__</div>
+<div class="cap">Both measured leave-one-out on all __N__ records. 95% CI __P1LO__&ndash;__P1HI__%. Method in Model Evaluation tab.</div>
+</div>
+<div>
+<div class="grid2 anim" style="--d:.3s;margin-top:0">
+<div class="fig"><h3>Rank 1</h3><b class="mono" style="font-size:26px;color:var(--accent)">__P1__%</b><div class="cap">full model</div></div>
+<div class="fig"><h3>Lift</h3><b class="mono" style="font-size:26px;color:var(--green)">+__LIFT__</b><div class="cap">pts vs thin baseline</div></div>
+</div>
+<ul class="rows anim" style="--d:.4s">
+<li class="g">Tank &gt; indication &gt; prioritized alerts &gt; tracked action with guidance.</li>
+<li class="g"><b class="n">Top-10</b> exposure plan in one click, owner + PM schedule each row.</li>
+<li class="r">AI never closes an action. The PIC does.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Measurable, reproducible, published</span><span>07 / 11</span></div>
+</section>
+
+<section class="slide" data-t="30">
+<div class="kick anim" style="--d:.05s">Case reconstruction &mdash; compressor KO-3201</div>
+<h2 class="anim" style="--d:.12s">Watch it degrade. <em>__LMEAN__ days</em> of warning.</h2>
+<div class="grid23">
+<div class="fig anim" style="--d:.2s">
+<h3>Fig. 5 &mdash; KO-3201 DE vibration, 26 weeks (micron) &mdash; LIVE TRACE</h3>
+__VIBSVG__
+<div class="cap">Real condition history. Dot replays weeks 1&ndash;26 when this slide opens. ALARM week 10, TRIP week 21: 77 days to act.</div>
+<div class="vibread">Reading: <span id="vibread">press 8 to replay</span> &nbsp;&middot;&nbsp; State: <span id="vibstat">READY</span></div>
+</div>
+<div>
+<div class="fig anim" style="--d:.3s">
+<h3>Warning window per asset &mdash; first ALARM to TRIP</h3>
+<div class="agrow">__LEADH__</div>
+<div class="cap">Mean __LMEAN__ days across 5 assets. All 5 RCA decks integrated (4P / 4M+1E, CAPA, PIC, PM schedule).</div>
+</div>
+<ul class="rows anim" style="--d:.4s">
+<li class="g">Signal &gt; alarm &gt; trip &gt; loss &gt; owner + CAPA &mdash; one tap from any row.</li>
+</ul>
+</div>
+</div>
+<div class="foot"><span>Demo path: RCA tab, KO-3201</span><span>08 / 11</span></div>
+</section>
+
+<section class="slide dark" data-t="25">
+<div class="kick anim" style="--d:.05s">Impact &mdash; before vs target</div>
+<h2 class="anim" style="--d:.12s">Four numbers we commit to moving.</h2>
+<p class="sub anim" style="--d:.2s">Baseline = measured. Target = modeled commitment with basis stated, in the open.</p>
+<div class="grid23">
+<div class="fig anim" style="--d:.3s;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)">
+<h3 style="color:#8FB6D9">Monthly loss + overdue</h3>
+__BA_MO__
+<div style="height:10px"></div>
+__BA_OD__
+</div>
+<div class="fig anim" style="--d:.4s;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)">
+<h3 style="color:#8FB6D9">Retrieval + warning window</h3>
+__BA_RET__
+<div style="height:10px"></div>
+__BA_LEAD__
+</div>
+</div>
+<div class="foot"><span>Recovery target = back to 2024 monthly level (__A24__M/mo)</span><span>09 / 11</span></div>
+</section>
+
+<section class="slide" data-t="20">
+<div class="kick anim" style="--d:.05s">Stated honestly</div>
+<h2 class="anim" style="--d:.12s">Measured. Labeled. <em>Out of scope.</em></h2>
+<div class="grid3">
+<div class="fig anim" style="--d:.25s"><h3>Measured</h3><ul class="rows" style="margin-top:2px">
+<li class="g">Loss, downtime, aging &mdash; __N__ real records</li>
+<li class="g">Retrieval __P1__% / __P5__% leave-one-out</li>
+<li class="g">Warning __LMEAN__ d from history</li></ul></div>
+<div class="fig anim" style="--d:.35s"><h3>Labeled</h3><ul class="rows" style="margin-top:2px">
+<li class="a">Energy = derived proxy, formula printed</li>
+<li class="a">CCTV = illustration, aggregates real</li>
+<li class="a">Defects listed in Data Governance</li></ul></div>
+<div class="fig anim" style="--d:.45s"><h3>Out of scope</h3><ul class="rows" style="margin-top:2px">
+<li class="r">No live streaming (not required)</li>
+<li class="r">No auto-closure (human-in-loop)</li>
+<li class="r">No extra data beyond 2 declared</li></ul></div>
+</div>
+<div class="foot"><span>Honest limits score higher than hidden guesses</span><span>10 / 11</span></div>
+</section>
+
+<section class="slide dark" data-t="15">
+<div class="kick anim" style="--d:.05s">Team &amp; next</div>
+<h2 class="anim" style="--d:.12s">Jenny &middot; Hafidz &middot; Naufal</h2>
+<p class="sub anim" style="--d:.2s">Advisor: Mr. Bayu Aji. Built from the official baseline only, plus two declared additions.</p>
+<div class="grid3 anim" style="--d:.3s;margin-top:18px">
+<div class="person"><svg class="face" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><circle cx="20" cy="26" r="2.2" fill="#0C1A26"/><circle cx="34" cy="26" r="2.2" fill="#0C1A26"/><path d="M18 36 Q27 43 36 36" fill="none" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Jenny</b><br><span>DECK + NARRATIVE</span></div></div>
+<div class="person"><svg class="face" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><rect x="13" y="21" width="12" height="10" rx="5" fill="none" stroke="#0C1A26" stroke-width="2.2"/><rect x="29" y="21" width="12" height="10" rx="5" fill="none" stroke="#0C1A26" stroke-width="2.2"/><path d="M25 26 h4" stroke="#0C1A26" stroke-width="2.2"/><path d="M19 38 Q27 43 35 38" fill="none" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Hafidz</b><br><span>VOICE + DEMO</span></div></div>
+<div class="person"><svg class="face" viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><path d="M8 24 Q27 4 46 24" fill="none" stroke="#0C1A26" stroke-width="2.4"/><line x1="6" y1="25" x2="48" y2="25" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="31" r="2.2" fill="#0C1A26"/><circle cx="34" cy="31" r="2.2" fill="#0C1A26"/><path d="M19 40 Q27 45 35 40" fill="none" stroke="#0C1A26" stroke-width="2.4" stroke-linecap="round"/></svg><div><b>Naufal</b><br><span>DATA + BUILD</span></div></div>
+</div>
+<div class="grid3 anim" style="--d:.45s;margin-top:14px">
+<div class="fig" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><h3 style="color:#8FB6D9">1 &mdash; Meter it</h3><div class="cap" style="color:#C9D5E8">5 metered energy tags replace the proxy</div></div>
+<div class="fig" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><h3 style="color:#8FB6D9">2 &mdash; Connect it</h3><div class="cap" style="color:#C9D5E8">EDMS / AIMS / Twin for asset context</div></div>
+<div class="fig" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><h3 style="color:#8FB6D9">3 &mdash; Stream it</h3><div class="cap" style="color:#C9D5E8">PI live feed, decoupled already</div></div>
+</div>
+<p class="anim" style="--d:.55s;margin-top:20px;font-size:20px;font-weight:700">One file. One truth. From data to decision.</p>
+<div class="foot"><span>CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</span><span>11 / 11</span></div>
+</section>
