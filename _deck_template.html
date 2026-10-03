@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CALIBER 2026 - Case 2 - Presentation Deck</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0A2342;--blue:#1A56DB;--sky:#3B82F6;--bg:#F3F5F9;--mut:#5B6B82;--red:#DC2626;--green:#16A34A;--amber:#D97706}
+body{background:#0B1526;font:16px/1.55 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111928}
+.stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;gap:14px}
+.slide{width:min(1180px,96vw);aspect-ratio:16/9;background:#fff;border-radius:18px;padding:52px 60px;display:none;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.slide.on{display:flex}
+.slide.dark{background:linear-gradient(135deg,#0A2342 0%,#1A56DB 100%);color:#fff}
+.kick{font-size:13px;font-weight:800;letter-spacing:2.5px;color:var(--sky);text-transform:uppercase;margin-bottom:12px}
+.dark .kick{color:#9FB3D1}
+h1{font-size:46px;line-height:1.12;letter-spacing:-.02em;font-weight:800}
+h2{font-size:34px;letter-spacing:-.015em;font-weight:800;margin-bottom:6px}
+.dark h1,.dark h2{color:#fff}
+.sub{color:var(--mut);font-size:17px;max-width:900px}
+.dark .sub{color:#C9D5E8}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.stat{background:var(--bg);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font-size:30px;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--mut);font-weight:600}
+.dark .stat{background:rgba(255,255,255,.12)}
+.dark .stat span{color:#C9D5E8}
+.card{border:1.5px solid #E5E7EB;border-radius:14px;padding:16px 18px}
+.card b{font-size:16px}
+.card p{font-size:14px;color:var(--mut);margin-top:4px}
+.pill{display:inline-block;font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 12px;margin:2px 4px 2px 0}
+.p-r{background:#FEE2E2;color:#991B1B}.p-g{background:#DCFCE7;color:#166534}.p-a{background:#FEF3C7;color:#92400E}.p-b{background:#DBEAFE;color:#1D4ED8}
+.chain{display:flex;align-items:stretch;gap:0;margin-top:22px;flex-wrap:wrap}
+.step{flex:1;min-width:120px;background:var(--bg);padding:14px 12px;font-size:13px;font-weight:700;text-align:center}
+.step small{display:block;font-weight:600;color:var(--mut);font-size:12px;margin-top:2px}
+.step:first-child{border-radius:12px 0 0 12px}.step:last-child{border-radius:0 12px 12px 0;background:#DBEAFE}
+.arr{align-self:center;padding:0 6px;color:var(--sky);font-weight:800}
+.logo{height:44px;background:#fff;border-radius:10px;padding:5px 14px}
+.num{font-size:44px;font-weight:800;letter-spacing:-.02em;color:var(--blue)}
+.dark .num{color:#fff}
+.nav{display:flex;align-items:center;gap:12px;color:#C9D5E8;font-size:13px;font-weight:700}
+.nav button{background:rgba(255,255,255,.14);color:#fff;border:0;border-radius:9px;padding:8px 18px;font-size:14px;font-weight:700;cursor:pointer}
+.nav button:hover{background:rgba(255,255,255,.28)}
+.dots{display:flex;gap:7px}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer}
+.dots i.on{background:#fff}
+.foot{position:absolute;bottom:20px;left:60px;right:60px;display:flex;justify-content:space-between;font-size:12px;color:#9AA7BD;font-weight:600}
+.dark .foot{color:#9FB3D1}
+ul.tight{margin-top:14px;list-style:none}
+ul.tight li{font-size:16.5px;padding:7px 0 7px 30px;position:relative}
+ul.tight li:before{content:"";position:absolute;left:4px;top:13px;width:12px;height:12px;border-radius:4px;background:var(--sky)}
+ul.tight li.g:before{background:var(--green)}ul.tight li.r:before{background:var(--red)}ul.tight li.a:before{background:var(--amber)}
+@media print{
+body{background:#fff}.stage{padding:0;gap:0;display:block;min-height:auto}
+.slide{display:flex;width:100%;aspect-ratio:auto;height:100vh;max-height:100vh;page-break-after:always;page-break-inside:avoid;border-radius:0;overflow:hidden}
+.slide:last-child{page-break-after:auto}
+.nav,.stage:last-of-type{display:none}
+}
+</style>
+</head>
+<body>
+<div class="stage">
+
+<!-- 1 COVER -->
+<section class="slide dark on">
+<div><img class="logo" src="data:image/png;base64,__LOGO64__" alt="Chandra Asri"></div>
+<div class="kick" style="margin-top:22px">CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</div>
+<h1>One file. One truth.<br>From data to decision.</h1>
+<p class="sub" style="margin-top:12px">An offline Intelligent Manufacturing dashboard for Chandra Asri. No server, no internet, no install.</p>
+<div class="grid4">
+<div class="stat"><b>380</b><span>incidents, 23 columns</span></div>
+<div class="stat"><b>US$67.19M</b><span>total exposure</span></div>
+<div class="stat"><b>2,261.1 h</b><span>downtime tracked</span></div>
+<div class="stat"><b>87.1%</b><span>AI retrieval @ rank 1</span></div>
+</div>
+<div class="foot"><span>Jenny &middot; Hafidz &middot; Naufal &mdash; Advisor: Mr. Bayu Aji</span><span>01 / 09</span></div>
+</section>
+
+<!-- 2 PROBLEM -->
+<section class="slide">
+<div class="kick">The problem</div>
+<h2>Six functions. Six dashboards. Zero agreement.</h2>
+<p class="sub">Operations, Production, Energy, Maintenance, HSE, and Management each run different systems, KPI definitions, formats, and timelines.</p>
+<div class="grid3">
+<div class="card"><b>Slow validation</b><p>Hours lost comparing reports before any decision is made.</p></div>
+<div class="card"><b>Reactive decisions</b><p>Root causes found late, critical alerts drowned in noise.</p></div>
+<div class="card"><b>Open loop</b><p>Follow-up actions assigned verbally, completion never tracked.</p></div>
+</div>
+<div class="foot"><span>CALIBER 2026 &mdash; Case 2</span><span>02 / 09</span></div>
+</section>
+
+<!-- 3 Q1 -->
+<section class="slide">
+<div class="kick">Key question 1 &mdash; Data foundation</div>
+<h2>Four sources in. One governed table.</h2>
+<p class="sub">Every chart on every tab reads the same incident table. Edit one record, every figure recomputes.</p>
+<div class="chain">
+<div class="step">Incident DB<small>380 &times; 23 cols</small></div><span class="arr">&rarr;</span>
+<div class="step">Equipment<small>5 assets &times; 26 wks</small></div><span class="arr">&rarr;</span>
+<div class="step">Production PI<small>5 &times; 721 hourly rows</small></div><span class="arr">&rarr;</span>
+<div class="step">Downtime<small>cause + duration</small></div><span class="arr">&rarr;</span>
+<div class="step">ONE TABLE<small>feeds every view</small></div>
+</div>
+<div class="foot"><span>Single offline HTML file &mdash; runs from a USB stick</span><span>03 / 09</span></div>
+</section>
+
+<!-- 4 Q2 -->
+<section class="slide">
+<div class="kick">Key question 2 &mdash; Single pane of glass</div>
+<h2>The executive view answers in 5 seconds.</h2>
+<div class="grid4">
+<div class="stat"><b>US$67.19M</b><span>hero exposure card</span></div>
+<div class="stat"><b>ZCU worst</b><span>US$11.11M &middot; 62 inc</span></div>
+<div class="stat"><b>Leakage #1</b><span>101 cases, fix first</span></div>
+<div class="stat"><b>179</b><span>overdue, oldest Feb 24</span></div>
+</div>
+<ul class="tight">
+<li>8 KPI cards, unit ranking, monthly trend, fix-first priority &mdash; every card clickable to its source rows.</li>
+<li>Trip logsheet: one row per trip, color-coded duration, cause, and follow-up dots.</li>
+</ul>
+<div class="foot"><span>Nothing is decoration &mdash; every click opens proof</span><span>04 / 09</span></div>
+</section>
+
+<!-- 5 AI -->
+<section class="slide">
+<div class="kick">Key question 3 &mdash; AI root cause + action</div>
+<h2>AI suggests. Humans close.</h2>
+<div class="grid3">
+<div class="stat"><b class="num" style="font-size:40px">87.1%</b><span>similar-incident retrieval @ rank 1 (leave-one-out, n=380)</span></div>
+<div class="stat"><b class="num" style="font-size:40px">98.4%</b><span>retrieval @ rank 5 &mdash; with confidence intervals</span></div>
+<div class="stat"><b class="num" style="font-size:40px">Top 10</b><span>exposure plan drafted in one click, owner attached</span></div>
+</div>
+<ul class="tight">
+<li class="g">Problem tank &rarr; root-cause indication &rarr; prioritized alerts &rarr; tracked action with guidance.</li>
+</ul>
+<div class="foot"><span>Measured, not claimed &mdash; full method in Model Evaluation tab</span><span>05 / 09</span></div>
+</section>
+
+<!-- 6 KO-3201 -->
+<section class="slide">
+<div class="kick">Case reconstruction &mdash; compressor KO-3201</div>
+<h2>Signal to owner, end to end.</h2>
+<div class="chain">
+<div class="step">Signal<small>vibration trend</small></div><span class="arr">&rarr;</span>
+<div class="step">Alarm<small>weeks flagged</small></div><span class="arr">&rarr;</span>
+<div class="step">Trip<small>downtime logged</small></div><span class="arr">&rarr;</span>
+<div class="step">Loss<small>US$ in table</small></div><span class="arr">&rarr;</span>
+<div class="step">Owner + CAPA<small>PIC &middot; PM schedule</small></div>
+</div>
+<ul class="tight">
+<li>All 5 RCA decks integrated (4P / 4M+1E, CAPA, PM schedule, PIC, status).</li>
+<li>Chronology, correlation with same-mechanism records, recommendation &mdash; one tap from any row.</li>
+</ul>
+<div class="foot"><span>Demo path: RCA tab &rarr; KO-3201</span><span>06 / 09</span></div>
+</section>
+
+<!-- 7 ACTION -->
+<section class="slide">
+<div class="kick">Closing the loop</div>
+<h2>Insight becomes action, action becomes evidence.</h2>
+<div class="grid3">
+<div class="card"><b>Alarm dispatch</b><p>WhatsApp to PIC or shift group. Every send logged.</p></div>
+<div class="card"><b>Follow-up board</b><p>Owner, due date, progress, evidence per action.</p></div>
+<div class="card"><b>6 reports</b><p>Print-ready PDF: ops, incidents, RCA, follow-ups, personnel, energy.</p></div>
+</div>
+<div class="foot"><span>Duty roster sets who is on shift &mdash; Personnel tab</span><span>07 / 09</span></div>
+</section>
+
+<!-- 8 IMPACT -->
+<section class="slide">
+<div class="kick">Impact &mdash; stated honestly</div>
+<h2>What changes, what we label, what we skip.</h2>
+<ul class="tight">
+<li class="g">179 overdue actions surfaced with owner and age &mdash; oldest due Feb 2024, none hidden.</li>
+<li class="a">Energy = derived proxy (P=&radic;3&times;400&times;I&times;0.86/1000), formula shown &mdash; never called metered.</li>
+<li class="a">CCTV wall = labeled mock illustration &mdash; unit aggregates underneath are real.</li>
+<li class="r">No live streaming (not required) &mdash; architecture ready for PI stream when available.</li>
+</ul>
+<div class="foot"><span>Honest limits score higher than hidden guesses</span><span>08 / 09</span></div>
+</section>
+
+<!-- 9 TEAM -->
+<section class="slide dark">
+<div class="kick">Team &amp; next</div>
+<h2>Jenny &middot; Hafidz &middot; Naufal</h2>
+<p class="sub">Advisor: Mr. Bayu Aji. Built from the official baseline only, plus two declared additions.</p>
+<div class="grid2">
+<div class="stat"><b style="font-size:22px">Next: meter it</b><span>5 metered energy tags to replace the proxy formula</span></div>
+<div class="stat"><b style="font-size:22px">Next: connect it</b><span>EDMS / AIMS / Digital Twin integration for asset context</span></div>
+</div>
+<p class="sub" style="margin-top:22px;font-size:19px;color:#fff">One file. One truth. From data to decision.</p>
+<div class="foot"><span>CALIBER 2026 &mdash; Case 2: Intelligent Manufacturing</span><span>09 / 09</span></div>
+</section>
+
+</div>
+<div class="stage" style="min-height:auto;padding-top:0">
+<div class="nav">
+<button onclick="go(-1)">&larr; Prev</button>
+<div class="dots" id="dots"></div>
+<button onclick="go(1)">Next &rarr;</button>
+<span id="cnt">1 / 9</span>
+<span style="opacity:.7">Arrows / click / Print to PDF</span>
+</div>
+</div>
+<script>
+let i=0;const S=[...document.querySelectorAll(".slide")];const D=document.getElementById("dots");
+S.forEach((_,k)=>{const d=document.createElement("i");d.onclick=()=>show(k);D.appendChild(d);});
+function show(k){i=(k+S.length)%S.length;S.forEach((s,j)=>s.classList.toggle("on",j===i));[...D.children].forEach((d,j)=>d.classList.toggle("on",j===i));document.getElementById("cnt").textContent=(i+1)+" / "+S.length;}
+function go(d){show(i+d);}
+document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" ")go(1);if(e.key==="ArrowLeft")go(-1);});
+document.querySelector(".stage").addEventListener("click",e=>{if(e.target.closest(".slide")&&!e.target.closest("button"))go(1);});
+show(0);
+</script>
+</body>
+</html>
