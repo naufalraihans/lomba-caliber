@@ -443,7 +443,7 @@ header(s, 'Team profile', 'Team Pengacara — Institut Teknologi PLN',
        'Supervisor: Mr. Bayu Aji Soedibyo.',
        False, 'Team Pengacara — Institut Teknologi PLN', '07 / 07')
 members = [
-    ('1', 'Jenny Agustina Rahman', 'Informatics Engineering', '—',
+    ('1', 'Jenny Agustina Rahman', 'Information Systems', '—',
      'Data storytelling & visualization', 'Idea formulation, narrative & deck design'),
     ('2', 'Ahmad Hafidz Susanto', 'Energy Systems Engineering', '—',
      'Energy systems & operations', 'Background & problem statement, voice & demo'),
