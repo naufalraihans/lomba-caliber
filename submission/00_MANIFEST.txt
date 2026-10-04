@@ -1,37 +1,33 @@
 CALIBER 2026 - Case 2: Intelligent Manufacturing
-Submission bundle
-Generated: 2026-10-04 (deck REV 5: editable .pptx, 11 slides, native charts)
+Submission bundle - Team Pengacara, Institut Teknologi PLN
+Generated: 2026-10-04 (deck REV 6: official 7 slides + 5 appendix, editable .pptx)
 
 Contents
 --------
   01_prototype.html             ~255 KB   [REAL - dashboard]
   02_demo_video.mp4                   0 bytes   [PLACEHOLDER - record after deck freeze]
-  03_presentation.pdf           ~522 KB   [REAL - 11 slides, print render of deck.html]
-  03_presentation.pptx          ~100 KB   [REAL - 11 slides 16:9, NATIVE editable charts/tables]
+  03_presentation.pdf           ~522 KB   [OUTDATED - 11-slide rev4 render, re-export after pptx freeze]
+  03_presentation.pptx          ~101 KB   [CANONICAL - 7 slides 16:9 + A1-A5 appendix, native charts/tables]
 
   TOTAL                           ~0.9 MB
   LIMIT                          10.00 MB
   HEADROOM                        ~9.1 MB
 
-Deck REV 5 - same story as REV 4, rebuilt as editable PowerPoint
----------------------------------------------------------------
-  slides  : 1 cover   380 / US$67.19M / 2,261 h / 179 overdue / 87.1%
-            2 problem quantified   monthly loss column chart, 31 months
-            3 baseline scorecard   mechanism chart + unit table (measured)
-            4 Q1 foundation        four sources -> one table
-            5 Q2 single pane       fix-first chart + unit ranking chart
-            6 action aging         179 overdue aged; 109 > 1 year
-            7 Q3 AI                87.1% (CI 83.4-90.1) vs baseline 69.2%
-            8 KO-3201 + lead       26-week vibration line + ALARM 45 / TRIP 75
-            9 before vs target     4 modeled commitments, basis stated
-            10 honest impact       measured / labeled / out-of-scope
-            11 team + next
-  editable: every chart is a native PowerPoint chart (right-click Edit Data),
-            every table is a native table, logo is a separate picture object.
-  source  : all numbers recomputed from analysis/embed_data.json (380 records)
-            + analysis/ai_eval.json. Builder script: _deck_pptx.py.
-  target  : every "target" is a modeled commitment from baseline, labeled,
-             not a measured result. Energy proxy + CCTV illustration declared additions.
+Deck REV 6 - official Submission Format (7 + appendix)
+------------------------------------------------------
+  slides  : 1 cover        Team Pengacara, IT PLN, 380 / $67.19M / 2,261 h / 179 / 87.1%
+            2 background   loss curve up +34%, peak $5.56M, 56% behind overdue
+            3 solution     4 sources -> one table, objective, workflow, tech
+            4 impact       monthly loss / overdue / retrieval / warning + KPIs
+            5 feasibility  technical, operational, legal, cyber, governance, org + roadmap
+            6 conclusion   one file one truth, 3 takeaways
+            7 team         Pengacara table (name, major, expertise, contribution)
+            A1-A5 appendix scorecard, aging, KO-3201 (ALARM 45 / TRIP 75),
+                           model eval (87.1% CI 83.4-90.1), sources & governance
+  editable: native charts (right-click Edit Data), native tables, separate logo.
+  source  : recomputed from analysis/embed_data.json (380 records) + ai_eval.json.
+            Builder: _deck_pptx7.py. Supervisor: Mr. Bayu Aji Soedibyo.
+  TODO    : fill Semester column on slide 7; re-export PDF after freeze; record video.
 
 How to present
 --------------
